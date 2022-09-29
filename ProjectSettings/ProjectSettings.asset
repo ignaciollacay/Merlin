@@ -147,6 +147,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.SpeechRecognitionSample
+    Standalone: com.DefaultCompany.SpeechRecognitionSample
   buildNumber:
     Standalone: 0
     iPhone: 0
