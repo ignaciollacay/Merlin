@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85db823b1cee80c4eb9a80b404167c67, type: 3}
-  m_Name: Ajo
+  m_Name: PeloDeGato
   m_EditorClassIdentifier: 
-  Name: Ajo
-  prefab: {fileID: 7304259912711458962, guid: 6e93de130b3ca624894beeb519dfcfef, type: 3}
+  itemName: Pelo de gato
+  prefab: {fileID: 5633327799377045808, guid: 9c8aff47c6b904e9fb869398e9b6820f, type: 3}
   type: 0
   craftables:
   - {fileID: 0}
   - {fileID: 0}
+  description: 

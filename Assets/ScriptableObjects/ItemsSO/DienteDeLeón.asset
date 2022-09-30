@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85db823b1cee80c4eb9a80b404167c67, type: 3}
-  m_Name: ColaDeRata
+  m_Name: "DienteDeLe\xF3n"
   m_EditorClassIdentifier: 
-  itemName: Cola de Rata
-  prefab: {fileID: 5633327799377045808, guid: 05108ef4e2816154ba42bd33f8dd8e40, type: 3}
+  itemName: "Diente de le\xF3n"
+  prefab: {fileID: 5633327799377045808, guid: 017895f94b19640c4a21df4f9abb5ddc, type: 3}
   type: 1
   craftables:
   - {fileID: 11400000, guid: 0ca6fad0f7dc34830a401dfb84980cef, type: 2}
-  - {fileID: 11400000, guid: ac8f4c4025bea4d00b5be008b4dc00f9, type: 2}
-  description: 
+  - {fileID: 11400000, guid: 7b3f7c10ed20643e0817e487984044f4, type: 2}
+  description: "Hechizo: Diente de Ajo, Pelo de Gato, Hechizo de da\xF1o\n\nFalla
+    y crea un diente de le\xF3n (juego de palabras entre la planta y el animal)\n\nLuego
+    usado para crear el fuego"

@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85db823b1cee80c4eb9a80b404167c67, type: 3}
-  m_Name: Fuego
+  m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
+  m_Name: FireSpell
   m_EditorClassIdentifier: 
-  itemName: Fuego
-  prefab: {fileID: 2450836168230165149, guid: ff4fceb34e87beb4fa87be98efbacc92, type: 3}
-  type: 1
-  craftables:
+  spellName: Fuego
+  SpellString: "ahora despierta fuego de drag\xF3n"
+  Spell: "Cola de rata, Diente de le\xF3n, ahora despierta fuego de drag\xF3n"
+  ingredients:
   - {fileID: 11400000, guid: 778c5d0116980a747948885b8697c716, type: 2}
   - {fileID: 11400000, guid: c973201ed5fa04c5485647f2039e1d66, type: 2}
-  description: "Spell = Cola de rata, diente de le\xF3n, ahora despierta el fuego
-    del drag\xF3n!"
+  result: {fileID: 11400000, guid: 8c99f1bcc3a4cf441a99a9642bc6c483, type: 2}
+  description: 

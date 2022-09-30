@@ -26,8 +26,12 @@ using Debug = UnityEngine.Debug;
 /// into text strings. Support for interim results (i.e. recognition hypotheses) 
 /// that are returned in near real-time as the speaks in the microphone.
 /// </summary>
+///
+[DefaultExecutionOrder(-1)]
 public class SpeechRecognition : MonoBehaviour
 {
+    public static SpeechRecognition Instance { get; set; }
+
     // Public fields in the Unity inspector
     [Tooltip("Unity UI Text component used to post recognizing results on screen.")]
     public Text RecognizingText;
@@ -39,7 +43,7 @@ public class SpeechRecognition : MonoBehaviour
     public Text DebugText;
 
     [Tooltip("Speech Assessment Manager")]
-    public List<PhraseRecognition> phraseRecognition;
+    public List<PhraseRecognition> phraseRecs;
 
     // Used to show live messages on screen, must be locked to avoid threading deadlocks since
     // the recognition events are raised in a separate thread
@@ -86,6 +90,8 @@ public class SpeechRecognition : MonoBehaviour
         // Uncomment and set the values to manually set Speech Service API Key and Region in code,
         //SpeechServiceAPIKey = "YourSubscriptionKey";
         //SpeechServiceRegion = "YourServiceRegion";
+
+        Instance = this;
     }
 
     private void Start()
@@ -153,7 +159,7 @@ public class SpeechRecognition : MonoBehaviour
             {
                 // Subscribes to speech events.
                 recognizer.Recognizing += RecognizingHandler;
-                foreach (var pr in phraseRecognition)
+                foreach (var pr in phraseRecs)
                     recognizer.Recognizing += pr.PronunciationAssessment;
                 recognizer.Recognized += RecognizedHandler;
                 recognizer.SpeechStartDetected += SpeechStartDetectedHandler;
@@ -161,11 +167,6 @@ public class SpeechRecognition : MonoBehaviour
                 recognizer.Canceled += CanceledHandler;
                 recognizer.SessionStarted += SessionStartedHandler;
                 recognizer.SessionStopped += SessionStoppedHandler;
-            }
-            if (phraseRecognition != null)
-            {
-                foreach (var pr in phraseRecognition)
-                    pr.OnPhraseRecognized += StopRecognition;
             }
         }
         
@@ -176,14 +177,14 @@ public class SpeechRecognition : MonoBehaviour
         // Implement Phrase Lists
         phraseList = PhraseListGrammar.FromRecognizer(recognizer);
 
-        if (phraseRecognition == null)
+        if (phraseRecs == null)
         {
             Debug.LogWarning("TextToRead reference missing. Make sure to link Phrase Recognition in the inspector");
         }
 
         if (automaticPhraseList)
         {
-            foreach (var pr in phraseRecognition)
+            foreach (var pr in phraseRecs)
             {
                 foreach (string keyword in pr.words)
                 {
@@ -216,7 +217,7 @@ public class SpeechRecognition : MonoBehaviour
         //Debug.Log("Starting Continuous Speech Recognition.");
         CreateSpeechRecognizer();
 
-        if ((phraseRecognition != null) && ((customPhraseList) || (automaticPhraseList)))
+        if ((phraseRecs != null) && ((customPhraseList) || (automaticPhraseList)))
         {
             CreatePhraseList();
             Debug.Log("Creating Phrase List");
@@ -338,20 +339,20 @@ public class SpeechRecognition : MonoBehaviour
 
     void OnDisable()
     {
-        StopRecognition();
+        StopSpeechRecognition();
     }
 
     /// <summary>
     /// Stops the recognition on the speech recognizer.
     /// Important: Unhook all events & clean-up resources.
     /// </summary>
-    public async void StopRecognition()
+    public async void StopSpeechRecognition()
     {
         if (recognizer != null)
         {
             await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
             recognizer.Recognizing -= RecognizingHandler;
-            foreach (var pr in phraseRecognition)
+            foreach (var pr in phraseRecs)
                 recognizer.Recognizing -= pr.PronunciationAssessment;
             recognizer.Recognized -= RecognizedHandler;
             recognizer.SpeechStartDetected -= SpeechStartDetectedHandler;
@@ -365,8 +366,12 @@ public class SpeechRecognition : MonoBehaviour
             debugString = "Speech Recognizer is now stopped.";
             Debug.Log("Speech Recognizer is now stopped.");
         }
-        foreach (var pr in phraseRecognition)
-            pr.OnPhraseRecognized -= StopRecognition;
+    }
+
+    public void StopPhraseRecognition(PhraseRecognition pr)
+    {
+        recognizer.Recognizing -= pr.PronunciationAssessment;
+        phraseRecs.Remove(pr);
     }
 }
 

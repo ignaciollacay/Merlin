@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// FIXME Acá debería estar solo la parte dinámica del recognition
+         // Lo que refiere al text/strings  
+
+
 /// <summary>
 /// Complement to Speech Recognition
 /// Compares in real time each word of the Recognized Speech (via recognizer Event)
@@ -16,7 +20,7 @@ public class PhraseRecognition : MonoBehaviour
 {
     [Header("General Settings")]
     [Tooltip("Unity UI Text component used to post text results on screen.")]
-    public Text readText;
+    public Text textComponent;
     [Tooltip("The text that the user has to read")]
     public string readPhrase;
     private string[] readStrings;
@@ -50,31 +54,67 @@ public class PhraseRecognition : MonoBehaviour
     public delegate void PhraseRecognized();
     public event PhraseRecognized OnPhraseRecognized;
 
+    private SpeechRecognition speechRecognition;
+
+    [SerializeField] private bool onStartEnabled = true;
+
+
     void Awake()
     {
-        CreateStringPhrases();
-        SetText();
+        speechRecognition = SpeechRecognition.Instance;
+
+        if(onStartEnabled)
+        {
+            CreateStringPhrases();
+            SetText();
+        }
     }
 
     private void Start()
     {
-        StartCoroutine(FinishedPhrase());
-        //CultureInfo.CurrentCulture = new CultureInfo("es-AR");
-        //Debug.Log("The current culture is {0}.\n" +
-        //                System.Globalization.CultureInfo.CurrentCulture.Name);
-
-        PhraseManager.Instance.phraseRecs.Add(this);
+        if (onStartEnabled)
+        {
+            speechRecognition.phraseRecs.Add(this);
+            StartCoroutine(PhraseReadCoroutine());
+        }
     }
+
     private void Update()
     {
-        readText.text = displayString;
-    }
-    private void OnDisable()
-    {
-        StopCoroutine(FinishedPhrase());
+        textComponent.text = displayString;
     }
 
-    IEnumerator FinishedPhrase()
+    private void OnDisable()
+    {
+        SpeechRecognition.Instance.phraseRecs.Remove(this);
+        StopCoroutine(PhraseReadCoroutine());
+    }
+
+
+    public void SetText()
+    {
+        displayString = readPhrase;
+        textComponent.color = Color.white;
+        textComponent.text = displayString;
+        wordCount = 0;
+    }
+
+    /// <summary>
+    /// Runs after assessment finished and result was correct
+    /// Set ending display text and remove from SpeechRecognition
+    /// </summary>
+    public void StopAssessment()
+    {
+        speechRecognition.StopPhraseRecognition(this);
+
+        displayString = readPhrase;
+        textComponent.color = Color.cyan;
+        textComponent.text = displayString;
+
+        StopCoroutine(PhraseReadCoroutine());
+    }
+
+    private IEnumerator PhraseReadCoroutine()
     {
         yield return new WaitUntil(() => wordCount == words.Length);
         Debug.Log("All keywords are recognized for " + this.name, this.gameObject);
@@ -115,17 +155,6 @@ public class PhraseRecognition : MonoBehaviour
                 displayString = readStrings[wordCount];
             }
         }
-    }
-
-    /// <summary>
-    /// Set ending display text. Run from SpeechRecognition once assessment finished and result was correct.
-    /// </summary>
-    public void StopAssessment()
-    {
-        displayString = readPhrase;
-        readText.color = Color.cyan;
-        readText.text = displayString;
-        StopCoroutine(FinishedPhrase());
     }
 
     /// <summary>
@@ -192,6 +221,7 @@ public class PhraseRecognition : MonoBehaviour
             readStrings[phrase] = phraseString;
         }
     }
+
     /// <summary>
     /// Creates String for phrase to be displayed in a dynamic color
     /// according to the result of Speech & Phrase Recognition.
@@ -236,13 +266,20 @@ public class PhraseRecognition : MonoBehaviour
         readStrings[phrase] = phraseString;
     }
 
-
-    public void SetText()
+    public void AddPhrase()
     {
-        displayString = readPhrase;
-        readText.color = Color.white;
-        readText.text = displayString;
-        wordCount = 0;
+        CreateStringPhrases();
+        SetText();
+        speechRecognition.phraseRecs.Add(this);
+        StartCoroutine(PhraseReadCoroutine());
+    }
+
+
+    // TODO Reset everything so that Spell can be read again. Run from CraftManager Spellcrafted event.
+    // Needs to clear SpellSO, Words, Text, etc.
+    public void ResetPhraseRecogition()
+    {
+
     }
 }
 /*

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// TODO Very similar to Spell
+// Can be refactored with inheritance
+// Replaces SO type and Selection method
+
 [RequireComponent(typeof(Text), typeof(PhraseRecognition))]
 public class Ingredient : MonoBehaviour
 {
@@ -28,18 +32,21 @@ public class Ingredient : MonoBehaviour
         phraseRecognition.OnPhraseRecognized += SelectItem;
     }
 
-    void SelectItem()
+    public void SelectItem() // Make private. Only for Editor Testing with button instead of speech.
     {
         CraftManager.Instance.ItemsSelected(item);
     }
 
-    void SetName()
+    private void SetName()
     {
         text = GetComponent<Text>();
-        text.text = item.Name;
+        text.text = item.itemName;
 
         phraseRecognition = GetComponent<PhraseRecognition>();
-        phraseRecognition.readPhrase = item.Name;
-        phraseRecognition.readText = text;
+        phraseRecognition.readPhrase = item.itemName;
+        phraseRecognition.textComponent = text;
     }
+
+    // Remove ingredient from List
+    // Add new ingredient to list?
 }

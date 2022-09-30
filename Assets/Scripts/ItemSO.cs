@@ -12,7 +12,7 @@ public enum ItemType
 public class ItemSO : ScriptableObject
 {
     [Header("Item Properties")]
-    public string Name;
+    public string itemName;
     public GameObject prefab;
     public ItemType type = ItemType.Basic;
     public ItemSO[] craftables = new ItemSO[2];
