@@ -27,7 +27,7 @@ using Debug = UnityEngine.Debug;
 /// that are returned in near real-time as the speaks in the microphone.
 /// </summary>
 ///
-[DefaultExecutionOrder(-1)]
+[DefaultExecutionOrder(-2)]
 public class SpeechRecognition : MonoBehaviour
 {
     public static SpeechRecognition Instance { get; set; }
@@ -368,10 +368,19 @@ public class SpeechRecognition : MonoBehaviour
         }
     }
 
+    //Remove
     public void StopPhraseRecognition(PhraseRecognition pr)
     {
         recognizer.Recognizing -= pr.PronunciationAssessment;
         phraseRecs.Remove(pr);
+        // Remove the phrase's keywords from recognition list
+        // Need to recreate since there is no RemovePhrase method in SDK for PhraseListGrammar.
+        // No need to run if it was not in use.
+        if (automaticPhraseList || customPhraseList)
+        {
+            phraseList.Clear();
+            CreatePhraseList();
+        }
     }
 }
 

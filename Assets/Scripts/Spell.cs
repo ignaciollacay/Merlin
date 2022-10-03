@@ -63,4 +63,11 @@ public class Spell : MonoBehaviour
         phraseRecognition.AddPhrase();
         phraseRecognition.OnPhraseRecognized += CraftItem;
     }
+
+    public void ResetSpell()
+    {
+        spellSO = null;
+        text.text = ""; //no es managed por el phrase rec on update?
+        phraseRecognition.RemovePhrase();
+    }
 }

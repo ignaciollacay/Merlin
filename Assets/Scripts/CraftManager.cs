@@ -15,9 +15,13 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private ItemDatabaseSO itemDatabaseSO;
     [SerializeField] private Spell bookSpell;
 
+    [Header("Spawn Height")]
+    [SerializeField] float spawnIngredient = 1.167f;
+    [SerializeField] float spawnCrafted = 0.339f;
+
     [Header("Event References")]
-    [SerializeField] private Transform SpawnIngredient;
-    [SerializeField] private Transform SpawnCrafted;
+    //[SerializeField] private Transform SpawnIngredient;
+    //[SerializeField] private Transform SpawnCrafted;
     [SerializeField] private ParticleSystem craftVFX;
     [SerializeField] private Canvas foxCanvas;
     [SerializeField] private Text foxText;
@@ -35,7 +39,8 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private float randomSpawnPos = 0.25f;
 
     private ItemSO[] itemMixSO = new ItemSO[2];
-    private GameObject[] itemMixGO = new GameObject[2];
+    private GameObject[] itemMixGO = new GameObject[2]; // hold Spawned GameObject Reference to Destroy after use
+    private GameObject itemCrafted;                     // hold Spawned GameObject Reference to Destroy after use
 
     private SpeechRecognition speechManager;
 
@@ -55,7 +60,7 @@ public class CraftManager : MonoBehaviour
         if (itemMixSO[0] == null)
         {
             //Spawn item
-            itemMixGO[0] = Instantiate(item.prefab, GetRandomPosition(), SpawnIngredient.rotation, SpawnIngredient);
+            itemMixGO[0] = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
 
             //Add to mix
             itemMixSO[0] = item;
@@ -65,7 +70,7 @@ public class CraftManager : MonoBehaviour
         else if (itemMixSO[1] == null)
         {
             //Spawn item
-            itemMixGO[1] = Instantiate(item.prefab, GetRandomPosition(), SpawnIngredient.rotation, SpawnIngredient);
+            itemMixGO[1] = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
 
             //Add to mix
             itemMixSO[1] = item;
@@ -117,7 +122,7 @@ public class CraftManager : MonoBehaviour
             Destroy(spawnedItem);
 
         // Create crafted item
-        Instantiate(item.prefab, SpawnCrafted);
+        itemCrafted = Instantiate(item.prefab, transform.position + new Vector3(0,spawnCrafted,0), transform.rotation);
 
         await Task.Delay(2000);
 
@@ -127,10 +132,11 @@ public class CraftManager : MonoBehaviour
         foxCanvas.enabled = true;
 
         // Reset mix
+        itemMixSO = new ItemSO[2];
         itemMixGO = new GameObject[2];
-        // Reset spell
-        bookSpell.spellSO = null;
-        bookSpell.text.text = "";
+
+        // Reset Spell (& Phrase Recognition)
+        bookSpell.ResetSpell();
 
         await Task.Delay(3000);
 
@@ -139,6 +145,9 @@ public class CraftManager : MonoBehaviour
         ingredient2.SetActive(false);
         ingredient3.SetActive(true);
         ingredient4.SetActive(true);
+
+        // Remove crafted ingredient.
+        Destroy(itemCrafted);
     }
 
     Vector3 GetRandomPosition()
@@ -146,10 +155,10 @@ public class CraftManager : MonoBehaviour
         float min = -randomSpawnPos;
         float max = randomSpawnPos;
         float x = Random.Range(min, max);
-        float y = Random.Range(min, max);
+        float z = Random.Range(min, max);
 
-        Vector3 randomPos = new Vector3(x, y, 0);
-        Vector3 newPos = SpawnIngredient.position + randomPos;
+        Vector3 randomPos = new Vector3(x, spawnIngredient, z);
+        Vector3 newPos = transform.position + randomPos;
 
         return newPos;
     }

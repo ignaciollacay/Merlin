@@ -19,6 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ca6fad0f7dc34830a401dfb84980cef, type: 2}
   - {fileID: 11400000, guid: 7b3f7c10ed20643e0817e487984044f4, type: 2}
   result: {fileID: 11400000, guid: c973201ed5fa04c5485647f2039e1d66, type: 2}
-  description: "Hechizo: Diente de Ajo, Pelo de Gato, Hechizo de da\xF1o\n\nFalla
-    y crea un diente de le\xF3n (juego de palabras entre la planta y el animal)\n\nLuego
-    usado para crear el fuego"
+  description: Crea un item

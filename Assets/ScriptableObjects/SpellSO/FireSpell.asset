@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: FireSpell
   m_EditorClassIdentifier: 
   spellName: Fuego
-  SpellString: "ahora despierta fuego de drag\xF3n"
-  Spell: "Cola de rata, Diente de le\xF3n, ahora despierta fuego de drag\xF3n"
+  SpellString: "ahora invoca fuego de drag\xF3n"
+  Spell: "Cola de Rata, Diente de le\xF3n, ahora invoca fuego de drag\xF3n"
   ingredients:
   - {fileID: 11400000, guid: 778c5d0116980a747948885b8697c716, type: 2}
   - {fileID: 11400000, guid: c973201ed5fa04c5485647f2039e1d66, type: 2}
   result: {fileID: 11400000, guid: 8c99f1bcc3a4cf441a99a9642bc6c483, type: 2}
-  description: 
+  description: Crea un hechizo
