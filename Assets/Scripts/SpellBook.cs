@@ -11,7 +11,7 @@ public enum Level
     Complete
 }
 
-
+//[DefaultExecutionOrder(-3)]
 public class SpellBook : MonoBehaviour
 {
     public static SpellBook Instance;
@@ -24,16 +24,17 @@ public class SpellBook : MonoBehaviour
     // All spells are added on the book on the scene.
     [SerializeField] private GameObject[] spellsGO; // Hold references on memory instead of getting on runtime (?)
 
-    private List<SpellSO> discoveredSpells; // to be used for SpellCast
+    public List<SpellSO> discoveredSpells; // to be used for SpellCast
     private int knowledgePercentage; // stats (RPG)
     private string levelString;
-    private CraftManager craftManager;
+    //[SerializeField] private CraftManager craftManager;
+
 
     private void Awake()
     {
-        Instance = this;
-
-        CraftManager.Instance = craftManager;
+        //CraftManager.Instance = craftManager;
+        //Debug.Log("CraftManager Instance=" + craftManager.name, craftManager.gameObject);
+        //Instance = this;
     }
 
     private void Start()
@@ -41,6 +42,10 @@ public class SpellBook : MonoBehaviour
         //craftManager.OnSpellcrafted += AddSpell;
     }
 
+    private void OnMouseDown()
+    {
+        OpenSpellbookUI();
+    }
 
     // Adds the crafted spell to the spellbook.
     // Run from CraftManager on SpellCraft?
@@ -50,7 +55,7 @@ public class SpellBook : MonoBehaviour
 
         for (int i = 0; i < spellsGO.Length; i++)
         {
-            if (newSpell == spellsGO[i].GetComponent<SpellSO>())
+            if (newSpell == spellsGO[i].GetComponent<Spell>().spellSO)
             {
                 spellsGO[i].SetActive(true);
             }

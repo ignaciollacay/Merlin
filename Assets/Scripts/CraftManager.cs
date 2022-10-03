@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
-[DefaultExecutionOrder(-1)]
+//[DefaultExecutionOrder(-2)]
 public class CraftManager : MonoBehaviour
 {
     //singleton?
@@ -13,7 +13,7 @@ public class CraftManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private ItemDatabaseSO itemDatabaseSO;
-    [SerializeField] private Spell bookSpell;
+    [SerializeField] private SpellCast spellDisplay;
 
     [Header("Spawn Height")]
     [SerializeField] float spawnIngredient = 1.167f;
@@ -42,17 +42,21 @@ public class CraftManager : MonoBehaviour
     private GameObject[] itemMixGO = new GameObject[2]; // hold Spawned GameObject Reference to Destroy after use
     private GameObject itemCrafted;                     // hold Spawned GameObject Reference to Destroy after use
 
-    private SpeechRecognition speechManager;
+    [SerializeField] private SpeechRecognition speechManager;
+    [SerializeField] private SpellBook spellBook;
 
     // Event
-    public delegate void Spellcrafted();
-    public event Spellcrafted OnSpellcrafted;
+    //public delegate void Spellcrafted();
+    //public event Spellcrafted OnSpellcrafted;
 
 
     private void Awake()
     {
-        Instance = this;
-        speechManager = SpeechRecognition.Instance;
+        //speechManager = SpeechRecognition.Instance;
+        //Debug.Log("Speech Instance=" + speechManager.name, speechManager.gameObject);
+        //Instance = this;
+        //spellBook = SpellBook.Instance;
+        //Debug.Log("Spellbook Instance=" + spellBook.name, spellBook.gameObject);
     }
 
     public void ItemsSelected(ItemSO item)
@@ -87,15 +91,20 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-
+    // A new spell has been discovered.
+    // Display spell & add to spellbook
     private void DisplaySpell()
     {
         SpellSO spell = itemDatabaseSO.GetSpell(itemMixSO[0], itemMixSO[1]);
 
         if (spell != null)
         {
-            bookSpell.spellSO = spell;
-            bookSpell.SetSpell();
+            // Display Spell in UI
+            spellDisplay.spellSO = spell;
+            spellDisplay.SetSpell();
+
+            // Add the spell on spellbook
+            spellBook.AddSpell(spell);
         }
         else
         {
@@ -136,9 +145,9 @@ public class CraftManager : MonoBehaviour
         itemMixGO = new GameObject[2];
 
         // Reset Spell (& Phrase Recognition)
-        bookSpell.ResetSpell();
+        spellDisplay.ResetSpell();
 
-        await Task.Delay(3000);
+        await Task.Delay(2000);
 
         // Switch ingredients
         ingredient1.SetActive(false);

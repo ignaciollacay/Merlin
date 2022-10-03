@@ -14,6 +14,7 @@ public class Ingredient : MonoBehaviour
 
     private Text text;
     private PhraseRecognition phraseRecognition;
+    [SerializeField] private CraftManager craftManager;
 
     // Helps to display text in editor
     private void OnValidate()
@@ -25,6 +26,8 @@ public class Ingredient : MonoBehaviour
     private void Awake()
     {
         SetName();
+
+        //craftManager = CraftManager.Instance;
     }
 
     private void Start()
@@ -34,7 +37,7 @@ public class Ingredient : MonoBehaviour
 
     public void SelectItem() // Make private. Only for Editor Testing with button instead of speech.
     {
-        CraftManager.Instance.ItemsSelected(item);
+        craftManager.ItemsSelected(item);
     }
 
     private void SetName()
