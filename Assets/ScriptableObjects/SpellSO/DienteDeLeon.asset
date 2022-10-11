@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b3f7c10ed20643e0817e487984044f4, type: 2}
   result: {fileID: 11400000, guid: c973201ed5fa04c5485647f2039e1d66, type: 2}
   description: Crea un item
+  damage: 5

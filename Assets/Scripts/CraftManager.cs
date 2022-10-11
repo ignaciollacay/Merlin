@@ -12,8 +12,10 @@ public class CraftManager : MonoBehaviour
     public static CraftManager Instance { get; set; }
 
     [Header("References")]
-    [SerializeField] private ItemDatabaseSO itemDatabaseSO;
-    [SerializeField] private SpellCast spellDisplay;
+    public ItemDatabaseSO itemDatabaseSO;
+    public SpellCraft spellDisplay;
+    [SerializeField] private SpeechRecognition speechManager;
+    [SerializeField] private SpellBook spellBook;
 
     [Header("Spawn Height")]
     [SerializeField] float spawnIngredient = 1.167f;
@@ -42,8 +44,7 @@ public class CraftManager : MonoBehaviour
     private GameObject[] itemMixGO = new GameObject[2]; // hold Spawned GameObject Reference to Destroy after use
     private GameObject itemCrafted;                     // hold Spawned GameObject Reference to Destroy after use
 
-    [SerializeField] private SpeechRecognition speechManager;
-    [SerializeField] private SpellBook spellBook;
+
 
     // Event
     //public delegate void Spellcrafted();

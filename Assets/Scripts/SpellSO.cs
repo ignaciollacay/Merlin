@@ -32,6 +32,8 @@ public class SpellSO : ScriptableObject
     [TextArea(5, 10)]
     public string description = "";
 
+    public int damage;
+
 
     [ContextMenu("Generate Spell")]
     public void AutoGenerate()

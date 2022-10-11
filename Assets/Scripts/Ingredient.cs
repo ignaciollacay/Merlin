@@ -11,10 +11,10 @@ using UnityEngine.UI;
 public class Ingredient : MonoBehaviour
 {
     public ItemSO item;
+    [SerializeField] private CraftManager craftManager;
 
     private Text text;
     private PhraseRecognition phraseRecognition;
-    [SerializeField] private CraftManager craftManager;
 
     // Helps to display text in editor
     private void OnValidate()
@@ -45,7 +45,7 @@ public class Ingredient : MonoBehaviour
         text = GetComponent<Text>();
         text.text = item.itemName;
 
-        phraseRecognition = GetComponent<PhraseRecognition>();
+        phraseRecognition = GetComponent<PhraseRecognition>(); //FIXME por qué no estaba en awake?
         phraseRecognition.readPhrase = item.itemName;
         phraseRecognition.textComponent = text;
     }

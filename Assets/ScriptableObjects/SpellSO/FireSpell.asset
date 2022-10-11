@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c973201ed5fa04c5485647f2039e1d66, type: 2}
   result: {fileID: 11400000, guid: 8c99f1bcc3a4cf441a99a9642bc6c483, type: 2}
   description: Crea un hechizo
+  damage: 15

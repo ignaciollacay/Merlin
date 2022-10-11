@@ -11,6 +11,7 @@ public enum Level
     Complete
 }
 
+// TODO ScriptableObject? Works like inventory
 //[DefaultExecutionOrder(-3)]
 public class SpellBook : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class SpellBook : MonoBehaviour
     private string levelString;
     //[SerializeField] private CraftManager craftManager;
 
+    private int index = 0; // Current Spell Index
 
     private void Awake()
     {
@@ -112,5 +114,46 @@ public class SpellBook : MonoBehaviour
     public void CloseSpellbookUI()
     {
         spellbookUI.enabled = false;
+    }
+
+    public SpellSO GetSpell()
+    {
+        return discoveredSpells[index];
+    }
+
+    public SpellSO GetNextSpell()
+    {
+        return discoveredSpells[NextInt()];
+    }
+
+    public SpellSO GetPreviousSpell()
+    {
+        return discoveredSpells[PrevInt()];
+    }
+
+    private int NextInt()
+    {
+        if (index < (discoveredSpells.Count-1))
+        {
+            index++;
+        }
+        else
+        {
+            index = 0;
+        }
+        return index;
+    }
+
+    private int PrevInt()
+    {
+        if (index > 0)
+        {
+            index--;
+        }
+        else
+        {
+            index = (discoveredSpells.Count-1);
+        }
+        return index;
     }
 }

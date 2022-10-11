@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 // proviorio para dar fin al primer loop
 //
-public class BattleManager : MonoBehaviour
+public class TestingCraftBattleManager : MonoBehaviour
 {
     [SerializeField] SpellBook spellBook;
     [SerializeField] private Canvas foxCanvas;

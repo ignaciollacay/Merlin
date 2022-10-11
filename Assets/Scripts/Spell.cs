@@ -7,6 +7,11 @@ using UnityEngine.UI;
 // Can be refactored with inheritance
 // Replaces SO type and Selection method
 
+// TODO UPDATE Now parent of SpellCast & SpellCraft
+// Not yet implemented. Waiting till system finished.
+
+// Used for SpellBook
+
 [RequireComponent(typeof(Text))]
 public class Spell : MonoBehaviour
 {

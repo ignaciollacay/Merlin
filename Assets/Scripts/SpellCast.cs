@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellCast : Spell
+// FIXME
+// Actual spellcast script // Brother from SpellCraft (ex SpellCast)
+// Used To cast Spells
+
+public class SpellCast : MonoBehaviour //Spell
 {
+    [Header("Spell")]
+    [HideInInspector] public SpellSO spellSO;
+    [HideInInspector] public Text text;
+
     // Event
     //public delegate void SpellCasted();
     //public event SpellCasted OnSpellCast;
 
     public PhraseRecognition phraseRecognition;
-    [SerializeField] CraftManager craftManager;
+    [SerializeField] CastManager castManager;
 
     // Helps to display text in editor
     //private void OnValidate()
@@ -28,33 +36,27 @@ public class SpellCast : Spell
 
     // Sets components
 
-    public override void Awake()
+    public void Awake()
     {
         text = GetComponent<Text>();
+        //text.text = spellSO.spellName + ": " + spellSO.Spell;
         phraseRecognition = GetComponent<PhraseRecognition>();
         phraseRecognition.textComponent = text;
     }
 
+    // Event...
     //private void Start()
     //{
     //    phraseRecognition.OnPhraseRecognized += CraftItem;
     //}
 
-    // FIXME make private. Made public for debugging with button
-    public void CraftItem()
-    {
-        phraseRecognition.OnPhraseRecognized -= CraftItem;
-        craftManager.CraftSpell(spellSO.result);
-        //OnSpellCast.Invoke();
-    }
-
-    // Run from CraftManager
+    // Run from CastManager TODO
     public void SetSpell()
     {
-
+        //text.text managed by PhraseRecognition.AddPhrase() > PhraseRecognition.SetText() > PhraseRecognition.Update()
         phraseRecognition.readPhrase = spellSO.Spell;
         phraseRecognition.AddPhrase();
-        phraseRecognition.OnPhraseRecognized += CraftItem;
+        phraseRecognition.OnPhraseRecognized += CastSpell;
     }
 
     public void ResetSpell()
@@ -63,4 +65,12 @@ public class SpellCast : Spell
         text.text = ""; //no es managed por el phrase rec on update?
         phraseRecognition.RemovePhrase();
     }
+
+    public void CastSpell()
+    {
+        //phraseRecognition.OnPhraseRecognized -= CastSpell;
+        castManager.CastSpell(spellSO);
+        //OnSpellCast.Invoke();
+    }
+
 }
