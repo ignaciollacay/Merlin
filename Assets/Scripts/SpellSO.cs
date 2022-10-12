@@ -33,7 +33,8 @@ public class SpellSO : ScriptableObject
     public string description = "";
 
     public int damage;
-
+    public int cooldown;
+    public Sprite icon;
 
     [ContextMenu("Generate Spell")]
     public void AutoGenerate()

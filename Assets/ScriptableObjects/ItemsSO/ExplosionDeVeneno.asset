@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExplosionDeVeneno
   m_EditorClassIdentifier: 
   itemName: "Explosi\xF3n de veneno"
-  prefab: {fileID: 7406321334463201283, guid: 74d02617e1529f845ada42afa0b401a5, type: 3}
+  prefab: {fileID: 7406321334463201283, guid: ee567140c1ac746ae833b582add05807, type: 3}
   type: 0
   craftables:
   - {fileID: 0}

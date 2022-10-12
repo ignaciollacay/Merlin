@@ -19,3 +19,5 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: c4498ff652cb741619609bc9fc32c617, type: 2}
   description: 
   damage: 10
+  cooldown: 3
+  icon: {fileID: 21300000, guid: df5fdeb4240bf674096202ea339f123e, type: 3}
