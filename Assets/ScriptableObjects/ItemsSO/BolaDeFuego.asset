@@ -15,5 +15,7 @@ MonoBehaviour:
   itemName: BolaDeFuego
   prefab: {fileID: 8049296621368733805, guid: 37f6c0cd973f14425813274118d9dbe0, type: 3}
   type: 0
-  craftables: []
+  craftables:
+  - {fileID: 0}
+  - {fileID: 0}
   description: 

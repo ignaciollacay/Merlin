@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85db823b1cee80c4eb9a80b404167c67, type: 3}
-  m_Name: ExplosionDeVeneno
+  m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
+  m_Name: SpellColor
   m_EditorClassIdentifier: 
-  itemName: "Explosi\xF3n de veneno"
-  prefab: {fileID: 7406321334463201283, guid: 74d02617e1529f845ada42afa0b401a5, type: 3}
-  type: 0
-  craftables:
+  spellName: Color Change
+  SpellString: 
+  Spell: Cambia de color
+  ingredients:
   - {fileID: 0}
   - {fileID: 0}
+  result: {fileID: 0}
   description: 
+  damage: 0

@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Odisea/SpeechRecognition.unity
-    guid: c47026c42bedae7499a544919800b854
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/SpeechSDKSample/Scenes/IntentRecognition.unity
-    guid: f2c728bac36dc3d449ae6bf7a6645568
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Odisea/Oracle.unity
-    guid: 33c4ec3854fc4b94aaf05eb4ee7f970f
+    path: Assets/Scenes/CastLearn.unity
+    guid: daef7a39330fe4a039074ab236b77abb
   m_configObjects: {}
