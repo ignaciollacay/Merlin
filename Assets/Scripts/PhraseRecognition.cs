@@ -283,5 +283,6 @@ public class PhraseRecognition : MonoBehaviour
         readStrings = new string[0];                    // undos createStringPhrase()
         displayString = "";                             // undos SetText();
         speechRecognition.phraseRecs.Remove(this);      // removes phrase from the list of phrases in Speech Recognizer that subscribe to recognizing event as listeners
+        StopCoroutine(PhraseReadCoroutine());
     }
 }

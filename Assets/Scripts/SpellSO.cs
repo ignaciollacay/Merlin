@@ -8,6 +8,12 @@ public enum SpellcraftType
     spell
 }
 
+public enum SpellcastType
+{
+    attack,
+    defense
+}
+
 // Me la complico para que sea automática la generación de spells
 // Hay que ver cómo van a ser los spells, no sé la posición si es siempre al principio
 [CreateAssetMenu(fileName = "New Spell", menuName = "SO/Spell")]
@@ -32,12 +38,23 @@ public class SpellSO : ScriptableObject
     [TextArea(5, 10)]
     public string description = "";
 
+    [Header("Spell Properties")]
+    [Tooltip("The amount of mana consumed when fired (or casted?)")]
     public int mana;
+    [Tooltip("The damage value taken by enemy on particle collision")]
     public int damage;
+    [Tooltip("The defense value given to player stats while playing (linked to duration value on HechizoDefensa)")]
     public int defense;
+    [Tooltip("The amount of time to wait between fires")]
     public int cooldown;
+    [Tooltip("The icon displayed in the button")]
     public Sprite icon;
+    [Tooltip("The maximum amount of times the spell can be fired before being destroyed")]
     public int count;
+
+    // Added to allow assignment of different buttons according to the spell type (Right-Attack, Left-Defense)
+    [Tooltip("Type of spell. Attack or Defense?")]
+    public SpellcastType type;
 
     [ContextMenu("Generate Spell")]
     public void AutoGenerate()

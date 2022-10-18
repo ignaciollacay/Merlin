@@ -45,18 +45,17 @@ public class SpellCast : MonoBehaviour //Spell
     }
 
     // Event...
-    //private void Start()
-    //{
-    //    phraseRecognition.OnPhraseRecognized += CraftItem;
-    //}
+    private void Start()
+    {
+        phraseRecognition.OnPhraseRecognized += CastSpell;
+    }
 
-    // Run from CastManager TODO
     public void SetSpell()
     {
         //text.text managed by PhraseRecognition.AddPhrase() > PhraseRecognition.SetText() > PhraseRecognition.Update()
         phraseRecognition.readPhrase = spellSO.Spell;
         phraseRecognition.AddPhrase();
-        phraseRecognition.OnPhraseRecognized += CastSpell;
+        //phraseRecognition.OnPhraseRecognized += CastSpell;
     }
 
     public void ResetSpell()

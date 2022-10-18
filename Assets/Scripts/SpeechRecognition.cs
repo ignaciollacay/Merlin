@@ -224,7 +224,7 @@ public class SpeechRecognition : MonoBehaviour
         }
         else
         {
-            Debug.Log("Phrase list could not be created. Check if TextToRead is assigned or Phrase List is Enabled");
+            //Debug.Log("Phrase list could not be created. Check if TextToRead is assigned or Phrase List is Enabled");
         }
 
 

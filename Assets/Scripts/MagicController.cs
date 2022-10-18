@@ -18,11 +18,11 @@ public class MagicController : MonoBehaviour
     // Spell variables
     private int spellCount;
     [SerializeField] private Button[] buttons;
-    private GameObject[] spellGOs = new GameObject[3];
-    private SpellSO[] spellSOs = new SpellSO[3];
-    private ParticleSystem[] spellVFXs = new ParticleSystem[3];
-    private bool[] spellCooldowns = new bool[3];
-    private int[] spellShots = new int[3];
+    private GameObject[] spellGOs = new GameObject[4];
+    private SpellSO[] spellSOs = new SpellSO[4];
+    private ParticleSystem[] spellVFXs = new ParticleSystem[4];
+    private bool[] spellCooldowns = new bool[4];
+    private int[] spellShots = new int[4];
 
 
     // accessor + ClassType[delegate] + returnType + ClassName + ("parameters");
@@ -37,7 +37,7 @@ public class MagicController : MonoBehaviour
 
     private void CastSpell(SpellSO spell)
     {
-        int slot = GetEmptySpellSlot();
+        int slot = GetSlot(spell);
         // Create crafted item
         spellGOs[slot] = Instantiate(spell.result.prefab, spawnPos.position, spawnPos.rotation, spawnPos);
         spellSOs[slot] = spell;
@@ -79,25 +79,35 @@ public class MagicController : MonoBehaviour
         //Debug.Log("Button " + slot + " / Cooldown=" + spellCooldowns[slot]);
     }
 
-    private int GetEmptySpellSlot()
+    private int GetSlot(SpellSO spell)
     {
-        if (spellGOs[0] == null)
+        switch (spell.type)
         {
-            return 0;
+            case SpellcastType.attack:
+                if (spellGOs[0] == null)
+                {
+                    return 0;
+                }
+                else if (spellGOs[1] == null)
+                {
+                    return 1;
+                }
+                else if (spellGOs[2] == null)
+                {
+                    return 2;
+                }
+                else
+                {
+                    Debug.Log("Spell Slots are full, new spell could not be added.");
+                    return 8;
+                }
+            case SpellcastType.defense:
+                return 3;
+            default:
+                Debug.Log("SpellType not recognized");
+                return 9;
         }
-        else if (spellGOs[1] == null)
-        {
-            return 1;
-        }
-        else if (spellGOs[2] == null)
-        {
-            return 2;
-        }
-        else
-        {
-            Debug.Log("Spell Slots are full, new spell could not be added.");
-            return 9;
-        }
+        
     }
 }
 

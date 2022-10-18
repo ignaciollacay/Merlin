@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
-  m_Name: FireBall
+  m_Name: FlameThrow
   m_EditorClassIdentifier: 
-  spellName: Bola de fuego
+  spellName: Manzana te convierto en llama
   SpellString: 
-  Spell: Bola de fuego
+  Spell: Manzana te convierto en llama
   ingredients: []
-  result: {fileID: 11400000, guid: c4498ff652cb741619609bc9fc32c617, type: 2}
-  description: 
-  mana: 10
-  damage: 10
-  cooldown: 3
-  icon: {fileID: 21300000, guid: df5fdeb4240bf674096202ea339f123e, type: 3}
+  result: {fileID: 11400000, guid: 63c06fa17641648ca8c697c37f719348, type: 2}
+  description: Copia duplicada del Flame en Dojo, pero con result
+  mana: 30
+  damage: 1
+  defense: 0
+  cooldown: 20
+  icon: {fileID: 21300000, guid: 8962b6cddb2d840bdb53ebc5e7cfc846, type: 3}
+  count: 0

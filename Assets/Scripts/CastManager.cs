@@ -35,6 +35,7 @@ public class CastManager : MonoBehaviour
     // Switch to the next spell
     public void NextSpell()
     {
+        spellDisplay.phraseRecognition.RemovePhrase();
         DisplaySpell(spellBook.GetNextSpell());
     }
 

@@ -37,6 +37,11 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public void Defend(int value)
+    {
+
+    }
+
     // TODO Defense mechanic needs to be designed & Updated.
     private int CalculateDefense(int damage)
     {

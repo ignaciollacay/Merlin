@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85db823b1cee80c4eb9a80b404167c67, type: 3}
-  m_Name: "DienteDeLe\xF3n"
+  m_Name: "DienteDeLeo\u0301n"
   m_EditorClassIdentifier: 
   itemName: "Diente de le\xF3n"
   prefab: {fileID: 5633327799377045808, guid: 017895f94b19640c4a21df4f9abb5ddc, type: 3}
