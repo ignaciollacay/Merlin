@@ -2308,7 +2308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabaseSO: {fileID: 11400000, guid: f81f3ebf58818e64fa7daaa46f1433d5, type: 2}
-  spellDisplay: {fileID: 1926360301}
+  spellDisplay: {fileID: 0}
   speechManager: {fileID: 2019836992}
   spellBook: {fileID: 819964786}
   spawnIngredient: 1.167
@@ -2775,18 +2775,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3198034638157694704}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1926360301 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2344776937583114365, guid: 7adc233139a61475ea53b5b4554085d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2344776938905310352}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9333687c587e34ff7bfda6e34d0a5afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2019836991
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,8 @@ public class TestingCastBattleManager : MonoBehaviour
     [SerializeField] private string helpString = "Presiona para salir del combate";
 
 
-    [SerializeField] private EnemyStats enemy;
+    [SerializeField] private List<EnemyStats> enemies;
+    private int enemyCount;
 
     void Awake()
     {
@@ -30,15 +31,41 @@ public class TestingCastBattleManager : MonoBehaviour
 
     void Start()
     {
-        enemy.OnEnemyKilled += EndBattle;
-    }
+        enemyCount = enemies.Count;
 
+        foreach (var enemy in enemies)
+        {
+            enemy.OnEnemyKilled += EndBattle;
+        }
+    }
 
     async void EndBattle()
     {
-        await Task.Delay(3000);
-        messageText.text = messageString;
-        helpText.text = helpString;
-        foxCanvas.enabled = true;
+        if (!RemainingEnemies())
+        {
+            await Task.Delay(3000);
+            messageText.text = messageString;
+            helpText.text = helpString;
+            foxCanvas.enabled = true;
+        }
     }
+    private bool RemainingEnemies()
+    {
+        enemyCount--;
+
+        if (enemyCount == 0)
+        {
+            Debug.Log("All enemies have been defeated");
+            return true;
+        }
+        else
+        {
+            Debug.Log("One or more enemies are remaining alive");
+            return false;
+        }
+    }
+
+
+
+
 }

@@ -10,7 +10,7 @@ public class CastManager : MonoBehaviour
 
     // FIXME REFACTOR
     // Move to SpellCast
-    public delegate void SpellCasted(SpellSO spell);
+    public delegate void SpellCasted(SpellSO spellCasted);
     public event SpellCasted OnSpellCasted;
 
     private void Start()

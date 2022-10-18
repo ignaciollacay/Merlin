@@ -57,7 +57,7 @@ public class SpellBook : MonoBehaviour
 
         for (int i = 0; i < spellsGO.Length; i++)
         {
-            if (newSpell == spellsGO[i].GetComponent<Spell>().spellSO)
+            if (newSpell == spellsGO[i].GetComponent<SpellScroll>().spellSO)
             {
                 spellsGO[i].SetActive(true);
             }

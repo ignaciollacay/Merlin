@@ -13,9 +13,8 @@ using UnityEngine.UI;
 // Used for SpellBook
 
 [RequireComponent(typeof(Text))]
-public class Spell : MonoBehaviour
+public class SpellScroll : Spell
 {
-    public SpellSO spellSO;
     public Text text;
 
     public virtual void Awake()

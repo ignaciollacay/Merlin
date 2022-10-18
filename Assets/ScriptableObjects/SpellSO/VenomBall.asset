@@ -18,6 +18,7 @@ MonoBehaviour:
   ingredients: []
   result: {fileID: 11400000, guid: af3033e387298468da2006032c549b97, type: 2}
   description: 
+  mana: 20
   damage: 20
   cooldown: 2
   icon: {fileID: 21300000, guid: c8123cce2583b094eabff873a087a7f9, type: 3}

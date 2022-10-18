@@ -53,7 +53,7 @@ public class HidraTest : EnemyStats
     [SerializeField] GameObject hidraAttackVFX;
     [SerializeField] Transform throwPoint;
 
-    [SerializeField] PlayerStats _PlayerStats;
+    //[SerializeField] PlayerStats _PlayerStats;
 
 
     [Header("Sound Events")]
@@ -77,7 +77,8 @@ public class HidraTest : EnemyStats
 
         //HeadMark();
     }
-    void Start()
+
+    public void Start()
     {
         StartCoroutine(HidraAttackCoroutine());
     }
@@ -272,6 +273,7 @@ public class HidraTest : EnemyStats
             if (hidraHead.GetComponent<HidraHeadTest>().deadHead == false)
             {
                 hidraHead.GetComponent<HidraHeadTest>().attack = true;
+                HidraAttack();
             }
         }
         //volver a ejectuar ataque (mientras que el monstruo no este muerto)
@@ -281,10 +283,11 @@ public class HidraTest : EnemyStats
         }
     }
 
-    public void HidraAttackDamage()
+    // Run from HidraHead
+    // TODO Should be run by Particle Collision with player.
+    public void HidraAttack()
     {
-        _PlayerStats.life -= hidraAttackDamage;
-        Debug.Log("Hidra attacked Player for " + hidraAttackDamage + " damage. " + " Remaining life is "+ _PlayerStats.life);
-        OnEnemyAttacked(hidraAttackDamage);
+        this.EnemyAttack(hidraAttackDamage);
+        Debug.Log("Hidra attacked for " + hidraAttackDamage + " damage. ");
     }
 }

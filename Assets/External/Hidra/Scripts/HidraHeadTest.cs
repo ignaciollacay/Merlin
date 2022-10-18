@@ -95,8 +95,6 @@ public class HidraHeadTest : MonoBehaviour
         {
             yield return new WaitUntil(() => attack);
             _animator.SetBool("isAttacking", true);
-            
-            _hidraTest.HidraAttackDamage(); //do damage to player stats - TBD on HidraTest Script
 
             //cuando termina la animacion, hay que volver a pasarlo a falso.
             yield return new WaitForSeconds(5); // TBD -- tiempo de animacion
