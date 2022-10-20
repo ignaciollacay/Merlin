@@ -38,11 +38,6 @@ public class SpellSO : ScriptableObject
     [TextArea(5, 10)]
     public string description = "";
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
     [Header("Spell Properties")]
     [Tooltip("The amount of mana consumed when fired (or casted?)")]
     public int mana;
@@ -57,11 +52,6 @@ public class SpellSO : ScriptableObject
     [Tooltip("The maximum amount of times the spell can be fired before being destroyed")]
     public int count;
 
-<<<<<<< Updated upstream
-    // Added to allow assignment of different buttons according to the spell type (Right-Attack, Left-Defense)
-    [Tooltip("Type of spell. Attack or Defense?")]
-    public SpellcastType type;
-=======
     // TODO adding to diferentiate between learned or unlearned, due to incompatibilities caused by Craft, SpellBook & SceneManager.
     [Tooltip("If the spell is unlocked or needs to be learned")]
     public bool learned = false;
@@ -69,13 +59,11 @@ public class SpellSO : ScriptableObject
     // Added to allow assignment of different buttons according to the spell type (Right-Attack, Left-Defense)
     [Tooltip("Type of spell. Attack or Defense?")]
     public SpellcastType type;
->>>>>>> Stashed changes
 
 
     // Added on refactorization of ItemSpells.
     // Linked to Object Animation on SpellCasted, on Dojo Scene
     public string boolName;
->>>>>>> Stashed changes
 
     [ContextMenu("Generate Spell")]
     public void AutoGenerate()

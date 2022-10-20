@@ -1,23 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< Updated upstream
-=======
 using UnityEngine.SceneManagement;
->>>>>>> Stashed changes
 
 public class Testing : MonoBehaviour
 {
     public SpellBook spellBook;
-<<<<<<< Updated upstream
-    public List<SpellSO> spellsDiscovered;
-
-    void Awake()
-    {
-        foreach (var spell in spellsDiscovered)
-        {
-            spellBook.discoveredSpells.Add(spell);
-=======
     public List<SpellSO> spellsTutorial;
     public List<SpellSO> spellsFight;
 
@@ -57,7 +45,6 @@ public class Testing : MonoBehaviour
         foreach (var spell in spells)
         {
             spellBook.undiscoveredSpells.Add(spell);
->>>>>>> Stashed changes
         }
     }
 }

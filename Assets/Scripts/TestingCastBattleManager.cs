@@ -21,11 +21,8 @@ public class TestingCastBattleManager : MonoBehaviour
     [SerializeField] private List<EnemyStats> enemies;
     private int enemyCount;
 
-<<<<<<< Updated upstream
-=======
     [SerializeField] Pet pet;
 
->>>>>>> Stashed changes
     void Awake()
     {
         foreach (var spell in spellsDiscovered)
@@ -61,10 +58,7 @@ public class TestingCastBattleManager : MonoBehaviour
         if (enemyCount == 0)
         {
             Debug.Log("All enemies have been defeated");
-<<<<<<< Updated upstream
-=======
             pet.BattleEnd();
->>>>>>> Stashed changes
             return true;
         }
         else

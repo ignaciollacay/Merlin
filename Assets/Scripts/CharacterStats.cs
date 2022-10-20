@@ -18,12 +18,8 @@ public class CharacterStats : MonoBehaviour
     public virtual void Awake()
     {
         currentHealth = maxHealth;
-<<<<<<< Updated upstream
-        healthBar.SetStatMax(maxHealth);
-=======
         if (healthBar)
             healthBar.SetStatMax(maxHealth);
->>>>>>> Stashed changes
         //Debug.Log(transform.name + " current life is " + currentHealth);
     }
 

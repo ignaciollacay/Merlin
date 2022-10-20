@@ -25,9 +25,6 @@ public class SpellBook : MonoBehaviour
     // All spells are added on the book on the scene.
     [SerializeField] private GameObject[] spellsGO; // Hold references on memory instead of getting on runtime (?)
 
-<<<<<<< Updated upstream
-    public List<SpellSO> discoveredSpells; // to be used for SpellCast
-=======
     [Tooltip("Used for Dojo")]
     public List<SpellSO> undiscoveredSpells;
     [Tooltip("Used for battle")]
@@ -36,20 +33,12 @@ public class SpellBook : MonoBehaviour
     private List<SpellSO> spellList;
     [SerializeField] private bool dojo;
 
->>>>>>> Stashed changes
     private int knowledgePercentage; // stats (RPG)
     private string levelString;
     //[SerializeField] private CraftManager craftManager;
 
     private int index = 0; // Current Spell Index
 
-<<<<<<< Updated upstream
-    private void Awake()
-    {
-        //CraftManager.Instance = craftManager;
-        //Debug.Log("CraftManager Instance=" + craftManager.name, craftManager.gameObject);
-        //Instance = this;
-=======
     [Tooltip("Interactive object being animated with spellcast")]
     [SerializeField] ItemSpells item;
 
@@ -63,22 +52,15 @@ public class SpellBook : MonoBehaviour
         {
             spellList = undiscoveredSpells;
         }
->>>>>>> Stashed changes
     }
 
     private void Start()
     {
-<<<<<<< Updated upstream
-        //craftManager.OnSpellcrafted += AddSpell;
-    }
-
-=======
         if (dojo)
             item.OnSpellLearned += AddSpell;
     }
 
 
->>>>>>> Stashed changes
     private void OnMouseDown()
     {
         OpenSpellbookUI();
@@ -89,10 +71,7 @@ public class SpellBook : MonoBehaviour
     public void AddSpell(SpellSO newSpell)
     {
         discoveredSpells.Add(newSpell);
-<<<<<<< Updated upstream
-=======
         undiscoveredSpells.Remove(newSpell);
->>>>>>> Stashed changes
 
         for (int i = 0; i < spellsGO.Length; i++)
         {
@@ -157,38 +136,22 @@ public class SpellBook : MonoBehaviour
 
     public SpellSO GetSpell()
     {
-<<<<<<< Updated upstream
-        return discoveredSpells[index];
-=======
         return spellList[index];
->>>>>>> Stashed changes
     }
 
     public SpellSO GetNextSpell()
     {
-<<<<<<< Updated upstream
-        return discoveredSpells[NextInt()];
-=======
         return spellList[NextInt()];
->>>>>>> Stashed changes
     }
 
     public SpellSO GetPreviousSpell()
     {
-<<<<<<< Updated upstream
-        return discoveredSpells[PrevInt()];
-=======
         return spellList[PrevInt()];
->>>>>>> Stashed changes
     }
 
     private int NextInt()
     {
-<<<<<<< Updated upstream
-        if (index < (discoveredSpells.Count-1))
-=======
         if (index < (spellList.Count-1))
->>>>>>> Stashed changes
         {
             index++;
         }
@@ -207,11 +170,7 @@ public class SpellBook : MonoBehaviour
         }
         else
         {
-<<<<<<< Updated upstream
-            index = (discoveredSpells.Count-1);
-=======
             index = (spellList.Count-1);
->>>>>>> Stashed changes
         }
         return index;
     }
