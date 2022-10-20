@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
   m_Name: SpellLevitate
   m_EditorClassIdentifier: 
-  spellName: Levitation
+  spellName: Telequinesis
   SpellString: 
-  Spell: Levanta tu peso y vuela como una hoja en el viento
+  Spell: Telequinesis
   ingredients:
   - {fileID: 0}
   - {fileID: 0}

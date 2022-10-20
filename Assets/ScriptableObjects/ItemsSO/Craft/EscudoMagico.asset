@@ -9,23 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
-  m_Name: SpellDisappear
+  m_Script: {fileID: 11500000, guid: 85db823b1cee80c4eb9a80b404167c67, type: 3}
+  m_Name: EscudoMagico
   m_EditorClassIdentifier: 
-  spellName: "Desaparici\xF3n"
-  SpellString: 
-  Spell: Travesura terminada
-  ingredients:
-  - {fileID: 0}
-  - {fileID: 0}
-  result: {fileID: 0}
-  description: 
-  mana: 0
-  damage: 0
-  defense: 0
-  cooldown: 0
-  icon: {fileID: 0}
-  count: 0
-  learned: 0
+  itemName: "Escudo M\xE1gico"
+  prefab: {fileID: 900520869717706380, guid: 01e6b3b1d7935514582bf8fd27073689, type: 3}
   type: 0
-  boolName: Disappear
+  craftables:
+  - {fileID: 0}
+  - {fileID: 0}
+  description: 

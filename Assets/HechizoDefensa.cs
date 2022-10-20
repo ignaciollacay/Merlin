@@ -33,6 +33,7 @@ public class HechizoDefensa : MonoBehaviour
         playerStats.defense = newStat;
         yield return new WaitForSeconds(duration);
         playerStats.defense = baseStat;
+        vfx.Stop();
     }
 
     private void OnDisable()

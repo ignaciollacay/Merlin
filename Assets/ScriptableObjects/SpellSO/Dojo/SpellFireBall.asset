@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
   m_Name: SpellFireBall
   m_EditorClassIdentifier: 
-  spellName: Fire ball
+  spellName: Bola de Fuego
   SpellString: 
   Spell: Bola de fuego
   ingredients: []

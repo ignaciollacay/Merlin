@@ -23,17 +23,20 @@ public class Testing : MonoBehaviour
 
     IEnumerator FightingSpells()
     {
-        yield return new WaitUntil(()=> spellBook.discoveredSpells.Count == 3);
+        yield return new WaitUntil(()=> spellBook.discoveredSpells.Count == 2);
         AddSpells(spellsFight);
+        FindObjectOfType<CastManager>().NextSpell();
         pet.FirstSpellsIntro();
+        StopCoroutine(FightingSpells());
         StartCoroutine(Battle());
     }
 
     IEnumerator Battle()
     {
         DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
-        yield return new WaitUntil(() => spellBook.discoveredSpells.Count == 6);
-        pet.BattleStart();
+        StopCoroutine(Battle());
+        yield return new WaitUntil(() => spellBook.discoveredSpells.Count == 4);
+        pet.FirstBattle();
         yield return new WaitUntil(() => dialogueManager.dialogueEnd);
         SceneManager.LoadScene(1);
     }

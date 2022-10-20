@@ -11,14 +11,13 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences = new Queue<string>();
 
-    public bool dialogueEnd;
+    public bool dialogueEnd = false;
 
 
     public void StartDialogue(DialogueSO dialogue)
     {
-        dialogueEnd = false; // FIXME Added only to finish scene.
+        dialogueEnd = false;
 
-        Debug.Log("Starting dialogue with " + dialogue.character);
         box.SetActive(true);
         character.text = dialogue.character;
 
@@ -45,15 +44,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        //Debug.Log(sentence);
         dialogue.text = sentence;
     }
 
     private void EndDialogue()
     {
-        //Debug.Log("End of dialogue");
         box.SetActive(false);
-        dialogueEnd = true; // FIXME Added only to finish scene.
-        FindObjectOfType<CastManager>().NextSpell(); //FIXME Shouldn't be here.
+        dialogueEnd = true;
     }
 }

@@ -70,6 +70,12 @@ public class SpellBook : MonoBehaviour
     // Run from CraftManager on SpellCraft?
     public void AddSpell(SpellSO newSpell)
     {
+        if (isDiscovered(newSpell))
+        {
+            print("spell is already discovered. Returning, shouldn't be added");
+            return;
+        }
+
         discoveredSpells.Add(newSpell);
         undiscoveredSpells.Remove(newSpell);
 
@@ -82,6 +88,21 @@ public class SpellBook : MonoBehaviour
         }
 
         UpdateKnowledge();
+
+        FindObjectOfType<CastManager>().NextSpell();
+    }
+
+    private bool isDiscovered(SpellSO newSpell)
+    {
+        foreach (var spell in discoveredSpells)
+        {
+            if (spell == newSpell)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void UpdateKnowledge()

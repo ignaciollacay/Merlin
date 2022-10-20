@@ -215,11 +215,7 @@ MonoBehaviour:
   - {fileID: 1940691547}
   - {fileID: 1940691545}
   undiscoveredSpells: []
-  discoveredSpells:
-  - {fileID: 11400000, guid: f87c2fa50a82543cb8e67265bc131b1b, type: 2}
-  - {fileID: 11400000, guid: ce0ae10313bdd4638a871116401ee4cf, type: 2}
-  - {fileID: 11400000, guid: a94af653fb48946659aa91078c99338f, type: 2}
-  - {fileID: 11400000, guid: 004e0ad127bc94f99949623f2136b1b4, type: 2}
+  discoveredSpells: []
   dojo: 0
   item: {fileID: 0}
 --- !u!65 &169151559
@@ -312,9 +308,7 @@ MonoBehaviour:
   spellBook: {fileID: 169151558}
   spellsDiscovered:
   - {fileID: 11400000, guid: f87c2fa50a82543cb8e67265bc131b1b, type: 2}
-  - {fileID: 11400000, guid: a94af653fb48946659aa91078c99338f, type: 2}
-  - {fileID: 11400000, guid: ce0ae10313bdd4638a871116401ee4cf, type: 2}
-  - {fileID: 11400000, guid: 004e0ad127bc94f99949623f2136b1b4, type: 2}
+  - {fileID: 11400000, guid: 0b99822bb513c43ccbb157cbf2f5f1a0, type: 2}
   foxCanvas: {fileID: 1771246120}
   messageText: {fileID: 32125127}
   helpText: {fileID: 1866516112}
@@ -2524,6 +2518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557187326601052744, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -126.3999
       objectReference: {fileID: 0}
     - target: {fileID: 557187326601052745, guid: 72d4dc318b3054e50899af4d9aeb03a2,
         type: 3}

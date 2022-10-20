@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
   m_Name: SpellColor
   m_EditorClassIdentifier: 
-  spellName: Color Change
+  spellName: Cambia de color
   SpellString: 
   Spell: Cambia de color
   ingredients:
