@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+<<<<<<< Updated upstream
 // FIXME
 // Actual spellcast script // Brother from SpellCraft (ex SpellCast)
 // Used To cast Spells
@@ -40,10 +41,27 @@ public class SpellCast : MonoBehaviour //Spell
     {
         text = GetComponent<Text>();
         //text.text = spellSO.spellName + ": " + spellSO.Spell;
+=======
+
+public class SpellCast : MonoBehaviour
+{
+    [SerializeField] private CastManager castManager;
+
+    [HideInInspector] public SpellSO spellSO;
+    [HideInInspector] public Text text;
+    [HideInInspector] public PhraseRecognition phraseRecognition;
+
+
+    // Sets components
+    public void Awake()
+    {
+        text = GetComponent<Text>();
+>>>>>>> Stashed changes
         phraseRecognition = GetComponent<PhraseRecognition>();
         phraseRecognition.textComponent = text;
     }
 
+<<<<<<< Updated upstream
     // Event...
     private void Start()
     {
@@ -53,6 +71,10 @@ public class SpellCast : MonoBehaviour //Spell
     public void SetSpell()
     {
         //text.text managed by PhraseRecognition.AddPhrase() > PhraseRecognition.SetText() > PhraseRecognition.Update()
+=======
+    public void SetSpell()
+    {
+>>>>>>> Stashed changes
         phraseRecognition.readPhrase = spellSO.Spell;
         phraseRecognition.AddPhrase();
         //phraseRecognition.OnPhraseRecognized += CastSpell;
@@ -64,6 +86,7 @@ public class SpellCast : MonoBehaviour //Spell
         text.text = ""; //no es managed por el phrase rec on update?
         phraseRecognition.RemovePhrase();
     }
+<<<<<<< Updated upstream
 
     public void CastSpell()
     {
@@ -72,4 +95,6 @@ public class SpellCast : MonoBehaviour //Spell
         //OnSpellCast.Invoke();
     }
 
+=======
+>>>>>>> Stashed changes
 }

@@ -5,17 +5,24 @@ using UnityEngine;
 public class CastManager : MonoBehaviour
 {
     [Header("References")]
+<<<<<<< Updated upstream
     [SerializeField] private SpellBook spellBook; // The 
     [SerializeField] private SpellCast spellDisplay; // The Spell component in the Magic Scroll UI
 
     // FIXME REFACTOR
     // Move to SpellCast
+=======
+    [SerializeField] private SpellBook spellBook;
+    [SerializeField] private SpellCast spellDisplay;
+
+>>>>>>> Stashed changes
     public delegate void SpellCasted(SpellSO spellCasted);
     public event SpellCasted OnSpellCasted;
 
     private void Start()
     {
         DisplaySpell(spellBook.GetSpell());
+<<<<<<< Updated upstream
 
         // FIXME REFACTOR
         #region TODO Refactor OnPhraseRecognized - CastSpell
@@ -23,6 +30,9 @@ public class CastManager : MonoBehaviour
         // Not Implemented to keep code structure between SpellCast & SpellCraft
         //spellDisplay.phraseRecognition.OnPhraseRecognized += CastSpell;
         #endregion
+=======
+        spellDisplay.phraseRecognition.OnPhraseRecognized += CastSpell;
+>>>>>>> Stashed changes
     }
 
     private void DisplaySpell(SpellSO currentSpell)
@@ -42,6 +52,7 @@ public class CastManager : MonoBehaviour
     // Switch to the previous spell
     public void PreviousSpell()
     {
+<<<<<<< Updated upstream
         DisplaySpell(spellBook.GetPreviousSpell());
     }
 
@@ -53,5 +64,14 @@ public class CastManager : MonoBehaviour
         // Invoke event 
         // Do things by event subscription
         OnSpellCasted?.Invoke(spell);
+=======
+        spellDisplay.phraseRecognition.RemovePhrase();
+        DisplaySpell(spellBook.GetPreviousSpell());
+    }
+
+    public void CastSpell()
+    {
+        OnSpellCasted?.Invoke(spellDisplay.spellSO);
+>>>>>>> Stashed changes
     }
 }

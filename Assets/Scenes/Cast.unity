@@ -195,7 +195,11 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< Updated upstream
   m_IsActive: 0
+=======
+  m_IsActive: 1
+>>>>>>> Stashed changes
 --- !u!114 &169151558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +218,18 @@ MonoBehaviour:
   spellsGO:
   - {fileID: 1940691547}
   - {fileID: 1940691545}
+<<<<<<< Updated upstream
   discoveredSpells: []
+=======
+  undiscoveredSpells: []
+  discoveredSpells:
+  - {fileID: 11400000, guid: f87c2fa50a82543cb8e67265bc131b1b, type: 2}
+  - {fileID: 11400000, guid: ce0ae10313bdd4638a871116401ee4cf, type: 2}
+  - {fileID: 11400000, guid: a94af653fb48946659aa91078c99338f, type: 2}
+  - {fileID: 11400000, guid: 004e0ad127bc94f99949623f2136b1b4, type: 2}
+  dojo: 0
+  item: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!65 &169151559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -238,10 +253,14 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.80034876, y: 0.903, z: -1.8542516}
   m_LocalScale: {x: 1, y: 1, z: 1}
+<<<<<<< Updated upstream
   m_Children:
   - {fileID: 1635425697}
   - {fileID: 335454007}
   - {fileID: 1186519619}
+=======
+  m_Children: []
+>>>>>>> Stashed changes
   m_Father: {fileID: 315244750}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -318,6 +337,10 @@ MonoBehaviour:
   helpString: Presiona para salir del combate
   enemies:
   - {fileID: 1119410234}
+<<<<<<< Updated upstream
+=======
+  pet: {fileID: 1679692773}
+>>>>>>> Stashed changes
 --- !u!4 &284629584
 Transform:
   m_ObjectHideFlags: 0
@@ -442,6 +465,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 315244749}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1 &335454006
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +548,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335454006}
   m_Mesh: {fileID: -2539317913700339681, guid: e47ec45ab0b42e34bb4898455b3d2817, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &441581144
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +682,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441581144}
   m_CullTransparentMesh: 0
+<<<<<<< Updated upstream
+=======
+--- !u!1 &564983578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564983580}
+  - component: {fileID: 564983579}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &564983579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564983578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546232f9f5ec54a13addfc81c3f24fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 2103457400}
+  character: {fileID: 1606396356}
+  dialogue: {fileID: 32125127}
+  dialogueEnd: 0
+--- !u!4 &564983580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564983578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 910198774}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!224 &692294780 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7780034084273751928, guid: cb5f3310a3b12448089b8d71a1f12c97,
@@ -711,6 +787,10 @@ Transform:
   - {fileID: 1227970404}
   - {fileID: 920109985}
   - {fileID: 1472867761}
+<<<<<<< Updated upstream
+=======
+  - {fileID: 564983580}
+>>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1115,6 +1195,7 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+<<<<<<< Updated upstream
 --- !u!1 &1186519618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1278,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186519618}
   m_Mesh: {fileID: -6346794656103368592, guid: e47ec45ab0b42e34bb4898455b3d2817, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1227970401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1600,21 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2344776938905310352}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &1606396356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 758577913, guid: cb5f3310a3b12448089b8d71a1f12c97,
+    type: 3}
+  m_PrefabInstance: {fileID: 7780034083590116100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &1623330679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,6 +1747,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623330679}
   m_CullTransparentMesh: 0
+<<<<<<< Updated upstream
 --- !u!1 &1635425696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1830,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635425696}
   m_Mesh: {fileID: -8346454554403871048, guid: e47ec45ab0b42e34bb4898455b3d2817, type: 3}
+=======
+--- !u!114 &1679692773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 892557391, guid: cb5f3310a3b12448089b8d71a1f12c97,
+    type: 3}
+  m_PrefabInstance: {fileID: 7780034083590116100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43014b1e01fe4fac9a970005edacbe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!223 &1771246120 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7780034084273751931, guid: cb5f3310a3b12448089b8d71a1f12c97,
@@ -2167,6 +2280,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &2103457400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7780034083813804210, guid: cb5f3310a3b12448089b8d71a1f12c97,
+    type: 3}
+  m_PrefabInstance: {fileID: 7780034083590116100}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!114 &2133172112 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5502060425774882451, guid: 72d4dc318b3054e50899af4d9aeb03a2,
@@ -2330,6 +2452,24 @@ PrefabInstance:
       propertyPath: castManager
       value: 
       objectReference: {fileID: 920109986}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 2344776937583114337, guid: 7adc233139a61475ea53b5b4554085d5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 920109986}
+    - target: {fileID: 2344776937583114337, guid: 7adc233139a61475ea53b5b4554085d5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastSpell
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344776937583114337, guid: 7adc233139a61475ea53b5b4554085d5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CastManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 2344776937583114365, guid: 7adc233139a61475ea53b5b4554085d5,
         type: 3}
       propertyPath: spellSO
@@ -2872,6 +3012,43 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2022705633}
     m_Modifications:
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 857227497, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 564983579}
+    - target: {fileID: 857227497, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 857227497, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 857227497, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 892557391, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 564983579}
+    - target: {fileID: 892557391, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 892557391, guid: cb5f3310a3b12448089b8d71a1f12c97, type: 3}
+      propertyPath: dialogues.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: cf6c7bb9c71054a11b83b972a52efc7e,
+        type: 2}
+    - target: {fileID: 7780034083813804210, guid: cb5f3310a3b12448089b8d71a1f12c97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7780034084273751928, guid: cb5f3310a3b12448089b8d71a1f12c97,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2977,6 +3154,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 7780034084273751931, guid: cb5f3310a3b12448089b8d71a1f12c97,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7780034084273751935, guid: cb5f3310a3b12448089b8d71a1f12c97,
         type: 3}
       propertyPath: m_Name

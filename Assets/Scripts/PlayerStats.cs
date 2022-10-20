@@ -35,7 +35,12 @@ public class PlayerStats : CharacterStats
         base.Awake();
 
         currentMana = maxMana;
+<<<<<<< Updated upstream
         manaBar.SetStatMax(maxMana);
+=======
+        if (manaBar)
+            manaBar.SetStatMax(maxMana);
+>>>>>>> Stashed changes
     }
     
     private void Start()

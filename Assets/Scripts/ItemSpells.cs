@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemSpells : MonoBehaviour
 {
+<<<<<<< Updated upstream
     [SerializeField]
     private Animator animator;
 
@@ -15,6 +16,18 @@ public class ItemSpells : MonoBehaviour
     [SerializeField]
     private CastManager castManager;
 
+=======
+    private Animator animator;
+
+    [SerializeField] private CastManager castManager;
+
+    
+    public delegate void SpellLearned(SpellSO spell);
+    /// <summary>
+    ///     Follows after OnSpellCasted. Allows to do things after the animation has been played
+    /// </summary>
+    public event SpellLearned OnSpellLearned;
+>>>>>>> Stashed changes
 
     private void Awake()
     {
@@ -23,6 +36,7 @@ public class ItemSpells : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< Updated upstream
         castManager.OnSpellCasted += CastSpell;
     }
 
@@ -63,5 +77,20 @@ public class ItemSpells : MonoBehaviour
     void SpellFire()
     {
         animator.SetBool("Fire", true);
+=======
+        castManager.OnSpellCasted += Animate;
+    }
+
+    private IEnumerator AnimEnd(SpellSO spell)
+    {
+        yield return new WaitUntil(() => animator.GetBool(spell.boolName) == false);
+        OnSpellLearned.Invoke(spell);
+    }
+
+    void Animate(SpellSO spell)
+    {
+        animator.SetBool(spell.boolName, true);
+        StartCoroutine(AnimEnd(spell));
+>>>>>>> Stashed changes
     }
 }
