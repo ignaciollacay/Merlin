@@ -20,9 +20,6 @@ MonoBehaviour:
   - {fileID: 0}
   result: {fileID: 0}
   description: 
-<<<<<<< Updated upstream
-  damage: 0
-=======
   mana: 0
   damage: 0
   defense: 0
@@ -32,4 +29,3 @@ MonoBehaviour:
   learned: 0
   type: 0
   boolName: 
->>>>>>> Stashed changes

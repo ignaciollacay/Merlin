@@ -45,15 +45,15 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        //Debug.Log(sentence);
         dialogue.text = sentence;
     }
 
     private void EndDialogue()
     {
-        Debug.Log("End of dialogue");
+        //Debug.Log("End of dialogue");
         box.SetActive(false);
-        FindObjectOfType<CastManager>().NextSpell(); //FIXME Shouldn't be here.
         dialogueEnd = true; // FIXME Added only to finish scene.
+        FindObjectOfType<CastManager>().NextSpell(); //FIXME Shouldn't be here.
     }
 }

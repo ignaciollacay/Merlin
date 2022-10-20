@@ -35,7 +35,7 @@ public class Testing : MonoBehaviour
         yield return new WaitUntil(() => spellBook.discoveredSpells.Count == 6);
         pet.BattleStart();
         yield return new WaitUntil(() => dialogueManager.dialogueEnd);
-        SceneManager.LoadScene(1); // FIXME NOT WORKING ?
+        SceneManager.LoadScene(1);
     }
 
 
