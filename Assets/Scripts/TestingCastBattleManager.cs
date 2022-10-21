@@ -11,17 +11,15 @@ public class TestingCastBattleManager : MonoBehaviour
 
 
     [Header("Refs")]
-    [SerializeField] private Canvas foxCanvas;
-    [SerializeField] private Text messageText;
-    [SerializeField] private Text helpText;
-    [SerializeField] private string messageString = "Bien has derrotado al enemigo y salvado al planeta";
-    [SerializeField] private string helpString = "Presiona para salir del combate";
-
+    [SerializeField] Pet pet;
+    [SerializeField] private Canvas input;
+    [SerializeField] Canvas exitButton;
 
     [SerializeField] private List<EnemyStats> enemies;
     private int enemyCount;
 
-    [SerializeField] Pet pet;
+
+
 
     void Awake()
     {
@@ -46,9 +44,10 @@ public class TestingCastBattleManager : MonoBehaviour
         if (!RemainingEnemies())
         {
             await Task.Delay(3000);
-            messageText.text = messageString;
-            helpText.text = helpString;
-            foxCanvas.enabled = true;
+            input.enabled = false;
+            pet.BattleEnd();
+            await Task.Delay(3000);
+            exitButton.enabled = true;
         }
     }
     private bool RemainingEnemies()
@@ -58,13 +57,12 @@ public class TestingCastBattleManager : MonoBehaviour
         if (enemyCount == 0)
         {
             Debug.Log("All enemies have been defeated");
-            pet.BattleEnd();
-            return true;
+            return false;
         }
         else
         {
             Debug.Log("One or more enemies are remaining alive");
-            return false;
+            return true;
         }
     }
 

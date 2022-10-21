@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b6a24b7888c548fba6d1cfc7b4eb691, type: 3}
-  m_Name: Pet_FirstBattleStart
+  m_Name: Pet_FirstBattleIntro
   m_EditorClassIdentifier: 
   character: Gato
   id: 2
   sentences:
-  - '"Has aprendido hechizos de ataque y defensa";'
-  - '"Estas listo para tu primer combate";'
-  - '"Un enemigo ataca un planeta aliado";'
-  - '"Derrotalo en combate utilizando tus hechizos";'
+  - Has aprendido hechizos de ataque y defensa.
+  - Estas listo para tu primer combate.
+  - Un enemigo ataca un planeta aliado.
+  - Derrotalo en combate utilizando tus hechizos.
