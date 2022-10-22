@@ -23,7 +23,7 @@ MonoBehaviour:
   defense: 20
   cooldown: 10
   icon: {fileID: 21300000, guid: 782fbbb979646dd46b85582836630a6c, type: 3}
-  count: 2
+  count: 5
   learned: 0
   type: 1
   boolName: Shield

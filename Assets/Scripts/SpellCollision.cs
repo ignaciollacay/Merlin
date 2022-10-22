@@ -12,7 +12,7 @@ public class SpellCollision : MonoBehaviour
     // Solo sirve en el caso de que quiera tener modificadores.
     //[Tooltip ("Defined on instantiation")]
     public SpellSO spell;
-    public int spellDamage;
+    //public int spellDamage;
 
     private void OnParticleCollision(GameObject other)
     {

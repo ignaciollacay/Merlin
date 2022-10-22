@@ -18,9 +18,6 @@ public class TestingCastBattleManager : MonoBehaviour
     [SerializeField] private List<EnemyStats> enemies;
     private int enemyCount;
 
-
-
-
     void Awake()
     {
         foreach (var spell in spellsDiscovered)

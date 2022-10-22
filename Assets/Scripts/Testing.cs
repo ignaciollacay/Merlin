@@ -12,15 +12,19 @@ public class Testing : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Pet pet;
 
-
+    [SerializeField] private AudioSource spellSFX;
 
     void Awake()
     {
+        FindObjectOfType<CastManager>().OnSpellCasted += magicSFX;
         AddSpells(spellsTutorial);
         pet.TutorialIntro();
         StartCoroutine(FightingSpells());
     }
-
+    void magicSFX(SpellSO spell)
+    {
+        spellSFX.Play();
+    }
     IEnumerator FightingSpells()
     {
         yield return new WaitUntil(()=> spellBook.discoveredSpells.Count == 2);

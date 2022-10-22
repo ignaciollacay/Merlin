@@ -21,6 +21,7 @@ public class SpellBook : MonoBehaviour
     [SerializeField] private Canvas spellbookUI;
     [SerializeField] private Text level;
     [SerializeField] private Text knowledge;
+    [SerializeField] private AudioSource spellDiscoveredSFX;
 
     // All spells are added on the book on the scene.
     [SerializeField] private GameObject[] spellsGO; // Hold references on memory instead of getting on runtime (?)
@@ -78,6 +79,7 @@ public class SpellBook : MonoBehaviour
 
         discoveredSpells.Add(newSpell);
         undiscoveredSpells.Remove(newSpell);
+        spellDiscoveredSFX.Play();
 
         for (int i = 0; i < spellsGO.Length; i++)
         {
