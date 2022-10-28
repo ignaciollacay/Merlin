@@ -20,6 +20,6 @@ public class SpellScroll : Spell
     public virtual void Awake()
     {
         text = GetComponent<Text>();
-        text.text = spellSO.spellName + ": " + spellSO.Spell;
+        text.text = spellSO.Name + ": " + spellSO.phrase;
     }
 }

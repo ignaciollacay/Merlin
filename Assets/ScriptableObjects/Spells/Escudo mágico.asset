@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c5d1c90bd10e4eb085e901f6162b7, type: 3}
+  m_Name: "Escudo m\xE1gico"
+  m_EditorClassIdentifier: 
+  id: 1
+  Name: "Escudo m\xE1gico"
+  phrase: Escudo
+  type: 1
+  value: 20
+  cooldown: 10
+  description: "Crea un escudo m\xE1gico\r"
+  prefab: {fileID: 900520869717706380, guid: 01e6b3b1d7935514582bf8fd27073689, type: 3}
+  icon: {fileID: 0}
+  maxCount: 0
+  boolName: 

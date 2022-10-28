@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Needs to be refactored. 
 public class HechizoDefensa : MonoBehaviour
 {
     public int duration;
@@ -19,7 +20,7 @@ public class HechizoDefensa : MonoBehaviour
         playerStats = GetComponentInParent<PlayerStats>();
 
         baseStat = playerStats.defense;
-        newStat = playerStats.defense += spell.defense;
+        newStat = playerStats.defense += spell.value;
     }
 
     private void Start()

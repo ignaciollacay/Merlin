@@ -18,7 +18,7 @@ public class SpellCollision : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyStats>().TakeDamage(spell.damage);
+            other.GetComponent<EnemyStats>().TakeDamage(spell.value);
             //other.GetComponent<EnemyStats>().TakeDamage(spellDamage);
         }
     }

@@ -36,30 +36,12 @@ public class SpellCard : MonoBehaviour
 
     void SetSpellStats(SpellSO spell)
     {
-        spellName.text = spell.spellName;
+        spellName.text = spell.Name;
         icon.sprite = spell.icon;
         type.text = spell.type.ToString();
-        value.text = "+" + GetSpellSOValue(spell).ToString();
-        mana.text = spell.mana.ToString();
+        value.text = "+" + spell.value;
+        // TODO: Decouple mana logic from SpellSO? ManaUser interface or independent class?
+        //mana.text = spell.mana.ToString();
         cooldown.text = cooldown.ToString();
-    }
-
-    // provisorio. Debería ser la misma variable de SpellSO,
-    // falta incorporar inheritance de spells
-    // DamageSpell : SpellSO
-    // DefenseSpell : SpellSO
-    int GetSpellSOValue(SpellSO spell)
-    {
-        switch (spell.type)
-        {
-            case SpellcastType.attack:
-                typeText.text = type.text;
-                return spell.damage;
-            case SpellcastType.defense:
-                typeText.text = type.text;
-                return spell.defense;
-            default:
-                return 0;
-        }
     }
 }

@@ -1,0 +1,6 @@
+Name,Character,Description,Line 1,Line 2,Line 3,Line 4
+DiscoveredSpell,Gato,Mensaje al descubrir un nuevo hechizo,Bien! Has descubierto un nuevo hechizo!,,,
+TutorialIntro,Gato,Mensaje de apertura e Inicio del juego,Para ser un mago primero debes aprender un hechizo,Prueba con estos primeros simples hechizos,Presiona el botón del micrófono y lee en voz alta el hechizo,
+FirstSpellsIntro,Gato,Inicia aprendizaje hechizos de combate,Bien! Parece que ya entiendes cómo funciona,Ahora probemos con algunos hechizos de combate,,
+FirstBattleIntro,Gato,Primer combate. Da fin a la primera escena de aprendizaje en el dojo,Has aprendido hechizos de ataque y defensa.,Estas listo para tu primer combate.,Un enemigo ataca un planeta aliado.,Derrotalo en combate utilizando tus hechizos.
+FirstBattleEnd,Gato,Final del primer combate en caso de victoria,Bien! Has derrotado a a tu primer enemigo,Prepárate para la siguiente batalla,Sigamos aprendiendo hechizos,

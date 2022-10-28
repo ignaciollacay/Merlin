@@ -1,0 +1,9 @@
+Nombre,Incantación,Tipo,Valor,Enfriamiento (segundos),Descripción
+Bola de fuego,Bola de fuego,Attack,10,1,Lanza una bola de fuego
+Escudo mágico,Escudo,Defense,20,10,Crea un escudo mágico
+Defensa,Hechizo Ocultación en la niebla,Defense,20,20,Consiste en crear una espesa neblina que se expande por todo el área con el fin de reducir a cero la visibilidad del objetivo dejándolo vulnerable
+Escudo de serpientes,Cámbialo aquí. El sonido de mi voz causa heridas sucias,Defense,20,20,
+Hechizo de fuego,Eres aire en el calor del fuego pero derrotas al hostil.,Attack,1,20,Lanza llamas durante 5 segundos. Valor de daño final es tipo 20
+Revive,Sus almas son mi alma. Cedan y vuelvan aquí otra vez. Preparense otra vez y destruyan otra vez.,Attack,1,1,Revive a los enemigos muertos y los controla para que asistan con el ataque al oponente
+Curación,Te curo completamente de tu herida con ese poder especial que es antiguo. La magia sana completamente tus heridas y te fortalece!,Healing,100,100,Restaura de forma instantánea la salud.
+Torbellino de viento,Invoco al viento,Attack,5,10,Lanza una ráfaga de viento.

@@ -23,7 +23,7 @@ public class SpellCast : MonoBehaviour
 
     public void SetSpell()
     {
-        phraseRecognition.readPhrase = spellSO.Spell;
+        phraseRecognition.readPhrase = spellSO.phrase;
         phraseRecognition.AddPhrase();
         //phraseRecognition.OnPhraseRecognized += CastSpell;
     }
