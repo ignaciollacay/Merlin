@@ -14,7 +14,7 @@ public class CastedObject : MonoBehaviour
     public Button button;
     public Image b_image;
     public bool cooldown;
-    public Counter counter;
+    public int count;
 
     /// <summary>
     /// Creates a spell gameobject storing all the data in the SO's.
@@ -25,24 +25,26 @@ public class CastedObject : MonoBehaviour
     /// <returns>Spell SO, SO properties, GO components, UI button and count</returns>
     public static CastedObject Create(SpellSO spell, Transform spawnPos, Button button)
     {
-        GameObject obj = Instantiate(spell.prefab, spawnPos);
+        GameObject obj = Instantiate(spell.result.prefab, spawnPos);
 
+        #region GetComponent (Obsolete)
+        // Switching to AddComponent instead of GetComponent.
+        // GetComponent Requires to add a component to each spell prefab.
+        // GetComponent Only useful if SpellSO data where Serialized into the prefab instead of generated on runtime. 
+        //CastedObject castedObject = transform.gameObject.GetComponent<CastedObject>();
+        #endregion
         CastedObject castedObject = obj.AddComponent<CastedObject>();
 
         castedObject.SO = spell;
         castedObject.vfx = castedObject.GetComponent<ParticleSystem>();
         castedObject.sfx = castedObject.GetComponent<AudioSource>();
-        castedObject.damage = spell.value;
-        // Spell Collision added to prefab to distinguish which VFX will collide.
+        castedObject.damage = spell.damage;
         //castedObject.collision = castedObject.gameObject.AddComponent<SpellCollision>();
         //castedObject.collision.spellDamage = spell.damage;
         castedObject.button = button;
         castedObject.b_image = button.GetComponent<Image>();
 
         castedObject.b_image.sprite = spell.icon;
-
-        if (spell.maxCount != 0)
-            castedObject.counter = obj.AddComponent<Counter>();
 
         return castedObject;
     }
@@ -56,6 +58,16 @@ public class CastedObject : MonoBehaviour
         cooldown = false;
         button.interactable = true;
         //Debug.Log("Button " + slot + " / Cooldown=" + spellCooldowns[slot]);
+    }
+
+    public void CheckCount()
+    {
+        if (count >= SO.count)
+        {
+            b_image.sprite = null;
+            Destroy(gameObject);
+            Debug.Log("Max spell count fired");
+        }
     }
 
     public void DestroySelf()

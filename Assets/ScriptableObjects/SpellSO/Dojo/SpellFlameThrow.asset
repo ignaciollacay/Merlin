@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed995234388954ccc9383360a7484ee2, type: 3}
+  m_Name: SpellFlameThrow
+  m_EditorClassIdentifier: 
+  spellName: Flames
+  SpellString: 
+  Spell: Manzana te convierto en llama
+  ingredients: []
+  result: {fileID: 0}
+  description: Copia duplicada del Flame en Dojo, pero con result
+  mana: 30
+  damage: 1
+  defense: 0
+  cooldown: 20
+  icon: {fileID: 21300000, guid: 8962b6cddb2d840bdb53ebc5e7cfc846, type: 3}
+  count: 0
+  learned: 0
+  type: 0
+  boolName: Flames

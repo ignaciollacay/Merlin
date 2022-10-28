@@ -43,41 +43,36 @@ public class MagicController : MonoBehaviour
             spell.vfx.Play();
             spell.sfx.Play();
             spell.Cooldown();
-            // TODO: refactor and decouple Mana dependencies
-            //playerStats.UseMana(spell.SO.mana);
+            spell.count++;
 
-            // Check if using count
-            if (spell.SO.maxCount != 0)
-            {
-                // Add count
-                spell.counter.Increase();
+            playerStats.UseMana(spell.SO.mana);
 
-                // Reset button if no remaining shots.
-                if (spell.counter.BiggerOrEqualThan(spell.SO.maxCount))
-                {
-                    spell.b_image.sprite = null;
-                    Destroy(spell.gameObject);
-                }
-            }
+            spell.CheckCount();
         }
     }
     private int GetSlot(SpellSO spell)
     {
         switch (spell.type)
         {
-            case SpellType.Attack:
+            case SpellcastType.attack:
                 if (castedObject[0] == null)
+                {
                     return 0;
+                }
                 else if (castedObject[1] == null)
+                {
                     return 1;
+                }
                 else if (castedObject[2] == null)
+                {
                     return 2;
+                }
                 else
                 {
                     Debug.Log("Spell Slots are full, new spell could not be added.");
                     return 8;
                 }
-            case SpellType.Defense:
+            case SpellcastType.defense:
                 return 3;
             default:
                 Debug.Log("SpellType not recognized");

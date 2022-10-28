@@ -13,7 +13,6 @@ public enum Level
 
 // TODO ScriptableObject? Works like inventory
 //[DefaultExecutionOrder(-3)]
-[RequireComponent(typeof(Counter))]
 public class SpellBook : MonoBehaviour
 {
     public static SpellBook Instance;
@@ -39,17 +38,13 @@ public class SpellBook : MonoBehaviour
     private string levelString;
     //[SerializeField] private CraftManager craftManager;
 
-    // TODO: Replace with Counter
-    //private int index = 0; // Current Spell Index
-    private Counter counter;
+    private int index = 0; // Current Spell Index
 
     [Tooltip("Interactive object being animated with spellcast")]
     [SerializeField] ItemSpells item;
 
     private void Awake()
     {
-        counter = GetComponent<Counter>();
-
         if (!dojo)
         {
             spellList = discoveredSpells;
@@ -164,26 +159,42 @@ public class SpellBook : MonoBehaviour
 
     public SpellSO GetSpell()
     {
-        return spellList[counter.count];
+        return spellList[index];
     }
 
     public SpellSO GetNextSpell()
     {
-        return spellList[counter.Next(spellList.Count)];
+        return spellList[NextInt()];
     }
 
     public SpellSO GetPreviousSpell()
     {
-        return spellList[counter.Next(spellList.Count)];
+        return spellList[PrevInt()];
     }
 
-    private void Update()
+    private int NextInt()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (index < (spellList.Count-1))
         {
-            Debug.Log("Counter=" + counter.count + "\n Spell=" + spellList[counter.count]);
-            GetNextSpell();
-            Debug.Log("Counter=" + counter.count + "\n Spell=" + spellList[counter.count]);
+            index++;
         }
+        else
+        {
+            index = 0;
+        }
+        return index;
+    }
+
+    private int PrevInt()
+    {
+        if (index > 0)
+        {
+            index--;
+        }
+        else
+        {
+            index = (spellList.Count-1);
+        }
+        return index;
     }
 }
