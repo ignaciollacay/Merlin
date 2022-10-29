@@ -18,6 +18,9 @@ public class EnemyStats : CharacterStats
     [Header("Refactor Reference!")]
     public MagicController magicController;
 
+    public int damage;
+
+
     // TODO Remove. See note above.
     public void EnemyAttack(int damage)
     {
@@ -28,7 +31,6 @@ public class EnemyStats : CharacterStats
     public override void Death()
     {
         base.Death();
-        Destroy(gameObject);
         OnEnemyKilled?.Invoke();
     }
 

@@ -24,8 +24,11 @@ public class MagicController : MonoBehaviour
     //public delegate void SpellFired(SpellSO spellFired);
     //public event SpellFired OnSpellFired;
 
+    private Sprite buttonImage;
+
     private void Start()
     {
+        buttonImage = buttons[0].image.sprite;
         castManager.OnSpellCasted += CastSpell; // TODO. Es necesario? Ver tema Refactorizacion de Magic Controller y Cast Manager. Pueden ser uno.
     }
 
@@ -78,5 +81,39 @@ public class MagicController : MonoBehaviour
                 Debug.Log("SpellType not recognized");
                 return 9;
         }
+    }
+    public void Clear(int i)
+    {
+        castedObject[i].b_image.sprite = buttonImage;
+        Destroy(castedObject[i].gameObject);
+    }
+    public void ClearAll()
+    {
+        for (int i = 0; i < castedObject.Length; i++)
+        {
+            castedObject[i].b_image.sprite = buttonImage;
+            Destroy(castedObject[i].gameObject);
+        }
+    }
+
+    public void SetAll()
+    {
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha0))
+            Clear(0);
+        if (Input.GetKey(KeyCode.Alpha1))
+            Clear(1);
+        if (Input.GetKey(KeyCode.Alpha2))
+            Clear(2);
+        if (Input.GetKey(KeyCode.Alpha3))
+            Clear(3);
+        if (Input.GetKey(KeyCode.Alpha4))
+            Clear(4);
+        if (Input.GetKey(KeyCode.Alpha9))
+            ClearAll();
     }
 }

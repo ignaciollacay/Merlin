@@ -27,7 +27,7 @@ public class Testing : MonoBehaviour
     }
     IEnumerator FightingSpells()
     {
-        yield return new WaitUntil(()=> spellBook.discoveredSpells.Count == 2);
+        yield return new WaitUntil(()=> spellBook.discoveredSpells.Count == 3);
         AddSpells(spellsFight);
         FindObjectOfType<CastManager>().NextSpell();
         pet.FirstSpellsIntro();
@@ -39,7 +39,7 @@ public class Testing : MonoBehaviour
     {
         DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         StopCoroutine(Battle());
-        yield return new WaitUntil(() => spellBook.discoveredSpells.Count == 4);
+        yield return new WaitUntil(() => spellBook.discoveredSpells.Count == 5);
         pet.FirstBattle();
         yield return new WaitUntil(() => dialogueManager.dialogueEnd);
         SceneManager.LoadScene(1);

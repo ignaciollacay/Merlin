@@ -566,8 +566,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellBook: {fileID: 308696984}
   spellsTutorial:
-  - {fileID: 11400000, guid: a6685538500684bcfb17be0b76b30598, type: 2}
   - {fileID: 11400000, guid: d6ff90731e3be4570aa03e5a0ea9bfb5, type: 2}
+  - {fileID: 11400000, guid: b4817e679f0e14d72b57867cee22e2e1, type: 2}
+  - {fileID: 11400000, guid: a6685538500684bcfb17be0b76b30598, type: 2}
   spellsFight:
   - {fileID: 11400000, guid: 0b99822bb513c43ccbb157cbf2f5f1a0, type: 2}
   - {fileID: 11400000, guid: 486191cf1bcf745a89dadff2204a841c, type: 2}
@@ -3807,7 +3808,7 @@ PrefabInstance:
     - target: {fileID: 3198034638520130209, guid: fe989bc26aee746dc8c5257809a03feb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3198034638520130210, guid: fe989bc26aee746dc8c5257809a03feb,
         type: 3}
@@ -3822,7 +3823,12 @@ PrefabInstance:
     - target: {fileID: 3198034638955569768, guid: fe989bc26aee746dc8c5257809a03feb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713382039884080911, guid: fe989bc26aee746dc8c5257809a03feb,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe989bc26aee746dc8c5257809a03feb, type: 3}

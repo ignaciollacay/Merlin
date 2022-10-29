@@ -25,9 +25,16 @@ public class TestingCastBattleManager : MonoBehaviour
             spellBook.discoveredSpells.Add(spell);
         }
     }
+    async void NextSpell()
+    {
+        await Task.Delay(1000);
+        FindObjectOfType<CastManager>().NextSpell();
+    }
 
     void Start()
     {
+        FindObjectOfType<PhraseRecognition>().OnPhraseRecognized += NextSpell;
+
         enemyCount = enemies.Count;
 
         foreach (var enemy in enemies)
@@ -40,10 +47,10 @@ public class TestingCastBattleManager : MonoBehaviour
     {
         if (!RemainingEnemies())
         {
-            await Task.Delay(3000);
+            await Task.Delay(6000);
             input.enabled = false;
             pet.BattleEnd();
-            await Task.Delay(3000);
+            await Task.Delay(6000);
             exitButton.enabled = true;
         }
     }

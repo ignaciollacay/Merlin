@@ -39,9 +39,9 @@ public class PlayerStats : CharacterStats
             manaBar.SetStatMax(maxMana);
     }
     
-    private void Start()
+    public override void Start()
     {
-        StartCoroutine(DeathCoroutine());
+        base.Start();
 
         // TODO Run from attack  collision?
         enemyStats.OnEnemyAttacked += TakeDamage;
@@ -80,12 +80,6 @@ public class PlayerStats : CharacterStats
     //    }
     //    while (currentMana < maxMana);
     //}
-
-    private IEnumerator DeathCoroutine()
-    {
-        yield return new WaitUntil(() => life <= 0);
-        Death();
-    }
 
     public override void Death()
     {

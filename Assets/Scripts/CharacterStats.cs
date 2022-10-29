@@ -22,7 +22,10 @@ public class CharacterStats : MonoBehaviour
             healthBar.SetStatMax(maxHealth);
         //Debug.Log(transform.name + " current life is " + currentHealth);
     }
-
+    public virtual void Start()
+    {
+        StartCoroutine(DeathCoroutine());
+    }
 
     public void TakeDamage (int _damage)
     {
@@ -62,5 +65,11 @@ public class CharacterStats : MonoBehaviour
     public virtual void Death()
     {
         Debug.Log(transform.name + " died.");
+    }
+
+    IEnumerator DeathCoroutine()
+    {
+        yield return new WaitUntil(()=> currentHealth <= 0);
+        Death();
     }
 }
