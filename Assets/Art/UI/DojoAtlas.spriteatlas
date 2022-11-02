@@ -20,7 +20,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -38,15 +50,23 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 366cf881c9aa1d24dad32ce9c878adc2, type: 3}
   - {fileID: 21300000, guid: 69943809bc1d79748b007b32328b74ed, type: 3}
   - {fileID: 21300000, guid: 472402d9768df5740bfa345c5e25d0c1, type: 3}
+  - {fileID: 21300000, guid: e063579a22541b94db505f0ad8220383, type: 3}
+  - {fileID: 21300000, guid: 3d8bea5cc2be1924b9fd3e4c8a644be7, type: 3}
   - {fileID: 21300000, guid: 3a3d247cdaf07e24ba159f3e4aca5c28, type: 3}
   - {fileID: 21300000, guid: 7b36507df1a72dc479223275b9f4d69b, type: 3}
+  - {fileID: 21300000, guid: 73c02b5f1f10d7441a63db112671c77c, type: 3}
   m_PackedSpriteNamesToIndex:
+  - ButtonFireBallDisable
   - Papyrus
   - ContainerText
+  - CatPopUp
+  - MicIcon
   - Pointer
   - HelpIcon
+  - ButtonFireBall
   m_RenderDataMap: {}
   m_Tag: DojoAtlas
   m_IsVariant: 0
