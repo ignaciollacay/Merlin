@@ -6,7 +6,7 @@ using UnityEngine;
 public class Narrator : MonoBehaviour
 {
     [Header("Dialog")]
-    [SerializeField] private DialogueManager dialogueManager;
+    //[SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private List<DialogueSO> dialogues;
 
     private void Awake()
@@ -17,6 +17,6 @@ public class Narrator : MonoBehaviour
     }
     private void OnEnable()
     {
-        dialogueManager.StartDialogue(dialogues[0]);
+        DialogueManager.Instance.StartDialogue(dialogues[0]);
     }
 }

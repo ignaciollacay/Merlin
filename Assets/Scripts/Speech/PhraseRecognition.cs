@@ -120,6 +120,11 @@ public class PhraseRecognition : MonoBehaviour
         yield return new WaitUntil(() => wordCount == words.Length);
         Debug.Log("All keywords are recognized for " + this.name, this.gameObject);
         StopAssessment();
+        PhraseRecognizedEvent();
+    }
+
+    public void PhraseRecognizedEvent() // To be called by button click for testing during development
+    {
         OnPhraseRecognized.Invoke();
     }
 

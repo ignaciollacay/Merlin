@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6a24b7888c548fba6d1cfc7b4eb691, type: 3}
-  m_Name: Pet_TutorialIntro
+  m_Script: {fileID: 11500000, guid: 83e7e92c1b14097499876039cfef3aee, type: 3}
+  m_Name: InventoryDialogue_New
   m_EditorClassIdentifier: 
-  character: Gato
-  id: 1
-  sentences:
-  - "Descubre un nuevo hechizo!\n\nMant\xE9n pulsado el bot\xF3n del micr\xF3fono
-    abajo a la izquierda y lee en voz alta la frase del hechizo."
+  dialogues: []

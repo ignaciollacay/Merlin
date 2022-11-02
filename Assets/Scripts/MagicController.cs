@@ -32,7 +32,7 @@ public class MagicController : MonoBehaviour
         castManager.OnSpellCasted += CastSpell; // TODO. Es necesario? Ver tema Refactorizacion de Magic Controller y Cast Manager. Pueden ser uno.
     }
 
-    private void CastSpell(SpellSO spell)
+    public void CastSpell(SpellSO spell)
     {
         int slot = GetSlot(spell);
         castedObject[slot] = CastedObject.Create(spell, spawnPos, buttons[slot]);

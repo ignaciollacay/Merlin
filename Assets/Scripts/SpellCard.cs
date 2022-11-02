@@ -16,15 +16,7 @@ public class SpellCard : MonoBehaviour
     [SerializeField] private Text mana;
     [SerializeField] private Text cooldown;
 
-    [Tooltip("Interactive object being animated with spellcast")]
-    [SerializeField] ItemSpells item;
-
-    private void Start()
-    {
-        item.OnSpellLearned += DisplaySpellCard; // TODO necesitaria un delay, para esperar a que termine la animacion
-    }
-
-    async void DisplaySpellCard(SpellSO spell)
+    public async void DisplaySpellCard(SpellSO spell)
     {
         SetSpellStats(spell);
         canvas.enabled = true;

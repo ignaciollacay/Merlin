@@ -12,46 +12,40 @@ public class Testing : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Pet pet;
 
-    [SerializeField] private AudioSource spellSFX;
+
 
     void Awake()
     {
-        FindObjectOfType<CastManager>().OnSpellCasted += magicSFX;
-        AddSpells(spellsTutorial);
-        pet.TutorialIntro();
-        StartCoroutine(FightingSpells());
+        //AddSpells(spellsTutorial);
+        //pet.TutorialIntro();
+        //StartCoroutine(FightingSpells());
     }
-    void magicSFX(SpellSO spell)
+
+    IEnumerator FightingSpells() // TODO: Make reutilizable for different cases with inspector and/or parameters
     {
-        spellSFX.Play();
-    }
-    IEnumerator FightingSpells()
-    {
-        yield return new WaitUntil(()=> spellBook.discoveredSpells.Count == 3);
+        yield return new WaitUntil(()=> spellBook.discoveredSpells.GetCount() == 3);
         AddSpells(spellsFight);
         FindObjectOfType<CastManager>().NextSpell();
         pet.FirstSpellsIntro();
         StopCoroutine(FightingSpells());
-        StartCoroutine(Battle());
+        //StartCoroutine(Battle());
     }
 
-    IEnumerator Battle()
+    /* Replaced by BattleStarter
+    IEnumerator Battle() // FIXME: WIP To remove this. 
     {
-        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         StopCoroutine(Battle());
-        yield return new WaitUntil(() => spellBook.discoveredSpells.Count == 5);
+        yield return new WaitUntil(() => spellBook.discoveredSpells.GetCount() == 5);
         pet.FirstBattle();
-        yield return new WaitUntil(() => dialogueManager.dialogueEnd);
+        yield return new WaitUntil(() => DialogueManager.Instance.dialogueEnd);
         SceneManager.LoadScene(1);
     }
-
-
-
+    */
     void AddSpells(List<SpellSO> spells)
     {
         foreach (var spell in spells)
         {
-            spellBook.undiscoveredSpells.Add(spell);
+            spellBook.undiscoveredSpells.spells.Add(spell);
         }
     }
 }

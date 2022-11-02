@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] public DialogueSO dialogueSO;
-    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private DialogueSO dialogueSO; // public? Do I want to change/assign it by code?
+    [SerializeField] private bool playOnAwake;
 
     public void TriggerDialogue()
     {
-        dialogueManager.StartDialogue(dialogueSO);
+        DialogueManager.Instance.StartDialogue(dialogueSO); // FIXME: Trigger by event on Spell Learned. 
+                                                            // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
+    }
+
+    private void Awake()
+    {
+        if (playOnAwake)
+            TriggerDialogue();
     }
 }

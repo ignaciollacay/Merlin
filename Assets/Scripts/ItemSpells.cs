@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+// FIXME: Crossreferences & learned spell function
 public class ItemSpells : MonoBehaviour
 {
     private Animator animator;
 
+    [SerializeField] private AudioSource spellSFX;
     [SerializeField] private CastManager castManager;
 
-    
-    public delegate void SpellLearned(SpellSO spell);
     /// <summary>
     ///     Follows after OnSpellCasted. Allows to do things after the animation has been played
     /// </summary>
-    public event SpellLearned OnSpellLearned;
+    public UnityEvent<SpellSO> OnSpellLearn;
 
     private void Awake()
     {
@@ -28,12 +29,13 @@ public class ItemSpells : MonoBehaviour
     private IEnumerator AnimEnd(SpellSO spell)
     {
         yield return new WaitUntil(() => animator.GetBool(spell.boolName) == false);
-        OnSpellLearned.Invoke(spell);
+        OnSpellLearn.Invoke(spell);
     }
 
-    void Animate(SpellSO spell)
+    public void Animate(SpellSO spell)
     {
         animator.SetBool(spell.boolName, true);
         StartCoroutine(AnimEnd(spell));
+        spellSFX.Play(); // FIXME: Refactor OnSpellCasted to UnityEvent & call audio source to play by inspector? 
     }
 }

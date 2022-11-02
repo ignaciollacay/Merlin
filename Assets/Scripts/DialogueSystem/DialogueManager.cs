@@ -4,23 +4,29 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-500)]
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private GameObject box; // FIXME: Remove. // Should replace with anim 
+    [SerializeField] private GameObject box;
     [SerializeField] private Text dialogue;
+    [Tooltip("Dialogue Button to add DisplayNextSentence On Click")] // TODO: Is there only one dialogue button? Maybe make list? Or join canvases?
+    [SerializeField] public Button button; // Button is actually in box GO, could use GetComponent. But makes code less reusable.
 
     private Queue<string> sentences = new Queue<string>();
 
-    public bool dialogueEnd = false;
-
     public UnityEvent DialogueEnd;
+
+    public static DialogueManager Instance;
+
+    public void Awake()
+    {
+        Instance = this;
+        button.onClick.AddListener(DisplayNextSentence);
+    }
 
     public void StartDialogue(DialogueSO dialogue)
     {
-        dialogueEnd = false;
-
-        box.SetActive(true);
-
+        box.SetActive(true); // TODO: Play Show Anim
 
         //sentences.Clear();
 
@@ -47,11 +53,12 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = sentence;
     }
 
-    // TODO: EVENT
+    // TODO: Check if working
     private void EndDialogue()
     {
-        box.SetActive(false);
-        dialogueEnd = true;
+        Debug.Log("Dialogue ended");
         DialogueEnd?.Invoke();
+        // NON SOLID. Refactor using event
+        //box.SetActive(false); // TODO: Play Show Anim // Run  from event
     }
 }

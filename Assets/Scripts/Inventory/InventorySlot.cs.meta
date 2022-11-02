@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dfcbf66eb5388404697f8b6a4d7f06ed
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - slotPrefab: {fileID: 1309783323388021028, guid: ffd546a949477ff47960f0a631c240e0,
+      type: 3}
+  - image: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

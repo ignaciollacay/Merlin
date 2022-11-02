@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class SpellCast : MonoBehaviour
+public class SpellUI : MonoBehaviour
 {
+    [SerializeField] private InventorySpells inventorySpells;
+
+
     [SerializeField] private CastManager castManager;
 
     [HideInInspector] public SpellSO spellSO;
@@ -19,6 +22,8 @@ public class SpellCast : MonoBehaviour
         text = GetComponent<Text>();
         phraseRecognition = GetComponent<PhraseRecognition>();
         phraseRecognition.textComponent = text;
+
+        spellSO = inventorySpells.GetCurrentSpell();
     }
 
     public void SetSpell()

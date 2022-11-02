@@ -22,7 +22,7 @@ public class TestingCastBattleManager : MonoBehaviour
     {
         foreach (var spell in spellsDiscovered)
         {
-            spellBook.discoveredSpells.Add(spell);
+            spellBook.discoveredSpells.spells.Add(spell);
         }
     }
     async void NextSpell()
