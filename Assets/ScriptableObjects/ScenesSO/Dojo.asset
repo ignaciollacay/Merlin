@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30989444108c6634fbcb8c212849e81f, type: 3}
   m_Name: Dojo
   m_EditorClassIdentifier: 
-  sceneName: Dojo
+  sceneName: Dojo-L1

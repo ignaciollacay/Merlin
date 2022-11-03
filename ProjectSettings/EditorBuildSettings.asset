@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/LandingPage.unity
     guid: 4fb1bf0976a750f40bf3e9103b9d53e5
   - enabled: 1
-    path: Assets/Scenes/Dojo.unity
-    guid: 7aaf77880345746b9ab2926134286891
+    path: Assets/Scenes/IntroCutscene.unity
+    guid: a14190b5a657e6049979e30584fdd9da
+  - enabled: 1
+    path: Assets/Scenes/Dojo-L1.unity
+    guid: 2de9864d46767864e9ed36fd1524ce4e
   - enabled: 1
     path: Assets/Scenes/Cast.unity
     guid: ac1218eb2356b4065b14b9e16c8c2273
