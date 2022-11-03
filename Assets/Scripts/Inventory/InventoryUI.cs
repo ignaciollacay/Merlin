@@ -22,4 +22,11 @@ public class InventoryUI : MonoBehaviour
         slots.Add(slot);
     }
 
+    public void AddSlot()
+    {
+        SpellSO spell = Assignment.Instance.currentAssignment;
+        InventorySlot slot = InventorySlot.Create(spell, slotPrefab, transform);
+        slots.Add(slot);
+        print("AddSlot(spell="+ spell);
+    }
 }
