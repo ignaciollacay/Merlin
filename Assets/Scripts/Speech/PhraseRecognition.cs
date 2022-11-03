@@ -5,9 +5,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 // FIXME Acá debería estar solo la parte dinámica del recognition
-         // Lo que refiere al text/strings  
+// Lo que refiere al text/strings  
 
 
 /// <summary>
@@ -55,6 +56,8 @@ public class PhraseRecognition : MonoBehaviour
     public delegate void PhraseRecognized();
     public event PhraseRecognized OnPhraseRecognized;
 
+    public UnityEvent OnPhraseRecognition;
+
     private SpeechRecognition speechRecognition;
 
     [SerializeField] private bool onStartEnabled = true;
@@ -92,12 +95,39 @@ public class PhraseRecognition : MonoBehaviour
     }
 
 
+    public void AddPhrase()
+    {
+        CreateStringPhrases();
+        SetText();
+        speechRecognition.phraseRecs.Add(this);
+        StartCoroutine(PhraseReadCoroutine());
+    }
+
+    public void RemovePhrase()
+    {
+        readStrings = new string[0];                    // undos createStringPhrase()
+        displayString = "";                             // undos SetText();
+        speechRecognition.phraseRecs.Remove(this);      // removes phrase from the list of phrases in Speech Recognizer that subscribe to recognizing event as listeners
+        StopCoroutine(PhraseReadCoroutine());
+    }
+    public void SetPhrase(SpellSO spellSO)
+    {
+        ResetPhrase();
+        readPhrase = spellSO.Spell;
+        AddPhrase();
+    }
     public void SetText()
     {
         displayString = readPhrase;
         textComponent.color = Color.white;
         textComponent.text = displayString;
         wordCount = 0;
+    }
+
+    private void ResetPhrase()
+    {
+        textComponent.text = ""; //no es managed por el phrase rec on update?
+        RemovePhrase();
     }
 
     /// <summary>
@@ -125,6 +155,7 @@ public class PhraseRecognition : MonoBehaviour
 
     public void PhraseRecognizedEvent() // To be called by button click for testing during development
     {
+        OnPhraseRecognition?.Invoke();
         OnPhraseRecognized.Invoke();
     }
 
@@ -270,24 +301,5 @@ public class PhraseRecognition : MonoBehaviour
 
         //set phrase to the generated string
         readStrings[phrase] = phraseString;
-    }
-
-    public void AddPhrase()
-    {
-        CreateStringPhrases();
-        SetText();
-        speechRecognition.phraseRecs.Add(this);
-        StartCoroutine(PhraseReadCoroutine());
-    }
-
-    // TODO Reset everything so that Spell can be read again. Run from CraftManager Spellcrafted event.
-    // Needs to clear SpellSO, Words, Text, etc.
-    // Opposite to AddPhrase();
-    public void RemovePhrase()
-    {
-        readStrings = new string[0];                    // undos createStringPhrase()
-        displayString = "";                             // undos SetText();
-        speechRecognition.phraseRecs.Remove(this);      // removes phrase from the list of phrases in Speech Recognizer that subscribe to recognizing event as listeners
-        StopCoroutine(PhraseReadCoroutine());
     }
 }

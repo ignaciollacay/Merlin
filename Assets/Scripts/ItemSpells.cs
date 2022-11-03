@@ -14,7 +14,7 @@ public class ItemSpells : MonoBehaviour
     /// <summary>
     ///     Follows after OnSpellCasted. Allows to do things after the animation has been played
     /// </summary>
-    public UnityEvent<SpellSO> OnSpellLearn;
+    public UnityEvent<SpellSO> OnAnimationEnd;
 
     private void Awake()
     {
@@ -23,19 +23,38 @@ public class ItemSpells : MonoBehaviour
 
     private void Start()
     {
-        castManager.OnSpellCasted += Animate;
+        //castManager.OnSpellCasted += Animate;
+
+        //AssessmentHandler.OnAssessmentStart += AssignSpellSO;
     }
 
     private IEnumerator AnimEnd(SpellSO spell)
     {
         yield return new WaitUntil(() => animator.GetBool(spell.boolName) == false);
-        OnSpellLearn.Invoke(spell);
+        OnAnimationEnd?.Invoke(spell);
     }
 
     public void Animate(SpellSO spell)
     {
+        var boolName = Assignment.Instance.currentAssignment.boolName;
+        animator.SetBool(boolName, true);
+        StartCoroutine(AnimEnd(spell));
+        //spellSFX.Play(); // Obsolete. Played from timeline
+    }
+
+    private SpellSO spell;
+
+    public void Animate()
+    {
+        print("Signal recieved. Playing Animate()");
         animator.SetBool(spell.boolName, true);
         StartCoroutine(AnimEnd(spell));
-        spellSFX.Play(); // FIXME: Refactor OnSpellCasted to UnityEvent & call audio source to play by inspector? 
+        //spellSFX.Play(); // FIXME: Refactor OnSpellCasted to UnityEvent & call audio source to play by inspector? 
+    }
+
+    public void AssignSpellSO(SpellSO _spell)
+    {
+        spell = _spell;
+        print("Assigned spell" + spell);
     }
 }

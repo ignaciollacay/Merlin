@@ -25,7 +25,7 @@ public class Testing : MonoBehaviour
     {
         yield return new WaitUntil(()=> spellBook.discoveredSpells.GetCount() == 3);
         AddSpells(spellsFight);
-        FindObjectOfType<CastManager>().NextSpell();
+        //FindObjectOfType<CastManager>().NextSpell();
         pet.FirstSpellsIntro();
         StopCoroutine(FightingSpells());
         //StartCoroutine(Battle());

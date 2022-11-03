@@ -9,9 +9,9 @@ using UnityEngine.Events;
 public class SpellBook : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Canvas spellbookUI;
-    [SerializeField] private Text level;
-    [SerializeField] private Text knowledge;
+    //[SerializeField] private Canvas spellbookUI;
+    //[SerializeField] private Text level;
+    //[SerializeField] private Text knowledge;
     [SerializeField] private AudioSource spellDiscoveredSFX;
 
     // All spells are added on the book on the scene.
@@ -42,19 +42,13 @@ public class SpellBook : MonoBehaviour
         discoveredSpells.spells.Add(newSpell);
         spellDiscoveredSFX.Play();
 
-        for (int i = 0; i < spellsGO.Length; i++)
-        {
-            if (newSpell == spellsGO[i].GetComponent<SpellScroll>().spellSO)
-            {
-                spellsGO[i].SetActive(true);
-            }
-        }
 
-        FindObjectOfType<CastManager>().NextSpell(); // FIXME: Remove Find (expensive & dependancy)
+        //FindObjectOfType<CastManager>().NextSpell(); // FIXME: Remove Find (expensive & dependancy)
     }
 
     #region // TODO: Leveling system
     // TODO: Leveling system
+    /*
     private int knowledgePercentage; // stats (RPG)
     private string levelString;
     public enum Level
@@ -98,6 +92,6 @@ public class SpellBook : MonoBehaviour
             levelString = "Maestro";
             return Level.Complete;
         }
-    }
+    }*/
     #endregion
 }

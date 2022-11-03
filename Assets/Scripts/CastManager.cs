@@ -2,48 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-// FIXME: BROKEN CLASS. NOT SWITCHING BETWEEN SPELLS WITH SCROLL ANYMORE. DECOUPLE UNNECESARY CODE
+// Recieves a phrase event. Gets from SpellList the current Spell & Sends an event
 public class CastManager : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private SpellBook spellBook;
-    [SerializeField] private SpellUI spellDisplay;
+    public delegate void SpellCasted(SpellSO spell);
+    public event SpellCasted OnSpellCasted;
 
-    public delegate void SpellCasted(SpellSO spellCasted); // TODO: Replace with UnityEvent
-    public event SpellCasted OnSpellCasted; // TODO: Replace with UnityEvent
     public UnityEvent<SpellSO> OnSpellCast;
+    [SerializeField] private AssessmentHandler assessmentHandler;
+    private SpellSO spell;
 
-    private void Start()
+    void Start()
     {
-        //DisplaySpell(spellBook.GetSpell());
-        spellDisplay.phraseRecognition.OnPhraseRecognized += CastSpell;
+        FindObjectOfType<PhraseRecognition>().OnPhraseRecognition.AddListener(CastSpell);
     }
 
-    private void DisplaySpell(SpellSO currentSpell)
-    {
-        // Display Spell in UI
-        spellDisplay.spellSO = currentSpell;
-        spellDisplay.SetSpell();
-    }
-
-    // Switch to the next spell
-    public void NextSpell()
-    {
-        spellDisplay.phraseRecognition.RemovePhrase();
-        //DisplaySpell(spellBook.GetNextSpell());
-    }
-
-    // Switch to the previous spell
-    public void PreviousSpell()
-    {
-        spellDisplay.phraseRecognition.RemovePhrase();
-        //DisplaySpell(spellBook.GetPreviousSpell());
-    }
-
+    // Run OnPhraseRecognition
     public void CastSpell()
     {
-        OnSpellCasted?.Invoke(spellDisplay.spellSO); // TODO: Replace with UnityEvent
-        OnSpellCast?.Invoke(spellDisplay.spellSO);
+        OnSpellCast?.Invoke(spell);
+    }
+
+    // Run OnAssignmentStart
+    public void UpdateSpell(SpellSO _spell)
+    {
+        spell = _spell;
     }
 }

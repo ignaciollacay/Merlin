@@ -28,7 +28,7 @@ public class TestingCastBattleManager : MonoBehaviour
     async void NextSpell()
     {
         await Task.Delay(1000);
-        FindObjectOfType<CastManager>().NextSpell();
+        //FindObjectOfType<CastManager>().NextSpell();
     }
 
     void Start()

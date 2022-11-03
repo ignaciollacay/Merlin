@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof (Counter))] // TODO Is this really required or an extension?
 public class InventorySpells : MonoBehaviour // Use SO instead?
 {
-    public InventorySpellSO inventory;
+    [SerializeField] private InventorySpellSO inventory;
     public Counter counter;
+
+    private void Start()
+    {
+        //PhraseRecognition.OnPhraseRecognized += GetNextSpell & OnSpellChange.Invoke();
+    }
 
     private void Awake() => counter = GetComponent<Counter>();
     public SpellSO GetCurrentSpell() => inventory.spells[counter.count];
