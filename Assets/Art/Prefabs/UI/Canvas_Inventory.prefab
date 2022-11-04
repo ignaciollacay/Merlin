@@ -130,7 +130,7 @@ RectTransform:
   m_GameObject: {fileID: 5861595951694002993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5861595951478662956}
@@ -139,7 +139,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -70, y: -0}
-  m_SizeDelta: {x: 131, y: 369}
+  m_SizeDelta: {x: 273, y: 958}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5861595951694002381
 CanvasRenderer:
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: -4
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 10
@@ -220,4 +220,3 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: c0eacf773f93a3545ab40cf4b8df80eb, type: 2}
   slotPrefab: {fileID: 1309783323388021028, guid: ffd546a949477ff47960f0a631c240e0,
     type: 3}
-  artConfigOnly: []
