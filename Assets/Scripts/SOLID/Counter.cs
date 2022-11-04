@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class Counter : MonoBehaviour
 {
-    private int count = 0;
+    private int count;
 
     public int Count { get { return count; } }
 

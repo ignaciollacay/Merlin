@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7b5fe7294a6824ab7c3e4ddccabb73, type: 3}
   m_Name: Inventory_LearnedSpells
   m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 11400000, guid: d6ff90731e3be4570aa03e5a0ea9bfb5, type: 2}
-  - {fileID: 11400000, guid: b4817e679f0e14d72b57867cee22e2e1, type: 2}
-  - {fileID: 11400000, guid: a6685538500684bcfb17be0b76b30598, type: 2}
+  spells: []
