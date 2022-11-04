@@ -52,10 +52,6 @@ public class PhraseRecognition : MonoBehaviour
     [Tooltip("Index # of the current word within the phrase to be recognized")]
     public int wordCount = 0;
 
-    //Events
-    public delegate void PhraseRecognized();
-    public event PhraseRecognized OnPhraseRecognized;
-
     public UnityEvent OnPhraseRecognition;
 
     private SpeechRecognition speechRecognition;
@@ -110,6 +106,7 @@ public class PhraseRecognition : MonoBehaviour
         speechRecognition.phraseRecs.Remove(this);      // removes phrase from the list of phrases in Speech Recognizer that subscribe to recognizing event as listeners
         StopCoroutine(PhraseReadCoroutine());
     }
+    // TODO: Decouple dependancy to SpellSO. Use string event on AssginmentStart.
     public void SetPhrase(SpellSO spellSO)
     {
         ResetPhrase();
@@ -155,8 +152,8 @@ public class PhraseRecognition : MonoBehaviour
 
     public void PhraseRecognizedEvent() // To be called by button click for testing during development
     {
+        print("frase rec event called");
         OnPhraseRecognition?.Invoke();
-        OnPhraseRecognized.Invoke();
     }
 
     /// <summary>

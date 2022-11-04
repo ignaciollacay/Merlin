@@ -16,12 +16,9 @@ MonoBehaviour:
   id: 0
   sentences:
   - "Hab\xEDa una vez,  en un mundo lejano..."
-  - "un[a] peque\xF1[o/a] mag[o/a] aprendiz \n(usuario define g\xE9nero por voz)"
-  - llamada...
-  - (usuario define nombre)
+  - "un peque\xF1o mago aprendiz llamado [nombre personaje]"
   - "Un d\xEDa se propuso cumplir su mayor deseo, superar a su maestro, el grandioso
     mago Merlin."
-  - 'Junto a su gato volador... '
-  - (usuario define nombre)
-  - "deciden aprender los hechizos prohibidos que solo los magos adultos pod\xEDan
+  - Junto a su gato volador [nombre gato]...
+  - "...deciden aprender los hechizos prohibidos que solo los magos adultos pod\xEDan
     utilizar."

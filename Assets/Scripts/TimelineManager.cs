@@ -5,22 +5,9 @@ using UnityEngine.Playables;
 
 public class TimelineManager : MonoBehaviour
 {
-    [Header("Timeline References")]
-    public PlayableDirector playableDirector;
-
-    [SerializeField] private PhraseRecognition phraseRecognition;
-
-    private void Start()
+    public void PlayTimeline(PlayableDirector playableDirector)
     {
-        phraseRecognition.OnPhraseRecognized += PlayTimeline;
-    }
-    public void PlayTimeline()
-    {
+        playableDirector.RebuildGraph();
         playableDirector.Play();
-    }
-
-    private void OnDisable()
-    {
-        phraseRecognition.OnPhraseRecognized -= PlayTimeline;
     }
 }

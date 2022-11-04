@@ -8,28 +8,27 @@ public class AssessmentHandler : MonoBehaviour
 {
     public InventorySpells assigned;
     public InventorySpells learned;
+    //private SpellSO currentAssignment;
 
     public UnityEvent<SpellSO> OnAssignmentStart;
+    public UnityEvent<SpellSO> OnAssignmentContinue;
     public UnityEvent OnAssignmentEnd;
 
-    private SpellSO currentAssignment;
 
-    private void Start()
-    {
-        StartAssignment();
-    }
+    private void Start() => StartAssignment();
 
     public void StartAssignment()
     {
-        currentAssignment = assigned.GetCurrentSpell();
-        OnAssignmentStart?.Invoke(currentAssignment);
-        Assignment.Instance.currentAssignment = currentAssignment;
-}
+        //currentAssignment = assigned.GetCurrentSpell();
+        OnAssignmentStart?.Invoke(assigned.GetCurrentSpell());
+        print("New assignment started");
+    }
 
     private void NextAssignment()
     {
-        currentAssignment = assigned.GetNextSpell();
-        OnAssignmentStart?.Invoke(currentAssignment);
+        //currentAssignment = assigned.GetNextSpell();
+        OnAssignmentStart?.Invoke(assigned.GetNextSpell());
+        print("Assigned spells remain. Assigning next spell");
     }
 
     /// <summary>
@@ -37,7 +36,8 @@ public class AssessmentHandler : MonoBehaviour
     /// </summary>
     public void EvaluateAssignment()
     {
-        int currentCount = 0;
+        print("Assigned spell done.");
+        int learnedSpells = 0;
         foreach (var assign in assigned.GetList())
         {
             //TODO: Replace with learned.Find(assignedSpell) ?
@@ -45,12 +45,12 @@ public class AssessmentHandler : MonoBehaviour
             {
                 if (assign == learn)
                 {
-                    currentCount++;
+                    learnedSpells++;
                 }
             }
         }
 
-        if (currentCount == assigned.GetCount())
+        if (learnedSpells == assigned.GetCount())
             EndAssignment();
         else
             NextAssignment();
@@ -59,10 +59,11 @@ public class AssessmentHandler : MonoBehaviour
     // Change Scene after dialogue has ended & Fires AssignmentFinished Event.
     private void EndAssignment()
     {
-        print("Assignment fullfilled, time for battle. \n Add LoadScene OnButtonClick of DialogueEventManager");
+        print("Assignment fullfilled, time for battle.");
         SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
-        DialogueManager.Instance.button.onClick.AddListener(sceneHandler.LoadAsync);
-
+        //DialogueManager.Instance.button.onClick.AddListener(sceneHandler.LoadAsync); // TODO: Could hold a reference to a button to add, and remove button from dialogue manager
+                                                                                     //FIXME: Should be listening to DialogueManager.DialogueEnd()
+        DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
         OnAssignmentEnd?.Invoke(); // TODO: Replace functionality with event? 
     }
 }

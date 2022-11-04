@@ -9,7 +9,9 @@ using UnityEngine;
 /// </summary>
 public class Counter : MonoBehaviour
 {
-    public int count;
+    private int count = 0;
+
+    public int Count { get { return count; } }
 
     public bool BiggerThan(int value)
     {

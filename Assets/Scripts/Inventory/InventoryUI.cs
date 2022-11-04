@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     private List<InventorySlot> slots = new List<InventorySlot>();
 
+
     private void Awake()
     {
         foreach (SpellSO spell in inventory.spells)
@@ -20,13 +21,5 @@ public class InventoryUI : MonoBehaviour
     {
         InventorySlot slot = InventorySlot.Create(spell, slotPrefab, transform);
         slots.Add(slot);
-    }
-
-    public void AddSlot()
-    {
-        SpellSO spell = Assignment.Instance.currentAssignment;
-        InventorySlot slot = InventorySlot.Create(spell, slotPrefab, transform);
-        slots.Add(slot);
-        print("AddSlot(spell="+ spell);
     }
 }

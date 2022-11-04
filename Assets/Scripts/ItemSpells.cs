@@ -16,45 +16,30 @@ public class ItemSpells : MonoBehaviour
     /// </summary>
     public UnityEvent<SpellSO> OnAnimationEnd;
 
+    private SpellSO spell;
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
     }
 
-    private void Start()
+    private IEnumerator AnimEnd()
     {
-        //castManager.OnSpellCasted += Animate;
-
-        //AssessmentHandler.OnAssessmentStart += AssignSpellSO;
-    }
-
-    private IEnumerator AnimEnd(SpellSO spell)
-    {
+        print("Animation ended " + spell.spellName);
         yield return new WaitUntil(() => animator.GetBool(spell.boolName) == false);
         OnAnimationEnd?.Invoke(spell);
     }
 
-    public void Animate(SpellSO spell)
-    {
-        var boolName = Assignment.Instance.currentAssignment.boolName;
-        animator.SetBool(boolName, true);
-        StartCoroutine(AnimEnd(spell));
-        //spellSFX.Play(); // Obsolete. Played from timeline
-    }
-
-    private SpellSO spell;
-
     public void Animate()
     {
-        print("Signal recieved. Playing Animate()");
+        print("Animating..." + spell.boolName);
         animator.SetBool(spell.boolName, true);
-        StartCoroutine(AnimEnd(spell));
-        //spellSFX.Play(); // FIXME: Refactor OnSpellCasted to UnityEvent & call audio source to play by inspector? 
+        StartCoroutine(AnimEnd());
     }
 
     public void AssignSpellSO(SpellSO _spell)
     {
         spell = _spell;
-        print("Assigned spell" + spell);
+        print("Assigned spell " + spell.spellName);
     }
 }

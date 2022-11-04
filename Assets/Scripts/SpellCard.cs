@@ -15,8 +15,8 @@ public class SpellCard : MonoBehaviour
     [SerializeField] private Text value; //damage or defense
     [SerializeField] private Text mana;
     [SerializeField] private Text cooldown;
-
-    public async void DisplaySpellCard(SpellSO spell)
+    /*
+    private async void DisplaySpellCard(SpellSO spell)
     {
         SetSpellStats(spell);
         canvas.enabled = true;
@@ -24,9 +24,9 @@ public class SpellCard : MonoBehaviour
         await System.Threading.Tasks.Task.Delay(2500);
         // Play outro anim
         canvas.enabled = false;
-    }
+    }*/
 
-    void SetSpellStats(SpellSO spell)
+    public void SetSpellStats(SpellSO spell)
     {
         spellName.text = spell.spellName;
         icon.sprite = spell.icon;

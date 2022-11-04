@@ -55,7 +55,7 @@ public class SpellCraft : MonoBehaviour //Spell
     {
         phraseRecognition.readPhrase = spellSO.Spell;
         phraseRecognition.AddPhrase();
-        phraseRecognition.OnPhraseRecognized += CraftItem;
+        phraseRecognition.OnPhraseRecognition.AddListener(CraftItem);
     }
 
     public void ResetSpell()
@@ -67,7 +67,7 @@ public class SpellCraft : MonoBehaviour //Spell
 
     public void CraftItem()
     {
-        phraseRecognition.OnPhraseRecognized -= CraftItem;
+        phraseRecognition.OnPhraseRecognition.RemoveListener(CraftItem);
         craftManager.CraftSpell(spellSO.result);
         //OnSpellCast.Invoke();
     }

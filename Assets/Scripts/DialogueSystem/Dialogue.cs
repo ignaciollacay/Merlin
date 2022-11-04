@@ -12,7 +12,11 @@ public class Dialogue : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogueSO); // FIXME: Trigger by event on Spell Learned. 
                                                             // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
     }
-
+    public void TriggerDialogue(DialogueSO newDialogue)
+    {
+        DialogueManager.Instance.StartDialogue(newDialogue); // FIXME: Trigger by event on Spell Learned. 
+                                                            // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
+    }
     private void Awake()
     {
         if (playOnAwake)

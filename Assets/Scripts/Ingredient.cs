@@ -32,7 +32,7 @@ public class Ingredient : MonoBehaviour
 
     private void Start()
     {
-        phraseRecognition.OnPhraseRecognized += SelectItem;
+        phraseRecognition.OnPhraseRecognition.AddListener(SelectItem);
     }
 
     public void SelectItem() // Make private. Only for Editor Testing with button instead of speech.

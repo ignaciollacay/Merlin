@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Testing : MonoBehaviour
 {
+    /*
     public SpellBook spellBook;
     public List<SpellSO> spellsTutorial;
     public List<SpellSO> spellsFight;
@@ -40,7 +41,7 @@ public class Testing : MonoBehaviour
         yield return new WaitUntil(() => DialogueManager.Instance.dialogueEnd);
         SceneManager.LoadScene(1);
     }
-    */
+    *//*
     void AddSpells(List<SpellSO> spells)
     {
         foreach (var spell in spells)
@@ -48,4 +49,5 @@ public class Testing : MonoBehaviour
             spellBook.undiscoveredSpells.spells.Add(spell);
         }
     }
+    */
 }

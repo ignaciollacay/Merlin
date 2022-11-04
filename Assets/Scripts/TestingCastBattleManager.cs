@@ -33,7 +33,7 @@ public class TestingCastBattleManager : MonoBehaviour
 
     void Start()
     {
-        FindObjectOfType<PhraseRecognition>().OnPhraseRecognized += NextSpell;
+        FindObjectOfType<PhraseRecognition>().OnPhraseRecognition.AddListener(NextSpell);
 
         enemyCount = enemies.Count;
 
