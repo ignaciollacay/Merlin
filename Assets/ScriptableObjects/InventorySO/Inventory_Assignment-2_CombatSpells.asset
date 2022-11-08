@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Inventory_Assignment-2_CombatSpells
   m_EditorClassIdentifier: 
   spells:
-  - {fileID: 11400000, guid: 0b99822bb513c43ccbb157cbf2f5f1a0, type: 2}
   - {fileID: 11400000, guid: 486191cf1bcf745a89dadff2204a841c, type: 2}
+  - {fileID: 11400000, guid: 0b99822bb513c43ccbb157cbf2f5f1a0, type: 2}

@@ -50,8 +50,5 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = sentence;
     }
 
-    private void EndDialogue()
-    {
-        DialogueEnd?.Invoke();
-    }
+    private void EndDialogue() => DialogueEnd?.Invoke();
 }

@@ -17,7 +17,7 @@ public class TestingCraftBattleManager : MonoBehaviour
 
     private void Update()
     {
-        if (spellBook.discoveredSpells.GetCount() == 2)
+        if (spellBook.discoveredSpells.spells.Count == 2)
         {
             StartBattle();
         }

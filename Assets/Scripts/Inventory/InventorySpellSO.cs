@@ -7,11 +7,6 @@ using UnityEngine;
 public class InventorySpellSO : ScriptableObject
 {
     public List<SpellSO> spells;
-
-    // TODO: Copie estas funciones en InventorySpells, creo que van ahi. Hay que definir si es mejor alla y sacarlas de aca, refactorizando las referencias.
-    public int GetCount() => spells.Count;
-    public List<SpellSO> GetList() => spells;
-    public void AddItem(SpellSO spell) => spells.Add(spell);
 }
 
 /* Generic inventory class with inheritance for both Spells & Dialogues

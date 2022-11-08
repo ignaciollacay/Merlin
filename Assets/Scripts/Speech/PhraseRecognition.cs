@@ -152,7 +152,6 @@ public class PhraseRecognition : MonoBehaviour
 
     public void PhraseRecognizedEvent() // To be called by button click for testing during development
     {
-        print("frase rec event called");
         OnPhraseRecognition?.Invoke();
     }
 

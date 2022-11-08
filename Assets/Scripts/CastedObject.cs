@@ -13,8 +13,11 @@ public class CastedObject : MonoBehaviour
     //public SpellCollision collision;
     public Button button;
     public Image b_image;
+    public Sprite selected;
+    public Sprite disabled;
     public bool cooldown;
     public int count;
+    public RadialBar cooldownBar;
 
     /// <summary>
     /// Creates a spell gameobject storing all the data in the SO's.
@@ -42,7 +45,10 @@ public class CastedObject : MonoBehaviour
         //castedObject.collision = castedObject.gameObject.AddComponent<SpellCollision>();
         //castedObject.collision.spellDamage = spell.damage;
         castedObject.button = button;
+        castedObject.selected = spell.icon;
+        castedObject.disabled = spell.iconCooldown;
         castedObject.b_image = button.GetComponent<Image>();
+        castedObject.cooldownBar = button.GetComponentInChildren<RadialBar>();
 
         castedObject.b_image.sprite = spell.icon;
 
@@ -53,11 +59,13 @@ public class CastedObject : MonoBehaviour
     {
         cooldown = true;
         button.interactable = false;
-        //Debug.Log("Button " + slot + " / Cooldown=" + spellCooldowns[slot]);
+        button.image.sprite = disabled;
+        cooldownBar.cooldownTime = SO.cooldown;
+        cooldownBar.cooldownBool = true;
         await System.Threading.Tasks.Task.Delay(SO.cooldown * 1000);
         cooldown = false;
         button.interactable = true;
-        //Debug.Log("Button " + slot + " / Cooldown=" + spellCooldowns[slot]);
+        button.image.sprite = selected;
     }
 
     public void CheckCount()

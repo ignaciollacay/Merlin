@@ -11,7 +11,17 @@ public class Counter : MonoBehaviour
 {
     private int count;
 
-    public int Count { get { return count; } }
+    public int Count
+    {
+        get 
+        { 
+            return count; 
+        }
+        set
+        {
+            count = value;
+        }
+    }
 
     public bool BiggerThan(int value)
     {
