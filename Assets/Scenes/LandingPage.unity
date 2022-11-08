@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -715,23 +715,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
+        type: 3}
       propertyPath: m_Colors.m_DisabledColor.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
         type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
-      value: 0.55
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
         type: 3}
       propertyPath: m_Colors.m_DisabledColor.g
-      value: 0.55
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7028759489804591735, guid: e935f1d821918e9479c391f5404fa69c,
         type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
-      value: 0.55
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7028759491174715886, guid: e935f1d821918e9479c391f5404fa69c,
         type: 3}
@@ -842,6 +862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas_LandingPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028759491174715887, guid: e935f1d821918e9479c391f5404fa69c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7028759491384300194, guid: e935f1d821918e9479c391f5404fa69c,
         type: 3}
