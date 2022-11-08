@@ -32,11 +32,17 @@ public class InventorySpells : MonoBehaviour // Use SO instead?
         return null;
     }
 
+    public void ResetInventory()
+    {
+        inventory.spells = new List<SpellSO>();
+        counter.Count = 0;
+    }
+
 #if UNITY_EDITOR
     private void OnApplicationQuit()
     {
         if (this.CompareTag("Player"))
-            inventory.spells = new List<SpellSO>();
+            ResetInventory();
     }
 #endif
 }

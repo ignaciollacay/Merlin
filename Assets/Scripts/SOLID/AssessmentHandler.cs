@@ -46,7 +46,7 @@ public class AssessmentHandler : MonoBehaviour
             }
         }
 
-        if (learnedSpells == assigned.GetCount())
+        if (learnedSpells >= assigned.GetCount())
             EndAssignment();
         else
             NextAssignment();

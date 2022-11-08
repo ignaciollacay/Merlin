@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0.10746933, y: -0.0036137102, z: -0.00013811566, w: 0.99420184}
   m_LocalPosition: {x: -0.00057628995, y: 1.8303579, z: 0.18415499}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 62722398389413702}
   m_RootOrder: 0
@@ -107,6 +108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -142,9 +144,11 @@ GameObject:
   m_Component:
   - component: {fileID: 62722398389413702}
   - component: {fileID: 62722398389413703}
+  - component: {fileID: 457936170353494445}
+  - component: {fileID: 8318421456608957538}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +163,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 62722397993899709}
   - {fileID: 1162426678895848611}
@@ -183,7 +188,36 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   life: 100
   maxMana: 100
-  castManager: {fileID: 0}
+  regenRate: 0.5
+  manaRegenAmount: 1
+  enemyStats: {fileID: 0}
+  manaRegenDelay: 1
+--- !u!114 &457936170353494445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62722398389413701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6be149b95eabb1478927aa9a8ed060b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8318421456608957538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62722398389413701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f5c8d6159fecc40ac3102befa0d343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: c0eacf773f93a3545ab40cf4b8df80eb, type: 2}
+  counter: {fileID: 457936170353494445}
 --- !u!1 &1034406961251561082
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +244,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.06, z: 0.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 62722398389413702}
   m_RootOrder: 1

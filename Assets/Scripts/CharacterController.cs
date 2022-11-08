@@ -52,14 +52,18 @@ public class CharacterController : MonoBehaviour
     {
         yield return new WaitForSeconds(attackDelay);
         Attack();
-        StartCoroutine(AttackCoroutine());
     }
 
     async void Attack()
     {
         _animator.SetBool("Attack", true);  
         await System.Threading.Tasks.Task.Delay(((int)(vfxDelay * 1000)));
-        vfxAttack.Play();
-        playerstats.TakeDamage(stats.damage);
+        if ((!_animator.GetBool("Dead")) && (!_animator.GetBool("Damage")) && (_animator.GetBool("Attack")))
+        {
+            vfxAttack.Play();
+            playerstats.TakeDamage(stats.damage);
+        }
+            
+        StartCoroutine(AttackCoroutine());
     }
 }

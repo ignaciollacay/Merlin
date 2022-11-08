@@ -12,4 +12,9 @@ public class SceneHandler : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(sceneSO.sceneName);
     }
+
+    public void SetScene(SceneSO scene)
+    {
+        sceneSO = scene;
+    }
 }

@@ -22,7 +22,8 @@ MonoBehaviour:
   damage: 17
   defense: 0
   cooldown: 3
-  icon: {fileID: 21300000, guid: df5fdeb4240bf674096202ea339f123e, type: 3}
+  icon: {fileID: 21300000, guid: 73c02b5f1f10d7441a63db112671c77c, type: 3}
+  iconCooldown: {fileID: 21300000, guid: 366cf881c9aa1d24dad32ce9c878adc2, type: 3}
   count: 10
   learned: 0
   type: 0
