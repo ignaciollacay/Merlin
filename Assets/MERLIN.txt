@@ -1,0 +1,49 @@
+
+2. Battle: 
+	- Select spell
+	- Select spell location / Select enemy
+3. Battle Dev options
+	- Speech spell selection
+	- Button spell selection (No Speech)
+
+-- 1. Hechizo extensión: Palabras - Frases - Parrafo
+- - Defined text.
+4. JSON for Spell & Dialogue collab
+- - Done with CSV. JSON pending. 
+	1. Only Creating, don´t know if it is a problem to recreate all assets. Should Test.
+	2. Not online nor for build. Should use addressable?
+	3. Use JSONParser. Read file and integrate. 
+		Has functionality to deserialize array & skip commas in dialogues using "". 
+
+- - INTEGRATE & TEST SPELL EXTENSION + JSON
+
+
+GIT log: 
+- Added CSVParser & ***REPLACE PREVIOUS ASSETS***
+- Refactored Counter to an independent class, decoupled from CastedObject & SpellBook
+- Removed from project scripts associated to Craft
+
+
+Estoy con un problema con el tema del CSV. Necesito updatear si o si. Requiero usar JSON Utiity o se me va a complicar. Si no tengo que manejar bien tema id para que no
+
+
+
+--------
+
+1. Pude lograr usar el JSON Parser junto a la database de Google Sheets para actualizar los dialogos del projecto
+	1.1. Convierto el Sheet a JSON con una extension
+		Leo la Hoja de Google como una database, como un array de objetos
+
+	1.2. Importo el JSON con JSONUtility.FromJSON
+		Lo paso a un DatabaseSO que contiene un array de objetos (dialogos, spells)
+
+2. Pude importar un JSON en Google Sheets, convirtiendolo a CSV en Google Collab.
+	1.1 Exporto la Database en Unity a Json con JSONUtility.ToJSON()
+	1.2. Convierto el JSON a CSV en Collab Google 
+
+
+			FALTA VER SI EXPORTO CADA ROW COMO UN OBJETO (EL DEFAULT)
+			SI PUEDO CREAR VARIOS OBJETOS, EN VEZ DE UNA DATABASE
+
+
+			FALTA COPIAR SISTEMA DE IMPORTAR/EXPORTAR PARA 
