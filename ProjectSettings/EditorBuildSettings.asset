@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Dojo-L2.unity
     guid: a2d49b30f7725a745be5d9aa81fde042
   - enabled: 1
-    path: Assets/Scenes/Cast.unity
-    guid: ac1218eb2356b4065b14b9e16c8c2273
+    path: Assets/Scenes/Battle-L1.unity
+    guid: cee986168780ea845b36e7b31c80fbda
+  - enabled: 1
+    path: Assets/Scenes/Battle-L2.unity
+    guid: aa8c83b0f2f59d04f8e60262e0d99206
   m_configObjects: {}

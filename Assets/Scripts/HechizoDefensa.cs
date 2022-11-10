@@ -30,12 +30,12 @@ public class HechizoDefensa : MonoBehaviour
     private IEnumerator Defend()
     {
         yield return new WaitUntil(() => vfx.isPlaying);
-        print("player defending started. Defense=" + playerStats.defense);
+        //print("player defending started. Defense=" + playerStats.defense);
         playerStats.defense = newStat;
         yield return new WaitForSeconds(duration);
         playerStats.defense = baseStat;
         vfx.Stop();
-        print("player defending stopped. Defense=" + playerStats.defense);
+        //print("player defending stopped. Defense=" + playerStats.defense);
         StartCoroutine(Defend());
     }
 

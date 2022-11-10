@@ -17,7 +17,10 @@ public class BattleHandler : MonoBehaviour
         counter = GetComponent<Counter>();
 
         foreach (EnemyStats enemy in FindEnemyCount())
-            enemy.OnEnemyKilled += EndBattle;
+        {
+            enemy.OnEnemyAttack.AddListener(FindObjectOfType<PlayerStats>().TakeDamage);
+            enemy.OnEnemyKilled.AddListener(EndBattle);
+        }
 
         OnBattleStart?.Invoke();
     }
@@ -28,7 +31,6 @@ public class BattleHandler : MonoBehaviour
     {
         EnemyStats[] enemies = FindObjectsOfType<EnemyStats>();
         counter.Count = enemies.Length;
-        Debug.Log("EnemyAmount="+ enemies.Length);
         Debug.Log("EnemyCount=" + counter.Count);
         return enemies;
     }
@@ -39,6 +41,7 @@ public class BattleHandler : MonoBehaviour
         {
             await Task.Delay(6000); // Wait for Death Animation to finish. 
                                     // TODO: Should Death Anim invoke OnEnemyKilled instead of health stat?
+            Debug.Log("EnemyCount=" + counter.Count);
             Debug.Log("All enemies have been defeated");
             OnBattleEnd?.Invoke();
             SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
@@ -53,16 +56,10 @@ public class BattleHandler : MonoBehaviour
         else
             return true;
     }
-}
-/*
-[RequireComponent(typeof(Counter))]
-public interface ICounter
-{
-    private Counter counter;
 
-    virtual void Awake()
+    // TODO: Can replace find enemy count by Calling AddEnemy from OnEnemySpawn Unity Event.
+    public void AddEnemy()
     {
-        counter = GetComponent<Counter>();
+        counter.Increase();
     }
 }
-*/
