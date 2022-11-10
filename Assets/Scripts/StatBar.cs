@@ -12,16 +12,11 @@ public class StatBar : MonoBehaviour
 
     [SerializeField] private bool useGradient = false;
 
-
-    //private void Awake()
-    //{
-    //    slider = GetComponent<Slider>();
-    //}
-
     public void SetStatMax(int stat)
     {
         slider.maxValue = stat;
         UpdateStat(stat);
+        
     }
 
     public void UpdateStat(int stat)

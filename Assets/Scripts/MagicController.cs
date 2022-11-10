@@ -52,7 +52,7 @@ public class MagicController : MonoBehaviour
             // FIXME: Refactor. Decouple Mana from this script
             //playerStats.UseMana(spell.SO.mana); 
 
-            spell.CheckCount();
+            //spell.CheckCount();
         }
     }
     private int GetSlot(SpellSO spell)

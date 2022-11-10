@@ -17,4 +17,9 @@ public class SceneHandler : MonoBehaviour
     {
         sceneSO = scene;
     }
+
+    public static void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

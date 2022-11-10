@@ -23,7 +23,7 @@ public class HidraHeadTest : MonoBehaviour
     [SerializeField] GameObject attackVfx;
 
     //HidraTest _hidraTest;
-    Animator _animator;
+    Animator animator;
     
     
     private void Awake()
@@ -31,7 +31,7 @@ public class HidraHeadTest : MonoBehaviour
         //innecesario hacer correr cosas en el juego si lo puedo settear manualmente. no?
         //_hidraTest = GetComponentInParent<HidraTest>();
 
-        _animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -57,13 +57,13 @@ public class HidraHeadTest : MonoBehaviour
 
         if (multiple)
         {
-            _animator.SetBool("isMultiple", true);
+            animator.SetBool("isMultiple", true);
 
             //FMODUnity.RuntimeManager.PlayOneShot(hidraHeadDeath);
         }
         if (!multiple) //innecesario
         {
-            _animator.SetBool("isMultiple", false);
+            animator.SetBool("isMultiple", false);
             //aca tendria que hacer que isShot pase a falso
             ////o mejor, crear una instance del objeto
 
@@ -73,7 +73,7 @@ public class HidraHeadTest : MonoBehaviour
         }
         if (marked)
         {
-            _animator.SetBool("isMarked", false);
+            animator.SetBool("isMarked", false);
             marked = false;
             //calculate the next multiplier and pass the mark
             _hidraTest.HeadMark();
@@ -81,7 +81,7 @@ public class HidraHeadTest : MonoBehaviour
             //_hidraTest.HeadMark();
         }
 
-        _animator.SetBool("isShot", true);
+        animator.SetBool("isShot", true);
 
         if (marked || multiple)
         {
@@ -94,11 +94,11 @@ public class HidraHeadTest : MonoBehaviour
         if ((!defeated) && (!deadHead)) //corroboro devuelta que no este muerta la cabeza ni la hidra
         {
             yield return new WaitUntil(() => attack);
-            _animator.SetBool("isAttacking", true);
+            animator.SetBool("isAttacking", true);
 
             //cuando termina la animacion, hay que volver a pasarlo a falso.
             yield return new WaitForSeconds(5); // TBD -- tiempo de animacion
-            _animator.SetBool("isAttacking", false);
+            animator.SetBool("isAttacking", false);
 
             //FMODUnity.RuntimeManager.PlayOneShot(hidraAttack);
         }
@@ -107,19 +107,19 @@ public class HidraHeadTest : MonoBehaviour
     IEnumerator Multiples()
     {
         yield return new WaitUntil(() => multiple);
-        _animator.SetBool("isMultiple", true);
+        animator.SetBool("isMultiple", true);
     }
 
     IEnumerator MarkHead()
     {
         yield return new WaitUntil(() => marked);
-        _animator.SetBool("isMarked", true);
+        animator.SetBool("isMarked", true);
     }
 
     IEnumerator HidraDefeated()
     {
         yield return new WaitUntil(() => defeated);
-        _animator.SetBool("isDefeated", true);
+        animator.SetBool("isDefeated", true);
 
 
         if (multiple == false)
@@ -131,7 +131,7 @@ public class HidraHeadTest : MonoBehaviour
     IEnumerator HeadRegeneration()
     {
         yield return new WaitForSeconds(1); //esto deberia ser cuando termina la anim.
-        _animator.SetBool("isShot", false);
+        animator.SetBool("isShot", false);
         deadHead = false;
     }
 

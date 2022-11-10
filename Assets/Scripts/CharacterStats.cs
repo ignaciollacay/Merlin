@@ -1,65 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class CharacterStats : MonoBehaviour
 {
-    [Header("Char References")]
-    [SerializeField] private StatBar healthBar;
+    public UnityEvent<int> OnCharacterSpawn;
+    public UnityEvent<int> OnHealthUpdate;
 
     [Header("Char Values")]
     public int maxHealth = 100;
     public int currentHealth { get; private set; }
-
+    public int attackDamage;
     public int defense = 0;
-
 
     public virtual void Awake()
     {
         currentHealth = maxHealth;
-        if (healthBar)
-            healthBar.SetStatMax(maxHealth);
-        //Debug.Log(transform.name + " current life is " + currentHealth);
+        OnCharacterSpawn?.Invoke(maxHealth);
     }
     public virtual void Start()
     {
         StartCoroutine(DeathCoroutine());
     }
 
-    public void TakeDamage (int _damage)
+    /// <summary>
+    /// Recieve damage. Updates Stats, UI and checks if object should die if life is lower than zero
+    /// </summary>
+    /// <param name="_damage"></param>
+    public void TakeDamage(int _damage)
     {
         int damage = CalculateDefense(_damage);
-
         currentHealth -= damage;
-        healthBar.UpdateStat(currentHealth);
-        Debug.Log(transform.name + " attacked for " + damage + " damage. " + " Remaining life is " + currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Death();
-        }
-    }
-
-    public void Defend(int value)
-    {
-
+        OnHealthUpdate?.Invoke(currentHealth);
+        Debug.Log(transform.name + " took damage=" + damage + ". Life remaining is " + currentHealth);
     }
 
     // TODO Defense mechanic needs to be designed & Updated.
     private int CalculateDefense(int damage)
     {
         int finalDamage = damage - defense;
-        Debug.Log("Damage after defense=" + finalDamage);
-        if (finalDamage > 0)
-        {
-            return finalDamage;
-        }
-        else
-        {
-            return 0;
-        }
 
+        if (finalDamage > 0)
+            return finalDamage;
+        else
+            return 0;
     }
 
     public virtual void Death()
@@ -71,5 +57,11 @@ public class CharacterStats : MonoBehaviour
     {
         yield return new WaitUntil(()=> currentHealth <= 0);
         Death();
+    }
+
+    // TODO: Not Yet Implemented. (On Player) Update damage stat when spell is chosen, spell button click or OnSpellHit
+    private void UpdateAttackDamage(int newAttackDamage)
+    {
+        attackDamage = newAttackDamage;
     }
 }

@@ -287,7 +287,7 @@ public class HidraTest : EnemyStats
     // TODO Should be run by Particle Collision with player.
     public void HidraAttack()
     {
-        this.EnemyAttack(hidraAttackDamage);
+        //this.EnemyAttack(hidraAttackDamage);
         Debug.Log("Hidra attacked for " + hidraAttackDamage + " damage. ");
     }
 }

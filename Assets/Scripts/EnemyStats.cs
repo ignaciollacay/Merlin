@@ -1,45 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyStats : CharacterStats
 {
-    // TODO Remove EnemyAttacked event.
-    // Should by run on collision with the vfx.
-    // Avoids using event references
-    // Avoids asynchronity between attack function & visual.
-    public delegate void EnemyAttacked(int damage);
-    public event EnemyAttacked OnEnemyAttacked;
+    public UnityEvent OnEnemySpawn;
+    public UnityEvent OnEnemyKilled;
+    public UnityEvent<int> OnEnemyAttack;
 
-    public delegate void EnemyKilled();
-    public event EnemyKilled OnEnemyKilled;
-
-    //[SerializeField] private CastManager castManager;
-    [Header("Refactor Reference!")]
-    public MagicController magicController;
-
-    public int damage;
-
-
-    // TODO Remove. See note above.
-    public void EnemyAttack(int damage)
+    public void SubtractHealth()
     {
         Debug.Log("Enemy Attacked Event");
-        OnEnemyAttacked.Invoke(damage);
+        OnEnemyAttack?.Invoke(attackDamage);
     }
 
     public override void Death()
     {
         base.Death();
         OnEnemyKilled?.Invoke();
-    }
-
-    void DeathAnim()
-    {
-        // Play Death Anim
-
-        // Destroy GO
-
-        // Trigger p
+        Debug.Log("OnEnemyKilled.Invoked" + this.name, this.gameObject);
     }
 }
