@@ -1134,12 +1134,6 @@ PlayableDirector:
     m_References:
     - 87717b501befb8744acbb1b926117e8e: {fileID: 151548558}
     - c2cbecd91ed7ead4aa1aa7d9bc4227fe: {fileID: 1996945183}
---- !u!20 &723016909 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 62722397993899708, guid: 8413eb11f58b440ed868d68d51dbfa27,
-    type: 3}
-  m_PrefabInstance: {fileID: 315244749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &881711244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3198034637410868860, guid: fe989bc26aee746dc8c5257809a03feb,
@@ -2169,26 +2163,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5896299846715876407, guid: 714ca8ade4d47034db0ad032d0e949c0,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 723016909}
-    - target: {fileID: 5896299846715876410, guid: 714ca8ade4d47034db0ad032d0e949c0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.632
-      objectReference: {fileID: 0}
-    - target: {fileID: 5896299846715876410, guid: 714ca8ade4d47034db0ad032d0e949c0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.197
-      objectReference: {fileID: 0}
-    - target: {fileID: 5896299846715876410, guid: 714ca8ade4d47034db0ad032d0e949c0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.191
       objectReference: {fileID: 0}
     - target: {fileID: 6037009241803402178, guid: 714ca8ade4d47034db0ad032d0e949c0,
         type: 3}
