@@ -8,9 +8,6 @@ public class ItemSpells : MonoBehaviour
 {
     private Animator animator;
 
-    [SerializeField] private AudioSource spellSFX;
-    [SerializeField] private CastManager castManager;
-
     /// <summary>
     ///     Follows after OnSpellCasted. Allows to do things after the animation has been played
     /// </summary>
