@@ -29,7 +29,7 @@ public class SpellCard : MonoBehaviour
     public void SetSpellStats(SpellSO spell)
     {
         spellName.text = spell.spellName;
-        icon.sprite = spell.icon;
+        icon.sprite = spell.buttonEnabled;
         type.text = spell.type.ToString();
         value.text = "+" + GetSpellSOValue(spell).ToString();
         mana.text = spell.mana.ToString();

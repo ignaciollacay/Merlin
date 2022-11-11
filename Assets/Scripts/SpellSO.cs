@@ -47,10 +47,12 @@ public class SpellSO : ScriptableObject
     public int defense;
     [Tooltip("The amount of time to wait between fires")]
     public int cooldown;
-    [Tooltip("The icon displayed in the button")]
+    [Tooltip("The icon displayed in the inventory")]
     public Sprite icon;
     [Tooltip("The icon displayed in the button")]
-    public Sprite iconCooldown;
+    public Sprite buttonEnabled;
+    [Tooltip("The icon displayed in the button when on Cooldown")]
+    public Sprite buttonDisabled;
     [Tooltip("The maximum amount of times the spell can be fired before being destroyed")]
     public int count;
 

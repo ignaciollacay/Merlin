@@ -23,7 +23,8 @@ MonoBehaviour:
   defense: 20
   cooldown: 9
   icon: {fileID: 21300000, guid: 37b2fada940a2314ca591b0eb77cc53b, type: 3}
-  iconCooldown: {fileID: 21300000, guid: 1426a411a124c124ab9ba992b22a46bb, type: 3}
+  buttonEnabled: {fileID: 21300000, guid: f95a9e38e6ab91c4abfc2702fa3ee71f, type: 3}
+  buttonDisabled: {fileID: 21300000, guid: dcc8ffae276fb3d439242ca526064516, type: 3}
   count: 5
   learned: 0
   type: 1

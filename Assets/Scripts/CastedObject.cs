@@ -13,8 +13,8 @@ public class CastedObject : MonoBehaviour
     //public SpellCollision collision;
     public Button button;
     public Image b_image;
-    public Sprite selected;
-    public Sprite disabled;
+    public Sprite b_spriteEnabled;
+    public Sprite b_spriteDisabled;
     public bool cooldown;
     public int count;
     public RadialBar cooldownBar;
@@ -45,12 +45,13 @@ public class CastedObject : MonoBehaviour
         //castedObject.collision = castedObject.gameObject.AddComponent<SpellCollision>();
         //castedObject.collision.spellDamage = spell.damage;
         castedObject.button = button;
-        castedObject.selected = spell.icon;
-        castedObject.disabled = spell.iconCooldown;
+        castedObject.b_spriteEnabled = spell.buttonEnabled;
+        castedObject.b_spriteDisabled = spell.buttonDisabled;
         castedObject.b_image = button.GetComponent<Image>();
         castedObject.cooldownBar = button.GetComponentInChildren<RadialBar>();
 
-        castedObject.b_image.sprite = spell.icon;
+        castedObject.b_image.sprite = spell.buttonEnabled;
+        castedObject.cooldownBar.ring.sprite = spell.buttonDisabled;
 
         return castedObject;
     }
@@ -59,13 +60,14 @@ public class CastedObject : MonoBehaviour
     {
         cooldown = true;
         button.interactable = false;
-        button.image.sprite = disabled;
+        cooldownBar.ring.enabled = true;
         cooldownBar.cooldownTime = SO.cooldown;
         cooldownBar.cooldownBool = true;
         await System.Threading.Tasks.Task.Delay(SO.cooldown * 1000);
         cooldown = false;
         button.interactable = true;
-        button.image.sprite = selected;
+        cooldownBar.ring.enabled = false;
+        //button.image.sprite = selected;
     }
 
     public void CheckCount()
