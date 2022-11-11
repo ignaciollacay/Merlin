@@ -9,9 +9,19 @@ public class EnemyStats : CharacterStats
     public UnityEvent OnEnemyKilled;
     public UnityEvent<int> OnEnemyAttack;
 
-    public void SubtractHealth()
+    public override void Awake()
     {
-        Debug.Log("Enemy Attacked Event");
+        base.Awake();
+    }
+    public override void Start()
+    {
+        base.Start();
+        OnEnemySpawn?.Invoke();
+    }
+    // TODO: Es medio raro que la llamo desde el evento del controller. Pero necesitaba tomar el valor de daño de los stats y no lo queria referenciar
+    public void AttackEvent()
+    {
+        Debug.Log("Enemy Attacked Event" + name, gameObject);
         OnEnemyAttack?.Invoke(attackDamage);
     }
 
@@ -19,6 +29,6 @@ public class EnemyStats : CharacterStats
     {
         base.Death();
         OnEnemyKilled?.Invoke();
-        Debug.Log("OnEnemyKilled.Invoked" + this.name, this.gameObject);
+        Debug.Log("OnEnemyKilled.Invoked" + name, gameObject);
     }
 }

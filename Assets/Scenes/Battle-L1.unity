@@ -435,38 +435,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
         type: 3}
-      propertyPath: manaBar
-      value: 
-      objectReference: {fileID: 1124121081}
-    - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
-        type: 3}
-      propertyPath: healthBar
+      propertyPath: OnHealthUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2133172112}
     - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: OnPlayerKilled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653951493}
+    - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2133172112}
+    - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
+        type: 3}
+      propertyPath: OnHealthUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateStat
       objectReference: {fileID: 0}
     - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
         type: 3}
-      propertyPath: enemyStats
-      value: 
-      objectReference: {fileID: 367744181}
-    - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
-        type: 3}
-      propertyPath: castManager
-      value: 
+      propertyPath: OnPlayerKilled.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetScene
       objectReference: {fileID: 0}
     - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
         type: 3}
-      propertyPath: magicController
-      value: 
-      objectReference: {fileID: 1275907978}
-    - target: {fileID: 62722398389413703, guid: 8413eb11f58b440ed868d68d51dbfa27,
-        type: 3}
-      propertyPath: manaRegenAmount
-      value: 1
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStatMax
       objectReference: {fileID: 0}
     - target: {fileID: 8318421456608957538, guid: 8413eb11f58b440ed868d68d51dbfa27,
         type: 3}
@@ -1274,18 +1269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1124121081 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 557187326601052759, guid: 72d4dc318b3054e50899af4d9aeb03a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5502060424854388995}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ffb7833afde64b72aff91f5af967f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!850595691 &1153412322
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1722,6 +1705,18 @@ MonoBehaviour:
   OnBattleStart:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1465339437}
+        m_TargetAssemblyTypeName: BattleHandler, Assembly-CSharp
+        m_MethodName: StartEndBattleRoutine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1275907978}
         m_TargetAssemblyTypeName: MagicController, Assembly-CSharp
         m_MethodName: SetAll
@@ -1924,6 +1919,11 @@ PrefabInstance:
       propertyPath: vfxAttacked
       value: 
       objectReference: {fileID: 82512856}
+    - target: {fileID: 450970575535454030, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttackEvent
+      objectReference: {fileID: 0}
     - target: {fileID: 507660301940834485, guid: 714ca8ade4d47034db0ad032d0e949c0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1964,6 +1964,146 @@ PrefabInstance:
       propertyPath: magicController
       value: 
       objectReference: {fileID: 1275907978}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465339437}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1275907977}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1465339437}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1465339437}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RemoveEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CharacterStats, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BattleHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BattleHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnEnemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 796108317044498816, guid: 714ca8ade4d47034db0ad032d0e949c0,
+        type: 3}
+      propertyPath: OnCharacterSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 928133002033498413, guid: 714ca8ade4d47034db0ad032d0e949c0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

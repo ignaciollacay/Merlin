@@ -134,7 +134,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 796108317044498816}
         m_TargetAssemblyTypeName: EnemyStats, Assembly-CSharp
-        m_MethodName: SubtractHealth
+        m_MethodName: AttackEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

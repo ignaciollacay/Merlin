@@ -24,8 +24,11 @@ public class EnemySelector : MonoBehaviour
     void SelectEnemy()
     {
         selectedEnemy = FindObjectOfType<EnemyStats>();
-        selectedEnemy.OnEnemyKilled.AddListener(AttackNextEnemy);
-        Debug.Log("selecting new enemy="+ selectedEnemy.name, selectedEnemy.gameObject);
+        if (selectedEnemy != null)
+        {
+            selectedEnemy.OnEnemyKilled.AddListener(AttackNextEnemy);
+            Debug.Log("selecting new enemy=" + selectedEnemy.name, selectedEnemy.gameObject);
+        }
     }
     
     async void AttackNextEnemy()

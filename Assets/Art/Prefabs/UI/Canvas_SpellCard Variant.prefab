@@ -1033,6 +1033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3935472700783648266, guid: cb5f3310a3b12448089b8d71a1f12c97,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935472700783648266, guid: cb5f3310a3b12448089b8d71a1f12c97,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -1249,7 +1254,7 @@ PrefabInstance:
     - target: {fileID: 7780034084273751935, guid: cb5f3310a3b12448089b8d71a1f12c97,
         type: 3}
       propertyPath: m_Name
-      value: Canvas_SpellCard
+      value: Canvas_SpellCard Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7780034084273751935, guid: cb5f3310a3b12448089b8d71a1f12c97,
         type: 3}

@@ -22,7 +22,7 @@ public class InventorySlot : MonoBehaviour
         GameObject obj = Instantiate(slotPrefab, inventoryUI);
         InventorySlot slot = obj.GetComponent<InventorySlot>();
         slot.spellSO = spell;
-        obj.GetComponent<Image>().sprite = spell.buttonEnabled;
+        obj.GetComponent<Image>().sprite = spell.icon;
 
         return slot;
     }

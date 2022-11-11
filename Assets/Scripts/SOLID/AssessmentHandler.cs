@@ -20,12 +20,22 @@ public class AssessmentHandler : MonoBehaviour
     public void StartAssignment()
     {
         OnAssignmentStart?.Invoke(assigned.GetCurrentSpell());
-
+        Debug.Log("Assignment started." + assigned.GetCurrentSpell());
     }
 
     private void NextAssignment()
     {
         OnAssignmentContinue?.Invoke(assigned.GetNextSpell());
+        Debug.Log("Assignment started." + assigned.GetCurrentSpell());
+    }
+
+    // Change Scene after dialogue has ended & Fires AssignmentFinished Event.
+    private void EndAssignment()
+    {
+        Debug.Log("Assignment fullfilled, time for battle.");
+        OnAssignmentEnd?.Invoke();
+        SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
+        DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
     }
 
     /// <summary>
@@ -50,14 +60,5 @@ public class AssessmentHandler : MonoBehaviour
             EndAssignment();
         else
             NextAssignment();
-    }
-
-    // Change Scene after dialogue has ended & Fires AssignmentFinished Event.
-    private void EndAssignment()
-    {
-        print("Assignment fullfilled, time for battle.");
-        OnAssignmentEnd?.Invoke();
-        SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
-        DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
     }
 }

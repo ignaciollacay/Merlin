@@ -34,7 +34,7 @@ public class CharacterStats : MonoBehaviour
         int damage = CalculateDefense(_damage);
         currentHealth -= damage;
         OnHealthUpdate?.Invoke(currentHealth);
-        Debug.Log(transform.name + " took damage=" + damage + ". Life remaining is " + currentHealth);
+        Debug.Log(transform.name + " took damage=" + damage + ". Life remaining is " + currentHealth + " / " + name, gameObject);
     }
 
     // TODO Defense mechanic needs to be designed & Updated.

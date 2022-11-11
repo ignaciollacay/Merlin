@@ -16,50 +16,33 @@ public class BattleHandler : MonoBehaviour
     {
         counter = GetComponent<Counter>();
 
-        foreach (EnemyStats enemy in FindEnemyCount())
-        {
-            enemy.OnEnemyAttack.AddListener(FindObjectOfType<PlayerStats>().TakeDamage);
-            enemy.OnEnemyKilled.AddListener(EndBattle);
-        }
-
         OnBattleStart?.Invoke();
     }
 
+    public void AddEnemy() => counter.Increase();
 
-    // Find enemies, set enemy count & return as list.
-    private EnemyStats[] FindEnemyCount()
-    {
-        EnemyStats[] enemies = FindObjectsOfType<EnemyStats>();
-        counter.Count = enemies.Length;
-        Debug.Log("EnemyCount=" + counter.Count);
-        return enemies;
-    }
+    public void RemoveEnemy() => counter.Decrease();
 
-    private async void EndBattle()
+    public void StartEndBattleRoutine() => StartCoroutine(EndBattleRoutine());
+
+    public IEnumerator EndBattleRoutine()
     {
-        if (!RemainingEnemies())
+        yield return new WaitForSeconds(2);
+
+        while (counter.BiggerThan(0))
         {
-            await Task.Delay(6000); // Wait for Death Animation to finish. 
-                                    // TODO: Should Death Anim invoke OnEnemyKilled instead of health stat?
-            Debug.Log("EnemyCount=" + counter.Count);
-            Debug.Log("All enemies have been defeated");
-            OnBattleEnd?.Invoke();
-            SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
-            DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
+            yield return null;
         }
+
+        yield return new WaitForSeconds(2);
+
+        EndBattle();
     }
 
-    private bool RemainingEnemies()
+    private void EndBattle()
     {
-        if (counter.Decrease() == 0)
-            return false;
-        else
-            return true;
-    }
-
-    // TODO: Can replace find enemy count by Calling AddEnemy from OnEnemySpawn Unity Event.
-    public void AddEnemy()
-    {
-        counter.Increase();
+        OnBattleEnd?.Invoke();
+        SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
+        DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
     }
 }
