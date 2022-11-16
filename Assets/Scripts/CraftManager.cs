@@ -5,19 +5,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
-[DefaultExecutionOrder(-1)]
+//[DefaultExecutionOrder(-2)]
 public class CraftManager : MonoBehaviour
 {
     //singleton?
     public static CraftManager Instance { get; set; }
 
     [Header("References")]
-    [SerializeField] private ItemDatabaseSO itemDatabaseSO;
-    [SerializeField] private Spell bookSpell;
+    public ItemDatabaseSO itemDatabaseSO;
+    public SpellCraft spellDisplay;
+    [SerializeField] private SpeechRecognition speechManager;
+    [SerializeField] private SpellBook spellBook;
+
+    [Header("Spawn Height")]
+    [SerializeField] float spawnIngredient = 1.167f;
+    [SerializeField] float spawnCrafted = 0.339f;
 
     [Header("Event References")]
-    [SerializeField] private Transform SpawnIngredient;
-    [SerializeField] private Transform SpawnCrafted;
+    //[SerializeField] private Transform SpawnIngredient;
+    //[SerializeField] private Transform SpawnCrafted;
     [SerializeField] private ParticleSystem craftVFX;
     [SerializeField] private Canvas foxCanvas;
     [SerializeField] private Text foxText;
@@ -35,19 +41,23 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private float randomSpawnPos = 0.25f;
 
     private ItemSO[] itemMixSO = new ItemSO[2];
-    private GameObject[] itemMixGO = new GameObject[2];
+    private GameObject[] itemMixGO = new GameObject[2]; // hold Spawned GameObject Reference to Destroy after use
+    private GameObject itemCrafted;                     // hold Spawned GameObject Reference to Destroy after use
 
-    private SpeechRecognition speechManager;
+
 
     // Event
-    public delegate void Spellcrafted();
-    public event Spellcrafted OnSpellcrafted;
+    //public delegate void Spellcrafted();
+    //public event Spellcrafted OnSpellcrafted;
 
 
     private void Awake()
     {
-        Instance = this;
-        speechManager = SpeechRecognition.Instance;
+        //speechManager = SpeechRecognition.Instance;
+        //Debug.Log("Speech Instance=" + speechManager.name, speechManager.gameObject);
+        //Instance = this;
+        //spellBook = SpellBook.Instance;
+        //Debug.Log("Spellbook Instance=" + spellBook.name, spellBook.gameObject);
     }
 
     public void ItemsSelected(ItemSO item)
@@ -55,7 +65,7 @@ public class CraftManager : MonoBehaviour
         if (itemMixSO[0] == null)
         {
             //Spawn item
-            itemMixGO[0] = Instantiate(item.prefab, GetRandomPosition(), SpawnIngredient.rotation, SpawnIngredient);
+            itemMixGO[0] = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
 
             //Add to mix
             itemMixSO[0] = item;
@@ -65,7 +75,7 @@ public class CraftManager : MonoBehaviour
         else if (itemMixSO[1] == null)
         {
             //Spawn item
-            itemMixGO[1] = Instantiate(item.prefab, GetRandomPosition(), SpawnIngredient.rotation, SpawnIngredient);
+            itemMixGO[1] = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
 
             //Add to mix
             itemMixSO[1] = item;
@@ -82,15 +92,20 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-
+    // A new spell has been discovered.
+    // Display spell & add to spellbook
     private void DisplaySpell()
     {
         SpellSO spell = itemDatabaseSO.GetSpell(itemMixSO[0], itemMixSO[1]);
 
         if (spell != null)
         {
-            bookSpell.spellSO = spell;
-            bookSpell.SetSpell();
+            // Display Spell in UI
+            spellDisplay.spellSO = spell;
+            spellDisplay.SetSpell();
+
+            // Add the spell on spellbook
+            spellBook.AddSpell(spell);
         }
         else
         {
@@ -117,7 +132,7 @@ public class CraftManager : MonoBehaviour
             Destroy(spawnedItem);
 
         // Create crafted item
-        Instantiate(item.prefab, SpawnCrafted);
+        itemCrafted = Instantiate(item.prefab, transform.position + new Vector3(0,spawnCrafted,0), transform.rotation);
 
         await Task.Delay(2000);
 
@@ -127,18 +142,22 @@ public class CraftManager : MonoBehaviour
         foxCanvas.enabled = true;
 
         // Reset mix
+        itemMixSO = new ItemSO[2];
         itemMixGO = new GameObject[2];
-        // Reset spell
-        bookSpell.spellSO = null;
-        bookSpell.text.text = "";
 
-        await Task.Delay(3000);
+        // Reset Spell (& Phrase Recognition)
+        spellDisplay.ResetSpell();
+
+        await Task.Delay(2000);
 
         // Switch ingredients
         ingredient1.SetActive(false);
         ingredient2.SetActive(false);
         ingredient3.SetActive(true);
         ingredient4.SetActive(true);
+
+        // Remove crafted ingredient.
+        Destroy(itemCrafted);
     }
 
     Vector3 GetRandomPosition()
@@ -146,10 +165,10 @@ public class CraftManager : MonoBehaviour
         float min = -randomSpawnPos;
         float max = randomSpawnPos;
         float x = Random.Range(min, max);
-        float y = Random.Range(min, max);
+        float z = Random.Range(min, max);
 
-        Vector3 randomPos = new Vector3(x, y, 0);
-        Vector3 newPos = SpawnIngredient.position + randomPos;
+        Vector3 randomPos = new Vector3(x, spawnIngredient, z);
+        Vector3 newPos = transform.position + randomPos;
 
         return newPos;
     }

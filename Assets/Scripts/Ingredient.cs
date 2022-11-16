@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class Ingredient : MonoBehaviour
 {
     public ItemSO item;
+    [SerializeField] private CraftManager craftManager;
 
     private Text text;
     private PhraseRecognition phraseRecognition;
@@ -25,16 +26,18 @@ public class Ingredient : MonoBehaviour
     private void Awake()
     {
         SetName();
+
+        //craftManager = CraftManager.Instance;
     }
 
     private void Start()
     {
-        phraseRecognition.OnPhraseRecognized += SelectItem;
+        phraseRecognition.OnPhraseRecognition.AddListener(SelectItem);
     }
 
     public void SelectItem() // Make private. Only for Editor Testing with button instead of speech.
     {
-        CraftManager.Instance.ItemsSelected(item);
+        craftManager.ItemsSelected(item);
     }
 
     private void SetName()
@@ -42,7 +45,7 @@ public class Ingredient : MonoBehaviour
         text = GetComponent<Text>();
         text.text = item.itemName;
 
-        phraseRecognition = GetComponent<PhraseRecognition>();
+        phraseRecognition = GetComponent<PhraseRecognition>(); //FIXME por qué no estaba en awake?
         phraseRecognition.readPhrase = item.itemName;
         phraseRecognition.textComponent = text;
     }

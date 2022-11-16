@@ -43,17 +43,25 @@ public class ItemDatabaseSO : ScriptableObject
     {
         SpellSO get = null;
 
+        //Debug.Log("itemMixSO0=" + itemMixSO0);
+        //Debug.Log("itemMixSO1=" + itemMixSO1);
+
         foreach (SpellSO spell in Spells)
         {
+            int matchCount = 0;
+
             foreach (ItemSO ingredient in spell.ingredients)
             {
+                //Debug.Log("ingredient=" + ingredient);
                 if (ingredient == itemMixSO0)
                 {
                     get = spell;
+                    matchCount++;
                 }
                 else if (ingredient == itemMixSO1)
                 {
                     get = spell;
+                    matchCount++;
                 }
                 else
                 {
@@ -61,7 +69,11 @@ public class ItemDatabaseSO : ScriptableObject
                     break;
                 }
             }
+
+            if (matchCount == 2)
+                break;
         }
+
         Debug.Log("GetSpell=" + get);
         return get;
     }

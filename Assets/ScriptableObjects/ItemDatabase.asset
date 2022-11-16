@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ItemDatabase
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: 11400000, guid: 5c4829171deec4074a1a8f53613b8110, type: 2}
   - {fileID: 11400000, guid: ac8f4c4025bea4d00b5be008b4dc00f9, type: 2}
   - {fileID: 11400000, guid: 0e535f9cb28274bf3aa257819aff8868, type: 2}
   - {fileID: 11400000, guid: 778c5d0116980a747948885b8697c716, type: 2}
@@ -30,6 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b3f7c10ed20643e0817e487984044f4, type: 2}
   - {fileID: 11400000, guid: 43cb41175bf3b43bfaad7dceead3f56e, type: 2}
   - {fileID: 11400000, guid: 40b070170a69b4b5f95d6796c4085124, type: 2}
+  - {fileID: 11400000, guid: 5c4829171deec4074a1a8f53613b8110, type: 2}
   Spells:
-  - {fileID: 11400000, guid: 4f2e19e0ccad14befad682d28891e2eb, type: 2}
   - {fileID: 11400000, guid: 0da53d10731d047119eb26238df1fddf, type: 2}
+  - {fileID: 11400000, guid: 4f2e19e0ccad14befad682d28891e2eb, type: 2}
