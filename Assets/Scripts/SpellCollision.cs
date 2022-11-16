@@ -11,9 +11,7 @@ public class SpellCollision : MonoBehaviour
 {
     public SpellSO spell;
 
-    //public event EventHandler OnSpellHit;
-
-
+    
     private void OnParticleCollision(GameObject other)
     {
         TakeDamage(other);
