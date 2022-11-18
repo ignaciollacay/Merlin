@@ -20,7 +20,9 @@ public class DialogueManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
-        button.onClick.AddListener(DisplayNextSentence);
+        //button.onClick.AddListener(DisplayNextSentence); 
+        //FIXME: Disabling line obove
+        //Listener Added On Scene... Why is it duplicated
     }
 
     public void StartDialogue(DialogueSO dialogue)
