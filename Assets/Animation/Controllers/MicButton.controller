@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MicButtonOpen
+  m_Name: Show
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9410db80799a4bd488e88cc6da196bf1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7b8f4794310ed284288f97a3458be1f7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -126,7 +126,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MicButtonClose
+  m_Name: Hide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -140,7 +140,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7b8f4794310ed284288f97a3458be1f7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9410db80799a4bd488e88cc6da196bf1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -51,7 +51,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InventoryClose
+  m_Name: Hide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -65,7 +65,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b9d52ae8e43223349ac687e6f990d26b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 49e409c4d505f284e851ca995dade6e0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -104,7 +104,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InventoryOpen
+  m_Name: Show
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -118,7 +118,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 49e409c4d505f284e851ca995dade6e0, type: 2}
+  m_Motion: {fileID: 7400000, guid: b9d52ae8e43223349ac687e6f990d26b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -163,13 +163,13 @@ AnimatorStateMachine:
     m_Position: {x: 40, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2507862664153573586}
-    m_Position: {x: -110, y: -50, z: 0}
+    m_Position: {x: -190, y: -50, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -210, y: -30, z: 0}
+  m_AnyStatePosition: {x: -320, y: 50, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

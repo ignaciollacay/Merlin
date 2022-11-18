@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8829701166217552364}
   - component: {fileID: 8829701166217552367}
   - component: {fileID: 8829701166217552365}
+  - component: {fileID: 4204572910077113970}
   m_Layer: 5
   m_Name: Canvas_Spell
   m_TagString: Untagged
@@ -78,6 +79,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &4204572910077113970
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829701166217552363}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a55b759b54e60f4e94d9eb3f97597ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1927262715127062137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,11 +235,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogueBox Spell
-      objectReference: {fileID: 0}
-    - target: {fileID: 2917258855238461479, guid: 4986b51b19fea438f99a5efe5625952b,
-        type: 3}
-      propertyPath: textComponent
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2917258855238461479, guid: 4986b51b19fea438f99a5efe5625952b,
         type: 3}

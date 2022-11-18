@@ -330,10 +330,14 @@ public class SpeechRecognition : MonoBehaviour
         // Used to update results on screen during updates
         lock (threadLocker)
         {
-            DebugText.text = debugString;
-            ErrorText.text = errorString;
-            RecognizedText.text = recognizedString;
-            RecognizingText.text = recognizingString;
+            if (DebugText != null) 
+                DebugText.text = debugString;
+            if (ErrorText != null)
+                ErrorText.text = errorString;
+            if (RecognizedText != null) 
+                RecognizedText.text = recognizedString;
+            if (RecognizingText != null)
+                RecognizingText.text = recognizingString;
         }
     }
 

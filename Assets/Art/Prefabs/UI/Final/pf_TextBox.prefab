@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 8499269212588107983}
   - component: {fileID: 4851843271297815890}
   - component: {fileID: 6390247759395330835}
-  - component: {fileID: 873220333493863535}
   m_Layer: 5
-  m_Name: pf_DialogueBox
+  m_Name: pf_TextBox
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -136,20 +135,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &873220333493863535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3979910344511445959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 381f327d917e546bd942b37da6df9a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueSO: {fileID: 11400000, guid: 7355ce095d4b74a48aef1040ff3456dd, type: 2}
-  playOnAwake: 0
 --- !u!1 &4208422603774635379
 GameObject:
   m_ObjectHideFlags: 0

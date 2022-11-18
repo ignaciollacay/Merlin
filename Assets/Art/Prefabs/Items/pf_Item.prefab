@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c475342349ef34093b30e2a8b845d7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellSFX: {fileID: 3981571911644087774}
-  castVFX: {fileID: 1339238234672120876}
   OnAnimationEnd:
     m_PersistentCalls:
       m_Calls:
@@ -1093,12 +1091,6 @@ PrefabInstance:
 --- !u!4 &1201450656177254389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4663975595488565754, guid: d17cea9f9ae85d24d8a5ec810c0a9c6a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5770707710093112847}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1339238234672120876 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4791902581321757219, guid: d17cea9f9ae85d24d8a5ec810c0a9c6a,
     type: 3}
   m_PrefabInstance: {fileID: 5770707710093112847}
   m_PrefabAsset: {fileID: 0}

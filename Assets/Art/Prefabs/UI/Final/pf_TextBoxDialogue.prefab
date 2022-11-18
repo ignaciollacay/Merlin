@@ -137,10 +137,30 @@ PrefabInstance:
     - target: {fileID: 3979910344511445959, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
         type: 3}
       propertyPath: m_Name
-      value: DialogueBox Variant Tutorial
+      value: pf_TextBoxDialogue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8422c8a932fb94bb7b020f4a7eef47b8, type: 3}
+--- !u!1 &5101912722278859612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3979910344511445959, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211990431307372699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3165848054836449170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5101912722278859612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381f327d917e546bd942b37da6df9a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueSO: {fileID: 11400000, guid: 7355ce095d4b74a48aef1040ff3456dd, type: 2}
+  playOnAwake: 0
 --- !u!224 &8376064076686988593 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 417453982989749674, guid: 8422c8a932fb94bb7b020f4a7eef47b8,

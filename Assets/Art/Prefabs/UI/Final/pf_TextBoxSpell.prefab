@@ -486,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 3979910344511445959, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
         type: 3}
       propertyPath: m_Name
-      value: DialogueBox (Spell)
+      value: pf_TextBoxSpell
       objectReference: {fileID: 0}
     - target: {fileID: 4208422603774635379, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
         type: 3}
@@ -529,8 +529,35 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6390247759395330835, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2917258855238461479}
+    - target: {fileID: 6390247759395330835, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PhraseRecognizedEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390247759395330835, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PhraseRecognition, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8422c8a932fb94bb7b020f4a7eef47b8, type: 3}
+--- !u!114 &3099580869966103843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1843164802456212106, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3645612214096418729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654848222571886313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3989284173610736131 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 417453982989749674, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
@@ -555,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b071121d2500d7f4f98fa98eed786b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
+  textComponent: {fileID: 3099580869966103843}
   readPhrase: 
   words: []
   correctColor: cyan

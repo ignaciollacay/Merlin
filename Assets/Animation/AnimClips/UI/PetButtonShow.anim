@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InventoryClose
+  m_Name: PetButtonShow
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,7 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -30
+        value: -300
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -30,28 +30,28 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.25
-        value: -60
-        inSlope: -15.208472
-        outSlope: -15.208472
-        tangentMode: 0
+        time: 0.75
+        value: -30
+        inSlope: 119.99999
+        outSlope: 119.99999
+        tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33362716
+        inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 250
-        inSlope: 919.0285
-        outSlope: 919.0285
-        tangentMode: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
         weightedMode: 0
-        inWeight: 0.10536329
+        inWeight: 0.33333334
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Container
+    path: Button_Pet
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -63,7 +63,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1163095736
+      path: 2623290627
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -96,7 +96,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -30
+        value: -300
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -104,28 +104,28 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.25
-        value: -60
-        inSlope: -15.208472
-        outSlope: -15.208472
-        tangentMode: 0
+        time: 0.75
+        value: -30
+        inSlope: 119.99999
+        outSlope: 119.99999
+        tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33362716
+        inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 250
-        inSlope: 919.0285
-        outSlope: 919.0285
-        tangentMode: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
         weightedMode: 0
-        inWeight: 0.10536329
+        inWeight: 0.33333334
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Container
+    path: Button_Pet
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

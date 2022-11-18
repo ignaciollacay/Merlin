@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5861595951478662956}
   - component: {fileID: 5861595951478662953}
   - component: {fileID: 5861595951478662955}
+  - component: {fileID: 185784584815020077}
   m_Layer: 5
   m_Name: Canvas_Inventory
   m_TagString: Untagged
@@ -77,6 +78,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &185784584815020077
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861595951478662957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1002ba8aefcefe24daee88d3ff520fd2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5861595951694002993
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: -30}
+  m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 159, y: 620}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5861595951694002381
