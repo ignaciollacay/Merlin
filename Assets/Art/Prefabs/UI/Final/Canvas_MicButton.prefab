@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8240971939009067333}
   - component: {fileID: 8240971939009067332}
   - component: {fileID: 8240971939009067355}
+  - component: {fileID: 6794398084586499875}
   m_Layer: 5
   m_Name: ButtonMic
   m_TagString: Untagged
@@ -32,7 +33,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 6986869725299560790}
+  - {fileID: 8045938993468639168}
   m_Father: {fileID: 8240971939461895072}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -228,6 +229,27 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!223 &6794398084586499875
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240971939009067353}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 15
+  m_TargetDisplay: 0
 --- !u!1 &8240971939461895079
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +355,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8240971939009067354}
     m_Modifications:
+    - target: {fileID: 2993765791846321860, guid: 4c7469cb52330cc45b60939b4f68ed7b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3681630483056120630, guid: 4c7469cb52330cc45b60939b4f68ed7b,
         type: 3}
       propertyPath: m_RootOrder
@@ -401,9 +428,9 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 6044287634332058208}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6986869725299560790 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3681630483056120630, guid: 4c7469cb52330cc45b60939b4f68ed7b,
+--- !u!224 &8045938993468639168 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4344132469311636896, guid: 4c7469cb52330cc45b60939b4f68ed7b,
     type: 3}
   m_PrefabInstance: {fileID: 6044287634332058208}
   m_PrefabAsset: {fileID: 0}
