@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8240971939009067332}
   - component: {fileID: 8240971939009067355}
   - component: {fileID: 6794398084586499875}
+  - component: {fileID: 2628875089863446007}
   m_Layer: 5
   m_Name: ButtonMic
   m_TagString: Untagged
@@ -33,7 +34,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8045938993468639168}
+  - {fileID: 6986869725299560790}
   m_Father: {fileID: 8240971939461895072}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -250,6 +251,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 15
   m_TargetDisplay: 0
+--- !u!114 &2628875089863446007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240971939009067353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &8240971939461895079
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,9 +446,9 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 6044287634332058208}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &8045938993468639168 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4344132469311636896, guid: 4c7469cb52330cc45b60939b4f68ed7b,
+--- !u!4 &6986869725299560790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3681630483056120630, guid: 4c7469cb52330cc45b60939b4f68ed7b,
     type: 3}
   m_PrefabInstance: {fileID: 6044287634332058208}
   m_PrefabAsset: {fileID: 0}

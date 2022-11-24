@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2381,23 +2381,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 814475921759333576, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
-      propertyPath: m_Colors.m_PressedColor.b
-      value: 0.4339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 814475921759333576, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
-      propertyPath: m_Colors.m_PressedColor.g
-      value: 0.4339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 814475921759333576, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
-      propertyPath: m_Colors.m_PressedColor.r
-      value: 0.4339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 814475921759333576, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 814475921759333576, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
