@@ -27,7 +27,7 @@ public class EnemySelector : MonoBehaviour
         if (selectedEnemy != null)
         {
             selectedEnemy.OnEnemyKilled.AddListener(AttackNextEnemy);
-            Debug.Log("selecting new enemy=" + selectedEnemy.name, selectedEnemy.gameObject);
+            //Debug.Log("selecting new enemy=" + selectedEnemy.name, selectedEnemy.gameObject);
         }
     }
     

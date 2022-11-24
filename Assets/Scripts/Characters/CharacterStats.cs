@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class CharacterStats : MonoBehaviour
+public abstract class CharacterStats : MonoBehaviour
 {
+    public virtual CharacterType CharacterType { get; set; }
+
     public UnityEvent<int> OnCharacterSpawn;
     public UnityEvent<int> OnHealthUpdate;
 
@@ -17,6 +19,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Awake()
     {
+        Debug.Log("CharacterType=" + CharacterType + "    " + name, gameObject);
         currentHealth = maxHealth;
         OnCharacterSpawn?.Invoke(maxHealth);
     }

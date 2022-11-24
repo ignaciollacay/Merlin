@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerStats : CharacterStats
 {
+    public override CharacterType CharacterType { get; set; } = CharacterType.Player;
+
     public UnityEvent OnPlayerKilled;
 
     public override void Death()

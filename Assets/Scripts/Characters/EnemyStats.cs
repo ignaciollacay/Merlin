@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class EnemyStats : CharacterStats
 {
+    public override CharacterType CharacterType { get; set; } = CharacterType.Enemy;
+
     public UnityEvent OnEnemySpawn;
     public UnityEvent OnEnemyKilled;
     public UnityEvent<int> OnEnemyAttack;

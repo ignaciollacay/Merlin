@@ -6,28 +6,93 @@ using UnityEngine;
 //To be added when instantiating the object?
 // or added to the prefabs?
 
-
+public enum CharacterType
+{
+    Enemy,
+    Player
+}
 public class SpellCollision : MonoBehaviour
 {
     public SpellSO spell;
+    private CharacterType m_characterType;
 
+    private void Awake()
+    {
+        GetCharacterTypeFromParent();
+    }
     
     private void OnParticleCollision(GameObject other)
     {
-        TakeDamage(other);
+        SpellCollided(other);
     }
 
-    // TODO: Should send an event
-    // and subscribe from the corresponding stats or controller.
-    private void TakeDamage(GameObject other)
+    // TODO: Should send an event, to reuse ParticleCollision. Could subscribe from the corresponding stats or controller.
+    private void SpellCollided(GameObject other)
     {
-        if (other.TryGetComponent(out EnemyStats enemy))
+        CharacterStats otherStats = GetStatsFromOther(other);
+        if (otherStats == null)
         {
-            enemy.TakeDamage(spell.damage);
+            return;
         }
-        else if (other.TryGetComponent(out PlayerStats player))
+        if (IsOpponent(otherStats))
         {
-            player.TakeDamage(spell.damage);
+            otherStats.TakeDamage(spell.damage);
+        }
+    }
+    CharacterStats GetStatsFromOther(GameObject other)
+    {
+        if (other.TryGetComponent(out PlayerStats playerStats))
+        {
+            return playerStats;
+        }
+        else if (other.TryGetComponent(out EnemyStats enemyStats))
+        {
+            return enemyStats;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    bool IsOpponent(CharacterStats stats)
+    {
+        if (stats.CharacterType == m_characterType)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    void GetCharacterTypeFromParent()
+    {
+        if (TryGetComponentInParent(out EnemyStats enemy))
+        {
+            m_characterType = CharacterType.Enemy;
+        }
+        else if (TryGetComponentInParent(out PlayerStats player))
+        {
+            m_characterType = CharacterType.Player;
+        }
+        else
+        {
+            Debug.LogWarning("Spell should have a parent object with either a EnemyStats or PlayerStats");
+        }
+    }
+
+    public bool TryGetComponentInParent<T>(out T component)
+    {
+        component = transform.GetComponentInParent<T>();
+
+        if (component != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
