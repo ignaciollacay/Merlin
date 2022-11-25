@@ -22,14 +22,12 @@ public class ItemSpells : MonoBehaviour
 
     private IEnumerator AnimEnd()
     {
-        print("Animation ended " + spell.spellName);
         yield return new WaitUntil(() => animator.GetBool(spell.boolName) == false);
         OnAnimationEnd?.Invoke(spell);
     }
 
     public void Animate()
     {
-        print("Animating..." + spell.boolName);
         animator.SetBool(spell.boolName, true);
         StartCoroutine(AnimEnd());
     }
@@ -37,6 +35,5 @@ public class ItemSpells : MonoBehaviour
     public void AssignSpellSO(SpellSO _spell)
     {
         spell = _spell;
-        print("Assigned spell " + spell.spellName);
     }
 }

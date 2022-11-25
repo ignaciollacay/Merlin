@@ -19,7 +19,6 @@ public abstract class CharacterStats : MonoBehaviour
 
     public virtual void Awake()
     {
-        Debug.Log("CharacterType=" + CharacterType + "    " + name, gameObject);
         currentHealth = maxHealth;
         OnCharacterSpawn?.Invoke(maxHealth);
     }

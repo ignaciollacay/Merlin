@@ -32,7 +32,7 @@ public class AssessmentHandler : MonoBehaviour
     // Change Scene after dialogue has ended & Fires AssignmentFinished Event.
     private void EndAssignment()
     {
-        Debug.Log("Assignment fullfilled, time for battle.");
+        Debug.Log("Assignment fullfilled.");
         OnAssignmentEnd?.Invoke();
         SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
         DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
