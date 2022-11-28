@@ -236,6 +236,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.0040267776
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.0031149888
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.09433961
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 530c8c4bdc57bea4e8d8225aca0fbe9c,
+        type: 3}
+    - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8376064076686988593, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
       propertyPath: m_Pivot.x
