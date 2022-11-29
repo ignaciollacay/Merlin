@@ -7,6 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof (Counter))]
 public class BattleHandler : MonoBehaviour
 {
+    [SerializeField] private DialogueManager dialogueManager;
     private Counter counter;
 
     public UnityEvent OnBattleStart;
@@ -43,6 +44,6 @@ public class BattleHandler : MonoBehaviour
     {
         OnBattleEnd?.Invoke();
         SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
-        DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
+        dialogueManager.DialogueEnd.AddListener(sceneHandler.LoadAsync); // FIXME: Is this still in use?
     }
 }

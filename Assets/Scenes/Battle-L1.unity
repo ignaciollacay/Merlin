@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44729567, g: 0.49722672, b: 0.57521063, a: 1}
+  m_IndirectSpecularColor: {r: 0.4472955, g: 0.4972266, b: 0.5752105, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -300,8 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546232f9f5ec54a13addfc81c3f24fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 4237131863594873357}
-  button: {fileID: 4237131863594873359}
+  dialogueText: {fileID: 0}
   DialogueEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -951,6 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c583b87deb180cb429777420328faed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
   OnBattleStart:
     m_PersistentCalls:
       m_Calls:
@@ -984,12 +984,24 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4237131863594873358}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
-        m_MethodName: TriggerDialogue
+        m_MethodName: SetDialogue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: cf6c7bb9c71054a11b83b972a52efc7e,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1653951493}
+        m_TargetAssemblyTypeName: SceneHandler, Assembly-CSharp
+        m_MethodName: LoadAfterDialogueEnd
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4237131863594873362}
+          m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4945,18 +4957,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 4237131863594873353}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4237131863594873357 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8605683619493694724, guid: 5504a9b948acda74fa39c51daa444369,
-    type: 3}
-  m_PrefabInstance: {fileID: 4237131863594873353}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4237131863594873358 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3810107918132365447, guid: 5504a9b948acda74fa39c51daa444369,
@@ -4969,16 +4969,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381f327d917e546bd942b37da6df9a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4237131863594873359 stripped
+--- !u!114 &4237131863594873362 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3915602032564143261, guid: 5504a9b948acda74fa39c51daa444369,
+  m_CorrespondingSourceObject: {fileID: 1583794839192855476, guid: 5504a9b948acda74fa39c51daa444369,
     type: 3}
   m_PrefabInstance: {fileID: 4237131863594873353}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876936516}
+  m_GameObject: {fileID: 4237131863594873355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 546232f9f5ec54a13addfc81c3f24fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!223 &4237131863594873366

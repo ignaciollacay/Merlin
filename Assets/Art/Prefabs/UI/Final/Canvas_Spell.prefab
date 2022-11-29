@@ -111,6 +111,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BgMask
       objectReference: {fileID: 0}
+    - target: {fileID: 2567026192245227540, guid: 7a6671be9782540d991d457948c806ff,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5455156545938954821}
+    - target: {fileID: 2567026192245227540, guid: 7a6671be9782540d991d457948c806ff,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PhraseRecognizedEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567026192245227540, guid: 7a6671be9782540d991d457948c806ff,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PhraseRecognition, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4062410804833500795, guid: 7a6671be9782540d991d457948c806ff,
         type: 3}
       propertyPath: m_Pivot.x
@@ -441,6 +456,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -103
       objectReference: {fileID: 0}
+    - target: {fileID: 8197366341546115835, guid: 4986b51b19fea438f99a5efe5625952b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8384904084239481138, guid: 4986b51b19fea438f99a5efe5625952b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -473,6 +493,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4986b51b19fea438f99a5efe5625952b, type: 3}
+--- !u!114 &5455156545938954821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2917258855238461479, guid: 4986b51b19fea438f99a5efe5625952b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7190195271954821730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b071121d2500d7f4f98fa98eed786b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6094632882916599905 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3989284173610736131, guid: 4986b51b19fea438f99a5efe5625952b,

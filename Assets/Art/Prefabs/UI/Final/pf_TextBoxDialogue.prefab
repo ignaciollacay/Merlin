@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -134,10 +134,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1843164802456212106, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331189779077832668, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3979910344511445959, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
         type: 3}
       propertyPath: m_Name
       value: pf_TextBoxDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851843271297815890, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8422c8a932fb94bb7b020f4a7eef47b8, type: 3}
@@ -159,8 +174,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381f327d917e546bd942b37da6df9a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueSO: {fileID: 11400000, guid: 7355ce095d4b74a48aef1040ff3456dd, type: 2}
+  dialogueSO: {fileID: 11400000, guid: 0ca0caa15cfe84fa18fb26e090554465, type: 2}
+  text: {fileID: 7521826487811197457}
   playOnAwake: 0
+--- !u!114 &7521826487811197457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1843164802456212106, guid: 8422c8a932fb94bb7b020f4a7eef47b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211990431307372699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8376064076686988593 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 417453982989749674, guid: 8422c8a932fb94bb7b020f4a7eef47b8,

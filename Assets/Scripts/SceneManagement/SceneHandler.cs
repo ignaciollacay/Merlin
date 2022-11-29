@@ -22,4 +22,9 @@ public class SceneHandler : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void LoadAfterDialogueEnd(DialogueManager dialogueManager)
+    {
+        dialogueManager.DialogueEnd.AddListener(LoadAsync);
+    }
 }

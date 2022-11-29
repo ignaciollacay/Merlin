@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private DialogueSO dialogueSO; // public? Do I want to change/assign it by code?
+    public DialogueSO dialogueSO; // TODO: make private, add method GetDialogues(), and refactor DialogueManager;
+
+    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private bool playOnAwake;
 
-    public void TriggerDialogue()
+    public void TriggerStartDialogue()
     {
-        DialogueManager.Instance.StartDialogue(dialogueSO); // FIXME: Trigger by event on Spell Learned. 
-                                                            // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
+        print("triggerDialogue");
+        dialogueManager.StartDialogue(dialogueSO);
     }
-    public void TriggerDialogue(DialogueSO newDialogue)
+    public void TriggerNextDialogue()
     {
-        DialogueManager.Instance.StartDialogue(newDialogue); // FIXME: Trigger by event on Spell Learned. 
-                                                            // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
+        print("triggerDialogue");
+        dialogueManager.DisplayNextSentence();
     }
+
+    public void SetDialogue(DialogueSO newDialogueSO)
+    {
+        dialogueSO = newDialogueSO;
+    }
+
     private void Awake()
     {
         if (playOnAwake)
-            TriggerDialogue();
+            TriggerStartDialogue();
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine.Events;
 //Rename to AssignmentSpell
 public class AssessmentHandler : MonoBehaviour
 {
+    [SerializeField] private DialogueManager dialogueManager;
+
     public InventorySpells assigned;
     public InventorySpells learned;
     //private SpellSO currentAssignment;
@@ -34,8 +36,6 @@ public class AssessmentHandler : MonoBehaviour
     {
         Debug.Log("Assignment fullfilled.");
         OnAssignmentEnd?.Invoke();
-        SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
-        DialogueManager.Instance.DialogueEnd.AddListener(sceneHandler.LoadAsync);
     }
 
     /// <summary>

@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 3926565546657011984}
   - component: {fileID: 5960857549771448961}
   - component: {fileID: 6036341765079017579}
+  - component: {fileID: 4766934486491993404}
   m_Layer: 5
   m_Name: Canvas_PetDialogue (SpellStats)
   m_TagString: Untagged
@@ -442,6 +443,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4766934486491993404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247119706077824742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546232f9f5ec54a13addfc81c3f24fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 2524139958442389694}
+  DialogueEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AssessmentHandler, Assembly-CSharp
+        m_MethodName: EvaluateAssignment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2281439619893258602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1238,17 @@ PrefabInstance:
     - target: {fileID: 1310456994149026206, guid: 7a6671be9782540d991d457948c806ff,
         type: 3}
       propertyPath: m_Name
-      value: BgMask
+      value: PanelTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567026192245227540, guid: 7a6671be9782540d991d457948c806ff,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6956430530702013757}
+    - target: {fileID: 2567026192245227540, guid: 7a6671be9782540d991d457948c806ff,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerNextDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4062410804833500795, guid: 7a6671be9782540d991d457948c806ff,
         type: 3}
@@ -1444,6 +1495,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: dialogueSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e2cbd892341124387ab564bd956b49e9,
+        type: 2}
+    - target: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 4766934486491993404}
     - target: {fileID: 5101912722278859612, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
       propertyPath: m_Name
@@ -1452,7 +1514,7 @@ PrefabInstance:
     - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
       propertyPath: m_Text
-      value: 'Bien! Has descubierto un nuevo hechizo! [ref] '
+      value: Bien! Has descubierto un nuevo hechizo! [DialogueSO DiscoveredSpell]
       objectReference: {fileID: 0}
     - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
@@ -1566,12 +1628,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6007443897c114017b478e5445e99e9c, type: 3}
+--- !u!114 &2524139958442389694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5432870286444706479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4564591031686344606 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8376064076686988593, guid: 6007443897c114017b478e5445e99e9c,
     type: 3}
   m_PrefabInstance: {fileID: 5432870286444706479}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6956430530702013757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5432870286444706479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381f327d917e546bd942b37da6df9a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6491107629084335031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1959,6 +2045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021587098027129100, guid: 45d45f62c74dc3742afdf94336a18eae,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5804629021446750325, guid: 45d45f62c74dc3742afdf94336a18eae,
         type: 3}

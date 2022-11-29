@@ -4,30 +4,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-[DefaultExecutionOrder(-500)]
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private Text dialogue;
-    [Tooltip("Dialogue Button to add DisplayNextSentence On Click")] // TODO: Is there only one dialogue button? Maybe make list? Or join canvases?
-    [SerializeField] public Button button; // Button is actually in box GO, could use GetComponent. But makes code less reusable.
+    [SerializeField] private Text dialogueText;
 
     private Queue<string> sentences = new Queue<string>();
 
     public UnityEvent DialogueEnd;
 
-    public static DialogueManager Instance;
-
-    public void Awake()
+    public void StartDialogue(DialogueSO dialogueSO)
     {
-        Instance = this;
-        button.onClick.AddListener(DisplayNextSentence);
-    }
-
-    public void StartDialogue(DialogueSO dialogue)
-    {
+        print("startDialogue");
         //sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogueSO.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -35,11 +25,9 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    /// <summary>
-    /// Run from button on click event. Shows the next line if sentences remain, else runs end dialogue.
-    /// </summary>
     public void DisplayNextSentence()
     {
+        print("displayNextSentence. Count=" + sentences.Count);
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -47,8 +35,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogue.text = sentence;
+        dialogueText.text = sentence;
     }
 
-    private void EndDialogue() => DialogueEnd?.Invoke();
+    private void EndDialogue()
+    {
+        print("DialogueEnd");
+        DialogueEnd?.Invoke();
+    }
 }

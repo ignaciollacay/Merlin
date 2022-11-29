@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5496615704913757513}
   - component: {fileID: 5357891515592325999}
   - component: {fileID: 7135365512492597890}
+  - component: {fileID: 3402352939074212415}
   m_Layer: 5
   m_Name: Canvas_PetDialogue
   m_TagString: Untagged
@@ -99,6 +100,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3402352939074212415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804629021446750325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546232f9f5ec54a13addfc81c3f24fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 5593707490160704655}
+  DialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &973674421624831717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,8 +126,13 @@ PrefabInstance:
     - target: {fileID: 1310456994149026206, guid: 7a6671be9782540d991d457948c806ff,
         type: 3}
       propertyPath: m_Name
-      value: BgMask
+      value: PanelTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 2567026192245227540, guid: 7a6671be9782540d991d457948c806ff,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1021587098027129100}
     - target: {fileID: 4062410804833500795, guid: 7a6671be9782540d991d457948c806ff,
         type: 3}
       propertyPath: m_Pivot.x
@@ -231,10 +253,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 587596481197938878}
     m_Modifications:
+    - target: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 3402352939074212415}
     - target: {fileID: 5101912722278859612, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
       propertyPath: m_Name
-      value: DialogueBox Tutorial
+      value: DialogueBoxPet
       objectReference: {fileID: 0}
     - target: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
@@ -369,6 +396,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6007443897c114017b478e5445e99e9c, type: 3}
+--- !u!114 &1021587098027129100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2720792125236328094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381f327d917e546bd942b37da6df9a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5593707490160704655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7521826487811197457, guid: 6007443897c114017b478e5445e99e9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2720792125236328094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5908709394676360111 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8376064076686988593, guid: 6007443897c114017b478e5445e99e9c,
