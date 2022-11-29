@@ -43,7 +43,5 @@ public class BattleHandler : MonoBehaviour
     private void EndBattle()
     {
         OnBattleEnd?.Invoke();
-        SceneHandler sceneHandler = FindObjectOfType<SceneHandler>();
-        dialogueManager.DialogueEnd.AddListener(sceneHandler.LoadAsync); // FIXME: Is this still in use?
     }
 }
