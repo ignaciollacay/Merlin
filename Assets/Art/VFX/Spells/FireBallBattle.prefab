@@ -4824,6 +4824,7 @@ GameObject:
   - component: {fileID: 8014118127320854885}
   - component: {fileID: 1201649613367128023}
   - component: {fileID: 6365294999834471457}
+  - component: {fileID: 9050533303074913807}
   m_Layer: 0
   m_Name: FireBallBattle
   m_TagString: Untagged
@@ -9786,6 +9787,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9050533303074913807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686783237824048794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485b2c26a332c4460a4db906f9b32200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spell: {fileID: 11400000, guid: 486191cf1bcf745a89dadff2204a841c, type: 2}
 --- !u!1 &8359122698845012393
 GameObject:
   m_ObjectHideFlags: 0
