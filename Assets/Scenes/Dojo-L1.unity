@@ -409,7 +409,7 @@ PlayableDirector:
   - key: {fileID: 5864533891335552980, guid: 7a7c1a357f350f843916c49d1dd4dc13, type: 2}
     value: {fileID: 823062800}
   - key: {fileID: -604902797433051843, guid: 7a7c1a357f350f843916c49d1dd4dc13, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - d9b6135bc3830574fb255137549ff4c0: {fileID: 0}
@@ -541,7 +541,7 @@ PlayableDirector:
   - key: {fileID: -8808955475615451295, guid: e8c42dd8098b94f4a868d46811e3d639, type: 2}
     value: {fileID: 20937925}
   - key: {fileID: -2499615862917263660, guid: e8c42dd8098b94f4a868d46811e3d639, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   - key: {fileID: 4687031897145189067, guid: e8c42dd8098b94f4a868d46811e3d639, type: 2}
     value: {fileID: 823062800}
   m_ExposedReferences:
@@ -1149,7 +1149,7 @@ PlayableDirector:
   - key: {fileID: 1827232220803508165, guid: a048015997b6cdf4f9a7a1e97e91818d, type: 2}
     value: {fileID: 823062800}
   - key: {fileID: -8988613727656075448, guid: a048015997b6cdf4f9a7a1e97e91818d, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 903b2336e0dc9c84abc265dc289ec478: {fileID: 0}
@@ -1263,7 +1263,7 @@ PlayableDirector:
   - key: {fileID: 5802417662221570100, guid: 37d016508850c2f459e64b44612ecbeb, type: 2}
     value: {fileID: 20937925}
   - key: {fileID: 8024730714817346359, guid: 37d016508850c2f459e64b44612ecbeb, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   - key: {fileID: 6713309019898513533, guid: 37d016508850c2f459e64b44612ecbeb, type: 2}
     value: {fileID: 823062800}
   m_ExposedReferences:
@@ -1295,26 +1295,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 814475922250323320}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &823062801
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823062800}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c9a32c6b0f33e46beb915ec9864937c0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &852757846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1533,7 @@ PlayableDirector:
   - key: {fileID: -8392672766543581585, guid: 5fa3a1096ca0b99498ea44ee65215b1a, type: 2}
     value: {fileID: 823062800}
   - key: {fileID: 2578597024288405382, guid: 5fa3a1096ca0b99498ea44ee65215b1a, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - d9b6135bc3830574fb255137549ff4c0: {fileID: 0}
@@ -1673,7 +1653,7 @@ PlayableDirector:
   - key: {fileID: 4502802675484356614, guid: b273fb6002c8efe4daf09cd0eb7d662b, type: 2}
     value: {fileID: 20937925}
   - key: {fileID: 5032424347746822559, guid: b273fb6002c8efe4daf09cd0eb7d662b, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   - key: {fileID: -8954113404251234839, guid: b273fb6002c8efe4daf09cd0eb7d662b, type: 2}
     value: {fileID: 823062800}
   m_ExposedReferences:
@@ -1993,7 +1973,7 @@ PlayableDirector:
   - key: {fileID: 3936056668285843292, guid: f721d04bd96c26d4bb4db1ede01256b4, type: 2}
     value: {fileID: 20937925}
   - key: {fileID: 3687407731120522663, guid: f721d04bd96c26d4bb4db1ede01256b4, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   - key: {fileID: 7457170623468306, guid: f721d04bd96c26d4bb4db1ede01256b4, type: 2}
     value: {fileID: 823062800}
   m_ExposedReferences:
@@ -2279,7 +2259,7 @@ PlayableDirector:
   - key: {fileID: -3832725239409602677, guid: ae567e08570067f479c9e1b3a97d7aaa, type: 2}
     value: {fileID: 20937925}
   - key: {fileID: -6543640311109475436, guid: ae567e08570067f479c9e1b3a97d7aaa, type: 2}
-    value: {fileID: 823062801}
+    value: {fileID: 0}
   - key: {fileID: 469769718542302844, guid: ae567e08570067f479c9e1b3a97d7aaa, type: 2}
     value: {fileID: 823062800}
   m_ExposedReferences:
