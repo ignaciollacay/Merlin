@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5357891515592325999}
   - component: {fileID: 7135365512492597890}
   - component: {fileID: 3402352939074212415}
+  - component: {fileID: 977995274499419132}
   m_Layer: 5
   m_Name: Canvas_PetDialogue
   m_TagString: Untagged
@@ -116,6 +117,19 @@ MonoBehaviour:
   DialogueEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &977995274499419132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804629021446750325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d39a33dc18ad4813ba4595c6210faab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 1021587098027129100}
 --- !u!1001 &973674421624831717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,6 +267,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 587596481197938878}
     m_Modifications:
+    - target: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
+        type: 3}
+      propertyPath: dialogueHandler
+      value: 
+      objectReference: {fileID: 3402352939074212415}
     - target: {fileID: 3165848054836449170, guid: 6007443897c114017b478e5445e99e9c,
         type: 3}
       propertyPath: dialogueManager

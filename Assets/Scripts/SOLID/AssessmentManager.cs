@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//Rename to AssignmentSpell
-public class AssessmentHandler : MonoBehaviour
+//[DefaultExecutionOrder(-500)] // Needs to be executed after level manager sets references
+public class AssessmentManager : Singleton<AssessmentManager>
 {
     public InventorySpells assigned;
     public InventorySpells learned;
@@ -15,24 +15,24 @@ public class AssessmentHandler : MonoBehaviour
     public UnityEvent OnAssignmentEnd;
 
 
-    private void Start() => StartAssignment();
+    private void Start()
+    {
+        StartAssignment();
+    }
 
     public void StartAssignment()
     {
-        OnAssignmentStart?.Invoke(assigned.GetCurrentSpell());
-        Debug.Log("Assignment started." + assigned.GetCurrentSpell());
+        OnAssignmentStart?.Invoke(assigned.GetCurrentSpell()); //Requires LevelManager to set the inventory before.
     }
 
     private void NextAssignment()
     {
         OnAssignmentContinue?.Invoke(assigned.GetNextSpell());
-        Debug.Log("Assignment started." + assigned.GetCurrentSpell());
     }
 
     // Change Scene after dialogue has ended & Fires AssignmentFinished Event.
     private void EndAssignment()
     {
-        Debug.Log("Assignment fullfilled.");
         OnAssignmentEnd?.Invoke();
     }
 
@@ -58,5 +58,10 @@ public class AssessmentHandler : MonoBehaviour
             EndAssignment();
         else
             NextAssignment();
+    }
+
+    public void SetAssignment(InventorySpellSO spellInventory)
+    {
+        assigned.SetInventory(spellInventory);
     }
 }

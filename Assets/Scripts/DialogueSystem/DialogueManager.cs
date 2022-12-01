@@ -1,46 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour
+/// <summary>
+/// Stores reference to multiple instances of dialogues in each scene withing a Singleton Instance
+/// Allows to change the dialogueSO reference in each level via the LevelManager.
+/// </summary>
+public class DialogueManager : Singleton<DialogueManager>
 {
-    [SerializeField] private Text dialogueText;
+    public PetDialogueHandler petDialogue;
 
-    private Queue<string> sentences = new Queue<string>();
-
-    public UnityEvent DialogueEnd;
-
-    public void StartDialogue(DialogueSO dialogueSO)
+    public void SetPetDialogue(DialogueSO dialogue)
     {
-        print("startDialogue");
-        //sentences.Clear();
-
-        foreach (string sentence in dialogueSO.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentence();
-    }
-
-    public void DisplayNextSentence()
-    {
-        print("displayNextSentence. Count=" + sentences.Count);
-        if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
-    }
-
-    private void EndDialogue()
-    {
-        print("DialogueEnd");
-        DialogueEnd?.Invoke();
+        petDialogue.dialogue.dialogueSO = dialogue;
     }
 }

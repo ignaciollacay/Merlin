@@ -27,6 +27,7 @@ using Debug = UnityEngine.Debug;
 /// that are returned in near real-time as the speaks in the microphone.
 /// </summary>
 ///
+// TODO: Singleton Inheritance
 [DefaultExecutionOrder(-1)]
 public class SpeechRecognition : MonoBehaviour
 {

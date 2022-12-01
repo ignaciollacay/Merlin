@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof (Counter))]
 public class BattleHandler : MonoBehaviour
 {
-    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private DialogueHandler dialogueManager;
     private Counter counter;
 
     public UnityEvent OnBattleStart;

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5861595951478662956}
   - component: {fileID: 5861595951478662953}
-  - component: {fileID: 5861595951478662955}
   - component: {fileID: 185784584815020077}
   m_Layer: 5
   m_Name: Canvas_Inventory
@@ -61,23 +60,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
---- !u!114 &5861595951478662955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5861595951478662957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!95 &185784584815020077
 Animator:
   serializedVersion: 4
@@ -114,7 +96,7 @@ GameObject:
   - component: {fileID: 1587184336}
   - component: {fileID: 5861595951694002380}
   m_Layer: 5
-  m_Name: Container
+  m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,4 +227,3 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: c0eacf773f93a3545ab40cf4b8df80eb, type: 2}
   slotPrefab: {fileID: 1309783323388021028, guid: ffd546a949477ff47960f0a631c240e0,
     type: 3}
-  vfxPrefab: {fileID: 0}

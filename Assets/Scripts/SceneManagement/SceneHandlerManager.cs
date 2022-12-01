@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneHandler : MonoBehaviour
+public class SceneHandlerManager : Singleton<SceneHandlerManager>
 {
-    // Make a list?
     public SceneSO sceneSO;
 
     public void LoadAsync()
@@ -20,10 +19,11 @@ public class SceneHandler : MonoBehaviour
 
     public static void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
     }
 
-    public void LoadAfterDialogueEnd(DialogueManager dialogueManager)
+    public void LoadAfterDialogueEnd(DialogueHandler dialogueManager)
     {
         dialogueManager.DialogueEnd.AddListener(LoadAsync);
     }
