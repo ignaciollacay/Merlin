@@ -33,17 +33,22 @@ public class LevelManager : Singleton<LevelManager>
     {
         SetDialogues(level);
         SetSceneHandler(level);
-        SetAssignment(level);
+
+        // TODO: Should Refactor
+        if (level.scene.sceneName == "Dojo")
+        {
+            SetAssignment(level);
+        }
+        if (level.scene.sceneName == "Battle")
+        {
+            SetOpponent(level);
+        }
     }
 
     private void SetDialogues(LevelSO level)
     {
-        DialogueManager.Instance.SetPetDialogue(level.startDialogue);
-    }
-
-    private void SetAssignment(LevelSO level)
-    {
-        AssessmentManager.Instance.SetAssignment(level.assignedSpells);
+        DialogueManager.Instance.SetPetStartDialogue(level.startDialogue);
+        DialogueManager.Instance.SetEndDialogue(level.endDialogue);
     }
 
     private void SetSceneHandler(LevelSO level)
@@ -51,8 +56,17 @@ public class LevelManager : Singleton<LevelManager>
         SceneHandlerManager.Instance.SetScene(level.nextScene);
     }
 
-    // Next Scene Management.
-    // TODO: Execute from On Assignment End 
+    private void SetAssignment(LevelSO level)
+    {
+        AssessmentManager.Instance.SetAssignment(level.assignedSpells);
+    }
+
+    private void SetOpponent(LevelSO level)
+    {
+        BattleHandler.Instance.SetEnemies(level.assignedEnemies);
+    }
+
+    // Executed from Unity Event in Scene (Assessment or Battle Manager) 
     public void SetNextLevel()
     {
         levels.SetNextLevel();

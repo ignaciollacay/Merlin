@@ -19,7 +19,7 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: c4498ff652cb741619609bc9fc32c617, type: 2}
   description: 
   mana: 10
-  damage: 20
+  damage: 25
   defense: 0
   cooldown: 3
   icon: {fileID: 21300000, guid: 73c02b5f1f10d7441a63db112671c77c, type: 3}

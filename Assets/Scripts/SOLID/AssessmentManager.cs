@@ -41,6 +41,7 @@ public class AssessmentManager : Singleton<AssessmentManager>
     /// </summary>
     public void EvaluateAssignment()
     {
+        Debug.Log("Evaluating Assignment");
         int learnedSpells = 0;
         foreach (var assign in assigned.GetList())
         {
@@ -55,9 +56,15 @@ public class AssessmentManager : Singleton<AssessmentManager>
         }
 
         if (learnedSpells >= assigned.GetCount())
+        {
+            Debug.Log("An assigned spell is not learned. Switching to Next Assignment");
             EndAssignment();
+        }
         else
+        {
+            Debug.Log("All assigned spell are learned. Ending Assignment");
             NextAssignment();
+        }
     }
 
     public void SetAssignment(InventorySpellSO spellInventory)

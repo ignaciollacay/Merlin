@@ -170,6 +170,41 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 322476459751182167}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.ParticleSystem, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502060425774882450, guid: 72d4dc318b3054e50899af4d9aeb03a2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5502060425774882451, guid: 72d4dc318b3054e50899af4d9aeb03a2,
         type: 3}
       propertyPath: slider
@@ -605,20 +640,6 @@ MonoBehaviour:
   - {fileID: 0}
   buttonEmptyContainer: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 3}
   spells: []
---- !u!114 &1275907979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8113646040767369791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019969faee17f76469f94623ef8e5f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedEnemy: {fileID: 0}
-  m_Speed: 0.05
 --- !u!114 &6451094900759786590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,20 +657,27 @@ MonoBehaviour:
       m_Calls: []
   OnCharacterDamaged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 322476459751182167}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   animator: {fileID: 7057856380987884106}
+--- !u!1 &9087507588208171776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1034406961251561082, guid: 8413eb11f58b440ed868d68d51dbfa27,
+    type: 3}
+  m_PrefabInstance: {fileID: 8090615190804477306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3598920543361413555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087507588208171776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019969faee17f76469f94623ef8e5f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 0.05
 --- !u!1001 &8877658466485843534
 PrefabInstance:
   m_ObjectHideFlags: 0

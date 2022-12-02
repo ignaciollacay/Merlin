@@ -12,18 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroCutscene.unity
     guid: a14190b5a657e6049979e30584fdd9da
   - enabled: 1
-    path: Assets/Scenes/Dojo-L1.unity
-    guid: 2de9864d46767864e9ed36fd1524ce4e
+    path: Assets/Scenes/Dojo.unity
+    guid: f99bb7918a8e044ebac12cfbde0acb01
   - enabled: 1
-    path: Assets/Scenes/Dojo-L2.unity
-    guid: a2d49b30f7725a745be5d9aa81fde042
-  - enabled: 1
-    path: Assets/Scenes/Battle-L1.unity
-    guid: cee986168780ea845b36e7b31c80fbda
-  - enabled: 1
-    path: Assets/Scenes/Battle-L2.unity
-    guid: aa8c83b0f2f59d04f8e60262e0d99206
-  - enabled: 1
-    path: Assets/Scenes/Battle-L3.unity
-    guid: 807fbdd95dc42714eaf618562f5d2fdd
+    path: Assets/Scenes/Battle.unity
+    guid: c15f39a4a39ac4007b0d22d77c1322cc
   m_configObjects: {}

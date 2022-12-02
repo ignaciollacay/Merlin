@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e7e92c1b14097499876039cfef3aee, type: 3}
-  m_Name: InventoryDialogue_New
+  m_Script: {fileID: 11500000, guid: de2a1eda7b94545be8ed1d697dd6b560, type: 3}
+  m_Name: AntEnemy1
   m_EditorClassIdentifier: 
-  dialogues: []
+  prefab: {fileID: 6313641331579361337, guid: 714ca8ade4d47034db0ad032d0e949c0, type: 3}

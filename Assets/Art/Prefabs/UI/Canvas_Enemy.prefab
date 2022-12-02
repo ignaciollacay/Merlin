@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3689634247450697403}
   - component: {fileID: 3689634247450697400}
   - component: {fileID: 3689634247450697401}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 6227298140470917660}
   - component: {fileID: 360257512170517935}
   - component: {fileID: 8647047114979563087}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3689634247450697398}
     m_Modifications:
+    - target: {fileID: 2129114345918002113, guid: 8f67a2607f5bd4effaeeb0521dea2033,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2129114346029317468, guid: 8f67a2607f5bd4effaeeb0521dea2033,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -195,10 +200,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2129114346029317471, guid: 8f67a2607f5bd4effaeeb0521dea2033,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2129114346315192560, guid: 8f67a2607f5bd4effaeeb0521dea2033,
         type: 3}
       propertyPath: m_Name
       value: HealthBar_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129114346315192560, guid: 8f67a2607f5bd4effaeeb0521dea2033,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2129114346315192561, guid: 8f67a2607f5bd4effaeeb0521dea2033,
         type: 3}

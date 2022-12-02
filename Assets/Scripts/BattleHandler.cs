@@ -5,26 +5,36 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof (Counter))]
-public class BattleHandler : MonoBehaviour
+public class BattleHandler : Singleton<BattleHandler> // TODO: Rename to Manager
 {
-    [SerializeField] private DialogueHandler dialogueManager;
     private Counter counter;
 
     public UnityEvent OnBattleStart;
     public UnityEvent OnBattleEnd;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake(); // Singleton
+
         counter = GetComponent<Counter>();
 
         OnBattleStart?.Invoke();
     }
 
-    public void AddEnemy() => counter.Increase();
+    public void AddEnemy()
+    {
+        counter.Increase();
+    }
 
-    public void RemoveEnemy() => counter.Decrease();
+    public void RemoveEnemy()
+    {
+        counter.Decrease();
+    }
 
-    public void StartEndBattleRoutine() => StartCoroutine(EndBattleRoutine());
+    public void StartEndBattleRoutine()
+    {
+        StartCoroutine(EndBattleRoutine());
+    }
 
     public IEnumerator EndBattleRoutine()
     {
@@ -43,5 +53,17 @@ public class BattleHandler : MonoBehaviour
     private void EndBattle()
     {
         OnBattleEnd?.Invoke();
+    }
+
+    public void SetEnemies(EnemySOList enemies)
+    {
+        foreach (var enemy in enemies.enemyList)
+        {
+            Enemy newEnemy = Enemy.CreateEnemy(enemy);
+            newEnemy.stats.OnEnemySpawn.AddListener(AddEnemy); // Llegará a agregarse a tiempo? O ya fue instanceado en la linea anterior y ejecutó su awake?
+                                                               // A esta altura igual no necesito manejarme con este evento al tener la referencia dentro de la clase.
+            newEnemy.stats.OnEnemyKilled.AddListener(RemoveEnemy);
+
+        }
     }
 }

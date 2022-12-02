@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7b5fe7294a6824ab7c3e4ddccabb73, type: 3}
-  m_Name: Inventory_Assignment-2_CombatSpells
+  m_Script: {fileID: 11500000, guid: 6d2a4ee58e835418f89c118da941eae0, type: 3}
+  m_Name: Battle-1
   m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 11400000, guid: 486191cf1bcf745a89dadff2204a841c, type: 2}
-  - {fileID: 11400000, guid: 0b99822bb513c43ccbb157cbf2f5f1a0, type: 2}
+  enemyList:
+  - {fileID: 11400000, guid: a63e464d45d4f44b58043796daa542b3, type: 2}

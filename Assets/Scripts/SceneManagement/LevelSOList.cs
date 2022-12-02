@@ -8,14 +8,15 @@ public class LevelSOList : ScriptableObject
     public List<LevelSO> levels;
     public int currentLevel; // TODO: Made public for testing. Set to private
 
-    private void OnValidate()
-    {
-        foreach (LevelSO level in levels)
-        {
-            if (level != null)
-                level.nextScene = GetNextScene();
-        }
-    }
+    // FIXME: Buggy. Doesn't allow to recicle the same Level Asset in different Lists since next scene will change according to the list it was last validated in.
+    //private void OnValidate()
+    //{
+    //    foreach (LevelSO level in levels)
+    //    {
+    //        if (level != null)
+    //            level.nextScene = GetNextScene();
+    //    }
+    //}
 
     public LevelSO GetCurrentLevel()
     {

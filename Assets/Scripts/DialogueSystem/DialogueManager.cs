@@ -9,9 +9,22 @@ using UnityEngine;
 public class DialogueManager : Singleton<DialogueManager>
 {
     public PetDialogueHandler petDialogue;
+    
+    public DialogueSO endDialogue { get; set; }
 
-    public void SetPetDialogue(DialogueSO dialogue)
+
+    public void SetPetStartDialogue(DialogueSO dialogue)
     {
         petDialogue.dialogue.dialogueSO = dialogue;
+    }
+
+    public void SetEndDialogue(DialogueSO dialogue)
+    {
+        endDialogue = dialogue;
+    }
+
+    public void SetPetEndDialogue()
+    {
+        petDialogue.dialogue.dialogueSO = endDialogue;
     }
 }

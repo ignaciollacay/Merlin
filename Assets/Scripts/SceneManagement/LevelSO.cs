@@ -4,13 +4,19 @@
 public class LevelSO : ScriptableObject
 {
     [Header("Scene Properties")]
-    //public int levelCount; // TODO: get set? Remove? Defined by LevelSO List.
     public SceneSO scene;
 
     [Header("Scene Variable References")]
-    public InventorySpellSO assignedSpells;
     public DialogueSO startDialogue;
-    public SceneSO nextScene; // TODO: get set? Defined by LevelSO List.
+    public DialogueSO endDialogue;
+    public SceneSO nextScene; // TODO: Use get set instead. It is set by LevelSO List and should not be modified in Editor.
+
+    [Header("Dojo Specific")]
+    public InventorySpellSO assignedSpells;
+
+    [Header("Battle Specific")]
+    public EnemySOList assignedEnemies;
+
 
 
     public string GetLevelName()

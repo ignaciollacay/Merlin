@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdad67a1e7a4d64897b2556a6532760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneSO: {fileID: 11400000, guid: 22eedd460a1f8824dbf52babfda6c063, type: 2}
+  sceneSO: {fileID: 11400000, guid: de9a2d1828071417894dd76cba717806, type: 2}
 --- !u!1001 &1757355586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueSO: {fileID: 11400000, guid: f7698271bf7b8ad49ac043890d8c79d8, type: 2}
-  dialogueManager: {fileID: 1122600040103778295}
+  dialogueHandler: {fileID: 1122600040103778295}
   playOnAwake: 1
 --- !u!1 &3417313799127449368
 GameObject:
@@ -1622,7 +1622,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7882247319292107898}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6142727917711959156
 MonoBehaviour:
@@ -1757,8 +1757,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1257275798}
-  - {fileID: 385476881}
   - {fileID: 5829092818871185386}
+  - {fileID: 385476881}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
