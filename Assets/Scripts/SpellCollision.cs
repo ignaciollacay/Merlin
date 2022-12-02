@@ -11,6 +11,13 @@ public enum CharacterType
     Enemy,
     Player
 }
+
+
+// TODO: Decouple Collision from Spell Collision
+// Move everything except Particle Collision to parent AttackCollision Class
+// and inherit from it in SpellCollision, using only OnParticleCollision.
+// Allowing to reutilize the code cleanly in MeleeCollision
+// Rename class to RangedParticleCollision?
 public class SpellCollision : MonoBehaviour
 {
     public SpellSO spell;
@@ -27,7 +34,7 @@ public class SpellCollision : MonoBehaviour
     }
 
     // TODO: Should send an event, to reuse ParticleCollision. Could subscribe from the corresponding stats or controller.
-    private void SpellCollided(GameObject other)
+    public void SpellCollided(GameObject other)
     {
         CharacterStats otherStats = GetStatsFromOther(other);
         if (otherStats == null)
