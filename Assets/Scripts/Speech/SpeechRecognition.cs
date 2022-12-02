@@ -207,10 +207,13 @@ public class SpeechRecognition : MonoBehaviour
     /// </summary>
     private async void StartContinuousRecognition()
     {
-        if (phraseListEnabled.isOn)
+        if (phraseListEnabled != null)
         {
-            automaticPhraseList = true;
-            Debug.Log("Phrase List toggle On");
+            if (phraseListEnabled.isOn)
+            {
+                automaticPhraseList = true;
+                Debug.Log("Phrase List toggle On");
+            }
         }
         else
             automaticPhraseList = false;
