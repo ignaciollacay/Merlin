@@ -11,7 +11,7 @@ public class CastManager : MonoBehaviour
     public event SpellCasted OnSpellCasted;
 
     public UnityEvent<SpellSO> OnSpellCast;
-    [SerializeField] private AssessmentHandler assessmentHandler;
+    [SerializeField] private AssessmentManager assessmentHandler;
     private SpellSO spell;
 
     void Start()

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3c3515d197d4fe6bfee2a15fc9e513, type: 3}
+  m_Name: LevelSO_Dojo-L2
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSO
+  scene: {fileID: 11400000, guid: de9a2d1828071417894dd76cba717806, type: 2}
+  startDialogue: {fileID: 11400000, guid: 7355ce095d4b74a48aef1040ff3456dd, type: 2}
+  endDialogue: {fileID: 11400000, guid: cd3417922d4cd49d49e743686592df4c, type: 2}
+  nextScene: {fileID: 11400000, guid: 7a7ef1356ed644284b272c8bf0477ce7, type: 2}
+  assignedSpells: {fileID: 11400000, guid: 6cc43426daeb89547af3800c740d4254, type: 2}
+  assignedEnemies: {fileID: 0}
+  commentary: 

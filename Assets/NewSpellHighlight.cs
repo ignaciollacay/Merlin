@@ -21,12 +21,8 @@ public class NewSpellHighlight : MonoBehaviour
         // Wait until the animation of the parent ends. Otherwise it will play while hidden offscreen.
         yield return new WaitForSeconds(2); 
         vfx.Play();
-        print("vfx Playing");
         yield return new WaitUntil(() => vfx.isStopped);
-        print("vfx Stopped");
         yield return new WaitUntil(() => vfx.particleCount == 0);
-        print("VFX Count is 0");
         Destroy(gameObject);
-        print("Destroyed vfx");
     }
 }

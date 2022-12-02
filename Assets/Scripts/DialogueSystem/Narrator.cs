@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Narrator : MonoBehaviour
 {
-    public DialogueManager dialogueManager;
+    public DialogueHandler dialogueManager;
     [Header("Dialog")]
     //[SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private List<DialogueSO> dialogues;

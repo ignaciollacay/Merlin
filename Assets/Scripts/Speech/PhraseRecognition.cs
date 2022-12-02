@@ -70,13 +70,10 @@ public class PhraseRecognition : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if (onStartEnabled)
-        {
-            speechRecognition.phraseRecs.Add(this);
-            StartCoroutine(PhraseReadCoroutine());
-        }
+        speechRecognition.phraseRecs.Add(this);
+        StartCoroutine(PhraseReadCoroutine());
     }
 
     private void Update()
