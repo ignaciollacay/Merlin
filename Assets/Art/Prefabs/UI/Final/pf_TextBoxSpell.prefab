@@ -1137,7 +1137,7 @@ MonoBehaviour:
   textComponent: {fileID: 3099580869966103843}
   readPhrase: 
   words: []
-  correctColor: cyan
+  correctColor: green
   incorrectColor: red
   unreadColor: black
   fontSize: 42
