@@ -10,13 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdaa0ffe270fe47e4aff6875776703d4, type: 3}
-  m_Name: Levels
+  m_Name: Test-Trabalenguas
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 11400000, guid: adfe5bb0fe51a492e9281fe249ac9602, type: 2}
-  - {fileID: 11400000, guid: 8a0e8c241820e4dc3aa41cea5d66f8cd, type: 2}
-  - {fileID: 11400000, guid: bfc84e42ac4d94525ac7bcf267a3f202, type: 2}
-  - {fileID: 11400000, guid: 3650fc08ddd0744d3a3b3a3b2fe1ff70, type: 2}
-  - {fileID: 11400000, guid: 578b1802e6c9f469993c5a0b27c12a38, type: 2}
   - {fileID: 11400000, guid: 641a9e353f6fcba4980618f07800e50c, type: 2}
   currentLevel: 0

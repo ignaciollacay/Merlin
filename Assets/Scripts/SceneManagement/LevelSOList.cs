@@ -41,6 +41,11 @@ public class LevelSOList : ScriptableObject
         currentLevel++;
     }
 
+    public void SetLevel(int level)
+    {
+        currentLevel = level;
+    }
+
     public void ResetLevelCount()
     {
         currentLevel = 0;

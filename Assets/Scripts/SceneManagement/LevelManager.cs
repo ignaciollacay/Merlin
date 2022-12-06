@@ -78,6 +78,11 @@ public class LevelManager : Singleton<LevelManager>
         levels.ResetLevelCount();
     }
 
+    public void SetLevel(int levelCount)
+    {
+        levels.SetLevel(levelCount);
+    }
+
 #if UNITY_EDITOR
     private void OnApplicationQuit()
     {

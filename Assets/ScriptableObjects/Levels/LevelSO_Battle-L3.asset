@@ -15,7 +15,7 @@ MonoBehaviour:
   scene: {fileID: 11400000, guid: 7a7ef1356ed644284b272c8bf0477ce7, type: 2}
   startDialogue: {fileID: 0}
   endDialogue: {fileID: 11400000, guid: c2aa217d26ecdbd4ea127ece6b5409d3, type: 2}
-  nextScene: {fileID: 11400000, guid: f7e95c3345cb1e04a95bd692fb0abc69, type: 2}
+  nextScene: {fileID: 11400000, guid: d150e59eba2df414ca454c1df378b0f0, type: 2}
   assignedSpells: {fileID: 0}
   assignedEnemies: {fileID: 11400000, guid: 0e062b3fdc6914ff099df460867e30ea, type: 2}
   commentary: 
