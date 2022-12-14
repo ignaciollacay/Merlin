@@ -36,11 +36,11 @@ public class PhraseRecognition : MonoBehaviour
 
     [Header("Font Format Settings")]
     [Tooltip("Color for incorrect read words, in string format (using HTML)")]
-    [SerializeField] private string correctColor = "cyan";
+    [SerializeField] private string correctColor = "green";
     [Tooltip("Color for correct read words, in string format (using HTML)")]
     [SerializeField] private string incorrectColor = "red";
     [Tooltip("Color for unread words, in string format (using HTML)")]
-    [SerializeField] private string unreadColor = "white";
+    [SerializeField] private string unreadColor = "black";
 
     [Tooltip("Font color for current word")]
     string color;     //string for dynamic color,
@@ -70,13 +70,10 @@ public class PhraseRecognition : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if (onStartEnabled)
-        {
-            speechRecognition.phraseRecs.Add(this);
-            StartCoroutine(PhraseReadCoroutine());
-        }
+        speechRecognition.phraseRecs.Add(this);
+        StartCoroutine(PhraseReadCoroutine());
     }
 
     private void Update()
@@ -116,7 +113,7 @@ public class PhraseRecognition : MonoBehaviour
     public void SetText()
     {
         displayString = readPhrase;
-        textComponent.color = Color.white;
+        textComponent.color = Color.black;
         textComponent.text = displayString;
         wordCount = 0;
     }
@@ -136,7 +133,7 @@ public class PhraseRecognition : MonoBehaviour
         speechRecognition.StopPhraseRecognition(this);
 
         displayString = readPhrase;
-        textComponent.color = Color.cyan;
+        textComponent.color = Color.green;
         textComponent.text = displayString;
 
         StopCoroutine(PhraseReadCoroutine());
@@ -218,8 +215,8 @@ public class PhraseRecognition : MonoBehaviour
             //create a string for the phrase
             string phraseString = "";
 
-            //Add words that were read in cyan color format
-            //open cyan color format
+            //Add words that were read in green color format
+            //open green color format
             phraseString += col2;
             //Add read words;
             for (int word = 0; word < words.Length; word++)
@@ -229,14 +226,14 @@ public class PhraseRecognition : MonoBehaviour
                     phraseString += words[word] + " ";
                 }
             }
-            //close cyan color format
+            //close green color format
             phraseString += colorOut;
 
             //add current word in highlighted format
             phraseString += dynamicColor + bold + size + words[phrase] + closeFormat + " ";
 
-            //Add words that were not read yet in white color format
-            //open white color format
+            //Add words that were not read yet in black color format
+            //open black color format
             phraseString += col1;
             //add unread words
             for (int word = 0; word < words.Length; word++)
@@ -246,7 +243,7 @@ public class PhraseRecognition : MonoBehaviour
                     phraseString += words[word] + " ";
                 }
             }
-            //close white color format
+            //close black color format
             phraseString += colorOut;
 
             //Debug.Log("Phrase" + phrase + ". Generated String=" + phraseString);

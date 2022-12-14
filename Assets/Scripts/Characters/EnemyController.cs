@@ -8,12 +8,7 @@ using UnityEngine.Events;
 /// </summary>
 public class EnemyController : CharacterController
 {
-    [SerializeField] private ParticleSystem vfxAttack;
-    [SerializeField] private ParticleSystem vfxAttacked;
-
-    public float attackDelay;
-    public float vfxDelay = 0.5f;
-    public float dmgDelay = 1;
+    [SerializeField] private float attackDelay = 3;
 
     private void Start() => StartCoroutine(AttackCoroutine());
 
@@ -24,7 +19,6 @@ public class EnemyController : CharacterController
     {
         base.RecieveAttack();
         animator.SetBool("Damage", true);
-        vfxAttacked.Play();
     }
     #endregion
 
@@ -35,14 +29,11 @@ public class EnemyController : CharacterController
         AsyncAttack();
     }
 
-    async void AsyncAttack()
+    void AsyncAttack()
     {
-        await System.Threading.Tasks.Task.Delay(((int)(vfxDelay * 1000)));
         if ((!animator.GetBool("Dead")) && (!animator.GetBool("Damage")) && (animator.GetBool("Attack")))
         {
-            vfxAttack.Play();
             base.Attack();
-            //playerstats.TakeDamage(stats.damage);
         }
             
         StartCoroutine(AttackCoroutine());

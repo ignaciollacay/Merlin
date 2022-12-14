@@ -27,6 +27,7 @@ using Debug = UnityEngine.Debug;
 /// that are returned in near real-time as the speaks in the microphone.
 /// </summary>
 ///
+// TODO: Singleton Inheritance
 [DefaultExecutionOrder(-1)]
 public class SpeechRecognition : MonoBehaviour
 {
@@ -206,10 +207,13 @@ public class SpeechRecognition : MonoBehaviour
     /// </summary>
     private async void StartContinuousRecognition()
     {
-        if (phraseListEnabled.isOn)
+        if (phraseListEnabled != null)
         {
-            automaticPhraseList = true;
-            Debug.Log("Phrase List toggle On");
+            if (phraseListEnabled.isOn)
+            {
+                automaticPhraseList = true;
+                Debug.Log("Phrase List toggle On");
+            }
         }
         else
             automaticPhraseList = false;
@@ -330,10 +334,14 @@ public class SpeechRecognition : MonoBehaviour
         // Used to update results on screen during updates
         lock (threadLocker)
         {
-            DebugText.text = debugString;
-            ErrorText.text = errorString;
-            RecognizedText.text = recognizedString;
-            RecognizingText.text = recognizingString;
+            if (DebugText != null) 
+                DebugText.text = debugString;
+            if (ErrorText != null)
+                ErrorText.text = errorString;
+            if (RecognizedText != null) 
+                RecognizedText.text = recognizedString;
+            if (RecognizingText != null)
+                RecognizingText.text = recognizingString;
         }
     }
 

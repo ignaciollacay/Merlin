@@ -11,6 +11,7 @@ public class InventorySpells : MonoBehaviour // Use SO instead?
 
 
     private void Awake() => counter = GetComponent<Counter>();
+
     public SpellSO GetCurrentSpell() => inventory.spells[counter.Count];
     public SpellSO GetNextSpell() => inventory.spells[counter.Next(inventory.spells.Count)];
     public SpellSO GetPreviousSpell() => inventory.spells[counter.Next(inventory.spells.Count)];
@@ -36,6 +37,11 @@ public class InventorySpells : MonoBehaviour // Use SO instead?
     {
         inventory.spells = new List<SpellSO>();
         counter.Count = 0;
+    }
+
+    public void SetInventory(InventorySpellSO inventorySpellSO)
+    {
+        inventory = inventorySpellSO;
     }
 
 #if UNITY_EDITOR

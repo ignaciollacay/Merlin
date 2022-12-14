@@ -1,25 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+// TODO: Se confunde un poco con el Manager en funcionalidad. Por momentos esta manejando el dialogo...
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private DialogueSO dialogueSO; // public? Do I want to change/assign it by code?
-    [SerializeField] private bool playOnAwake;
+    public DialogueSO dialogueSO; // TODO: make private, add method GetDialogues(), and refactor DialogueManager;
 
-    public void TriggerDialogue()
+    [SerializeField] private DialogueHandler dialogueHandler;
+    [SerializeField] private bool playOnAwake; // Control only from scene manager or timeline?
+
+    public void TriggerStartDialogue()
     {
-        DialogueManager.Instance.StartDialogue(dialogueSO); // FIXME: Trigger by event on Spell Learned. 
-                                                            // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
+        dialogueHandler.StartDialogue(dialogueSO);
     }
-    public void TriggerDialogue(DialogueSO newDialogue)
+    public void TriggerNextDialogue()
     {
-        DialogueManager.Instance.StartDialogue(newDialogue); // FIXME: Trigger by event on Spell Learned. 
-                                                            // TODO: How do I define the dialogue to play? I need a inventory of dialogues.
+        dialogueHandler.DisplayNextSentence();
     }
+
+    public void SetDialogue(DialogueSO newDialogueSO)
+    {
+        dialogueSO = newDialogueSO;
+    }
+
+    public void StartNewDialogue(DialogueSO newDialogueSO)
+    {
+        SetDialogue(newDialogueSO);
+        TriggerStartDialogue();
+    }
+
     private void Awake()
     {
         if (playOnAwake)
-            TriggerDialogue();
+            TriggerStartDialogue();
     }
 }
