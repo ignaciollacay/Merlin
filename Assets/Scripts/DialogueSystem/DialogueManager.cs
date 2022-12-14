@@ -1,56 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-[DefaultExecutionOrder(-500)]
-public class DialogueManager : MonoBehaviour
+/// <summary>
+/// Stores reference to multiple instances of dialogues in each scene withing a Singleton Instance
+/// Allows to change the dialogueSO reference in each level via the LevelManager.
+/// </summary>
+public class DialogueManager : Singleton<DialogueManager>
 {
-    [SerializeField] private Text dialogue;
-    [Tooltip("Dialogue Button to add DisplayNextSentence On Click")] // TODO: Is there only one dialogue button? Maybe make list? Or join canvases?
-    [SerializeField] public Button button; // Button is actually in box GO, could use GetComponent. But makes code less reusable.
+    public PetDialogueHandler petDialogue;
+    
+    public DialogueSO endDialogue { get; set; }
 
-    private Queue<string> sentences = new Queue<string>();
 
-    public UnityEvent DialogueEnd;
-
-    public static DialogueManager Instance;
-
-    public void Awake()
+    public void SetPetStartDialogue(DialogueSO dialogue)
     {
-        Instance = this;
-        //button.onClick.AddListener(DisplayNextSentence); 
-        //FIXME: Disabling line obove
-        //Listener Added On Scene... Why is it duplicated
+        petDialogue.dialogue.dialogueSO = dialogue;
     }
 
-    public void StartDialogue(DialogueSO dialogue)
+    public void SetEndDialogue(DialogueSO dialogue)
     {
-        //sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentence();
+        endDialogue = dialogue;
     }
 
-    /// <summary>
-    /// Run from button on click event. Shows the next line if sentences remain, else runs end dialogue.
-    /// </summary>
-    public void DisplayNextSentence()
+    public void SetPetEndDialogue()
     {
-        if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-
-        string sentence = sentences.Dequeue();
-        dialogue.text = sentence;
+        petDialogue.dialogue.dialogueSO = endDialogue;
     }
-
-    private void EndDialogue() => DialogueEnd?.Invoke();
 }

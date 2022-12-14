@@ -23,6 +23,7 @@ public class SpellSO : ScriptableObject
 
     [Tooltip("Spell Phrase, without the ingredients")]
     public string SpellString;
+    [TextArea(5, 10)]
     public string Spell;
     private string spell;
     [Tooltip("Input Items required for spell")]

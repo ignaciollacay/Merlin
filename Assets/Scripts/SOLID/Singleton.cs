@@ -1,45 +1,62 @@
 using UnityEngine;
 
 /// <summary>
-/// Inherit to create a single, global-accesible instance of a class, available at all times.
+/// Inherit to get a single, global-accesible instance of a class, available at all times.
+/// It will create a new instance if a single instance does not exist in the scene.
 /// </summary>
 /// <typeparam name="T">Class name which inherits from singleton</typeparam>
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance = null;
-
-    public static T Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<T>();
-
-                if (_instance == null)
-                {
-                    var singletonObj = new GameObject();
-                    singletonObj.name = typeof(T).ToString();
-                    _instance = singletonObj.AddComponent<T>();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static T Instance { get; private set; }
 
     public virtual void Awake()
     {
-        if (_instance != null)
+        Instance = GetSingleInstance();
+
+        //DontDestroyOnLoad(Instance.gameObject);
+    }
+
+
+    private static T GetSingleInstance()
+    {
+        T[] instances = FindObjectsOfType<T>();
+
+        if (instances.Length == 1)
         {
-            Destroy(gameObject);
-            return; 
+            return GetExistingInstance(instances);
         }
+        else if (instances.Length == 0)
+        {
+            return CreateNewInstance();
+        }
+        else // instances.Length > 1)
+        {
+            DestroyAllInstances(instances);
+            return CreateNewInstance();
+        }
+    }
 
-        _instance = GetComponent<T>();
+    private static T GetExistingInstance(T[] instances)
+    {
+        //Debug.Log("A Singleton Instance was found in the scene");
+        return instances[0];
+    }
 
-        DontDestroyOnLoad(gameObject);
+    private static T CreateNewInstance()
+    {
+        Debug.LogWarning("Creating a new Singleton Instance");
+        var singletonObj = new GameObject();
+        singletonObj.name = typeof(T).ToString();
+        T instance = singletonObj.AddComponent<T>();
+        return instance;
+    }
 
-        if (_instance == null)
-            return;
+    private static void DestroyAllInstances(T[] instances)
+    {
+        Debug.LogError("Multiple instances were found and will be destroyed.");
+        foreach (var instance in instances)
+        {
+            Destroy(instance);
+        }
     }
 }

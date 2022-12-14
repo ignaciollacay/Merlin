@@ -18,7 +18,10 @@ public class InventoryDialogueSO2 : Inventory<InventoryDialogueSO>
 {
 
 }
-
+public class InventorySceneSO2 : Inventory<InventoryDialogueSO>
+{
+    
+}
 public class Inventory<T> : ScriptableObject where T : ScriptableObject
 {
     public List<T> list;
