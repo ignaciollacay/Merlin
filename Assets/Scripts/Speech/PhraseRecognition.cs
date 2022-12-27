@@ -54,14 +54,14 @@ public class PhraseRecognition : MonoBehaviour
 
     public UnityEvent OnPhraseRecognition;
 
-    private SpeechRecognition speechRecognition;
+    private AzureSpeechRecognition speechRecognition;
 
     [SerializeField] private bool onStartEnabled = true;
 
 
     void Awake()
     {
-        speechRecognition = SpeechRecognition.Instance;
+        speechRecognition = AzureSpeechRecognition.Instance;
 
         if(onStartEnabled)
         {
@@ -83,7 +83,7 @@ public class PhraseRecognition : MonoBehaviour
 
     private void OnDisable()
     {
-        SpeechRecognition.Instance.phraseRecs.Remove(this);
+        AzureSpeechRecognition.Instance.phraseRecs.Remove(this);
         StopCoroutine(PhraseReadCoroutine());
     }
 

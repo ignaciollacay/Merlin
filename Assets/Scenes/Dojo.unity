@@ -2788,7 +2788,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019836993}
-  - component: {fileID: 2019836992}
+  - component: {fileID: 2019836994}
+  - component: {fileID: 2019836995}
   m_Layer: 5
   m_Name: SpeechManager
   m_TagString: Untagged
@@ -2796,30 +2797,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2019836992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019836991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b553f34fcdd1a4aa2dd64375f2b3cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RecognizingText: {fileID: 0}
-  RecognizedText: {fileID: 0}
-  ErrorText: {fileID: 0}
-  DebugText: {fileID: 0}
-  phraseRecs: []
-  SpeechServiceAPIKey: 65fcf04b1c36450aa9d9d8d62b5a6b00
-  SpeechServiceRegion: eastus
-  fromLanguage: es-AR
-  automaticPhraseList: 0
-  customPhraseList: 0
-  phraseListEnabled: {fileID: 0}
-  customKeywords: []
 --- !u!224 &2019836993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2840,6 +2817,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2019836994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019836991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f217616079a9a74489a1ae3cd9178787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModelPath: vosk-model-small-es-0.42.zip
+  VoiceProcessor: {fileID: 2019836995}
+  MaxAlternatives: 3
+  MaxRecordLength: 5
+  AutoStart: 1
+  KeyPhrases: []
+--- !u!114 &2019836995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019836991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf39116cc6db44d47b2eaf534e0f6682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MicrophoneIndex: 0
+  _minimumSpeakingSampleValue: 0.05
+  _silenceTimer: 1
+  _autoDetect: 0
 --- !u!1 &2053262386
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,22 +3050,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2019836992}
+      objectReference: {fileID: 0}
     - target: {fileID: 814475921759333591, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2019836992}
+      objectReference: {fileID: 0}
     - target: {fileID: 814475921759333591, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2019836992}
+      objectReference: {fileID: 0}
     - target: {fileID: 814475921759333591, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2019836992}
+      objectReference: {fileID: 0}
     - target: {fileID: 814475922643541144, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: m_Name
