@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Vosk;
 
-public class VoskSpeechToText : MonoBehaviour
+public class VoskSpeechToText : Singleton<VoskSpeechToText>
 {
 	[Tooltip("Location of the model, relative to the Streaming Assets folder.")]
 	public string ModelPath = "vosk-model-small-ru-0.22.zip";
@@ -21,10 +21,10 @@ public class VoskSpeechToText : MonoBehaviour
 
 	public VoiceProcessor VoiceProcessor;
 	[Tooltip("The Max number of alternatives that will be processed.")]
-	public int MaxAlternatives = 3;
+	public int MaxAlternatives = 1;
 
 	[Tooltip("How long should we record before restarting?")]
-	public float MaxRecordLength = 5;
+	public float MaxRecordLength = 5; // TODO: Define and set initialization value. 5 seconds is too short adhoc
 
 	[Tooltip("Should the recognizer start when the application is launched?")]
 	public bool AutoStart = true;

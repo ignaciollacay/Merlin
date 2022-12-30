@@ -9,15 +9,28 @@ using UnityEngine.UI;
 
 public class SpeechToTextUI : MonoBehaviour
 {
-    // TODO: DELETE AFTER TESTING
-    public bool displayPartial = true;
-    public bool displayFinal = true;
+    [SerializeField]
+    private VoskSpeechToText voskSpeechToText;
+    [SerializeField, Tooltip("El componente de texto en el cual mostrar el texto a leer y los resultados del reconocimiento de voz")]
+    private TextMeshProUGUI textGUI;
 
-    [SerializeField] private VoskSpeechToText voskSpeechToText; // TODO: Singleton?
-    [SerializeField] private TextMeshProUGUI textGUI;
-    [SerializeField] private bool SetOnStart;
+    [Header("Colors")]
+    [SerializeField, Tooltip("El color del texto que no fue leído aún")]
+    private Color unreadColor = Color.black;
+    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como CORRECTO en el resultado PARCIAL del reconocimiento de voz")]
+    private Color partialCorrect = new Color(0, 0.33f, 0);
+    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como CORRECTO en el resultado FINAL del reconocimiento de voz")]
+    private Color finalCorrect = new Color(0, 0.66f, 0);
+    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como INCORRECTO en el resultado PARCIAL del reconocimiento de voz")]
+    private Color partialIncorrect = new Color(0.33f, 0, 0);
+    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como INCORRECTO en el resultado FINAL del reconocimiento de voz")]
+    private Color finalIncorrect = new Color(0.66f, 0, 0);
 
-    private string _textToRead = "Estoy probando si funciona bien el nuevo código de reconocimiento de voz y la evaluación de la lectura";
+    [Header("Event")]
+    public UnityEvent OnPhraseWellRead;
+
+
+    private string _textToRead;
     private string _displayedText;
 
     // Belongs to another class?
@@ -26,33 +39,11 @@ public class SpeechToTextUI : MonoBehaviour
     private string[] _wordsToRead;
 
 
-    [Header("Colors")]
-    [SerializeField] private Color unreadColor = Color.black;
-    [SerializeField] private Color partialCorrect = new Color(0, 0.33f, 0);
-    [SerializeField] private Color partialIncorrect = new Color(0.33f, 0, 0);
-    [SerializeField] private Color finalCorrect = new Color(0, 0.66f, 0);
-    [SerializeField] private Color finalIncorrect = new Color(0.66f, 0, 0);
-
-    public UnityEvent OnPhraseWellRead;
-
-    private void Awake()
-    {
-        if (SetOnStart)
-        {
-            SetTextToRead();
-            SetWordsToRead();
-            ResetWordCount();
-            StartCoroutine(WaitForAllWordsToBeRead());
-        }
-
-        
-    }
-
+    // Could extract as public method to subscribe/unsubscribe
+    // but it is already managed by toggle recording in VoskSpeechToText
     private void OnEnable()
     {
-        if (displayPartial)
         voskSpeechToText.OnTranscriptionPartialResult += DisplayPartialResult;
-        if (displayFinal)
         voskSpeechToText.OnTranscriptionResult += DisplayFinalResult;
     }
     private void OnDisable()
@@ -66,10 +57,61 @@ public class SpeechToTextUI : MonoBehaviour
         textGUI.text = _displayedText;
     }
 
+
+    public void StartSpeechToTextAssessment(SpellSO spellSO)
+    {
+        SetTextToReadFromSpell(spellSO);
+        DisplayTextToRead();
+        SetWordsToRead();
+        ResetWordCount();
+        StartCoroutine(WaitForAllWordsToBeRead());
+    }
+
+    // Should recieve a string, but event uses SpellSO Parameter. Doesn't seem necessary to make a new event only for this.
+    private void SetTextToReadFromSpell(SpellSO spellSO)
+    {
+        _textToRead = spellSO.Spell;
+    }
+    private void DisplayTextToRead()
+    {
+        _displayedText = HtmlUtility.ToColor(_textToRead, unreadColor);
+    }
+
     private void SetWordsToRead()
     {
         _wordsToRead = _textToRead.Split();
     }
+
+    private void ResetWordCount()
+    {
+        _partialWordCount = 0;
+        _finalWordCount = 0;
+    }
+
+    private IEnumerator WaitForAllWordsToBeRead()
+    {
+        yield return new WaitUntil(IsRead);
+        EndSpeechToTextAssessment();
+    }
+
+    private bool IsRead()
+    {
+        return _finalWordCount == _wordsToRead.Length;
+    }
+
+    private void EndSpeechToTextAssessment()
+    {
+        StopCoroutine(WaitForAllWordsToBeRead());
+        OnPhraseWellRead?.Invoke(); // TODO: Toggle Recording Off
+        voskSpeechToText.ToggleRecording();
+        _displayedText = HtmlUtility.ToColor(_textToRead, finalCorrect);
+
+        // TODO: Delete after testing. Run from Toggle Recording in Vosk Speech To Text. 
+        //voskSpeechToText.OnTranscriptionPartialResult -= DisplayPartialResult;
+        //voskSpeechToText.OnTranscriptionResult -= DisplayFinalResult;
+    }
+
+
 
     // TODO: Refactor both Displays into One. See block comment attempt below.
     // Display is actually within the if statement.
@@ -206,6 +248,15 @@ public class SpeechToTextUI : MonoBehaviour
         return formattedString;
     }
 
+
+    // Allow to skip using speech during tests (both in editor or development builds. Called on button click
+    public void SkipSpeechToTextAssessment()
+    {
+        EndSpeechToTextAssessment();
+    }
+
+
+
     //// TODO: Could run both events to CompareSpeech
     //// using Partial bool to define HighlightWords Parameters.
     //private bool CompareSpeechWithWord(string recognizedSpeech)
@@ -246,60 +297,7 @@ public class SpeechToTextUI : MonoBehaviour
     //        _displayedText = HighlightWords(_finalWordCount, false);
     //        _partialWordCount++;
     //    }
-    //}
-
-
-
-
-    private void DisplayNewText(string newText)
-    {
-        _displayedText = newText;
-    }
-
-    private void SetTextToRead()
-    {
-        _displayedText = HtmlUtility.ToColor(_textToRead, unreadColor);
-    }
-
-    private void ResetWordCount()
-    {
-        _partialWordCount = 0;
-        _finalWordCount = 0;
-    }
-
-    private IEnumerator WaitForAllWordsToBeRead()
-    {
-        //while (_partialWordCount > _wordsToRead.Length)
-        //{
-        //    yield return null;
-        //}
-
-        yield return new WaitUntil(IsRead);
-        AllWordsWereRead();
-    }
-
-    private void AllWordsWereRead()
-    {
-        voskSpeechToText.OnTranscriptionPartialResult -= DisplayPartialResult;
-        voskSpeechToText.OnTranscriptionResult -= DisplayFinalResult;
-
-        _displayedText = HtmlUtility.ToColor(_textToRead, finalCorrect);
-
-        OnPhraseWellRead?.Invoke();
-    }
-
-    private bool IsRead()
-    {
-        if (_finalWordCount == _wordsToRead.Length)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-    }
+    //}    
 }
 
 // TODO: replace with HighlightedWords, and use List.
