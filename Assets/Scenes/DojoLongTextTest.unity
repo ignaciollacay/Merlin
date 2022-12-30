@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3036,7 +3036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f217616079a9a74489a1ae3cd9178787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModelPath: vosk-model-small-ru-0.22.zip
+  ModelPath: vosk-model-small-es-0.42.zip
   VoiceProcessor: {fileID: 2019836994}
   MaxAlternatives: 1
   MaxRecordLength: 5
@@ -3087,6 +3087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels: {fileID: 11400000, guid: 610f7fb047b894a798df981267cda230, type: 2}
+  overrideLevel: 0
 --- !u!1 &586978373182205007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 245661895624390967, guid: 25ad7f1dd4a19e14babe51b1e7767842,
@@ -3637,6 +3638,11 @@ PrefabInstance:
       propertyPath: DialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Playables.PlayableDirector, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
+        type: 3}
+      propertyPath: voskSpeechToText
+      value: 
+      objectReference: {fileID: 2019836995}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[0].m_Target

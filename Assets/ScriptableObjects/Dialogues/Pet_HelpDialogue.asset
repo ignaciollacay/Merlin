@@ -15,5 +15,5 @@ MonoBehaviour:
   character: Gato
   id: 1
   sentences:
-  - "Descubre un nuevo hechizo!\n\nMant\xE9n pulsado el bot\xF3n del micr\xF3fono
-    abajo a la izquierda y lee en voz alta la frase del hechizo."
+  - "Descubre un nuevo hechizo!\n\nPulsa el bot\xF3n del micr\xF3fono abajo a la
+    izquierda y lee en voz alta la frase del hechizo."

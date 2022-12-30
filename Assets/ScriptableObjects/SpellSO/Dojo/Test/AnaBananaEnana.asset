@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Cambia de forma
   SpellString: 
-  Spell: "Ana tiene una banana que le regal\xF3 una enana a cambio de una manzana.
-    La banana de la enana no le gust\xF3 nada a Ana y con la manzana de Ana se relami\xF3
+  Spell: "Ana tiene una banana que le\r regal\xF3 una enana a cambio\r de una manzana.\r
+    La banana de la enana no le\r gust\xF3 nada a Ana y la manzana de Ana\r se comi\xF3
     la enana."
   ingredients:
   - {fileID: 0}
