@@ -54,7 +54,7 @@ public class PhraseRecognition : MonoBehaviour
 
     public UnityEvent OnPhraseRecognition;
 
-    private AzureSpeechRecognition speechRecognition;
+    private AzureSpeechRecognition speechRecognition; // TODO: Refactor. Used to add phrases to vocabulary.
 
     [SerializeField] private bool onStartEnabled = true;
 

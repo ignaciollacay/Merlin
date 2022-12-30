@@ -126,7 +126,7 @@ public class VoskSpeechToText : MonoBehaviour
 	//Can be called from a script or a GUI button to start detection.
 	public void ToggleRecording()
 	{
-		Debug.Log("Toogle Recording");
+		Debug.Log("Toggle Recording");
 		if (!VoiceProcessor.IsRecording)
 		{
 			Debug.Log("Start Recording");
