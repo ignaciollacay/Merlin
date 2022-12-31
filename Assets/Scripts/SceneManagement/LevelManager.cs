@@ -93,7 +93,6 @@ public class LevelManager : Singleton<LevelManager>
     private void OnApplicationQuit()
     {
         ResetLevelCount();
-        overrideLevel = 0;
     }
 #endif
 }

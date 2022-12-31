@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,8 @@ public class VoskResultText : MonoBehaviour
 
         previousResults = previousResults + " " + resultString; // Add new text result to previous text results
         finalResult = AddRichTextTags(previousResults, finalColor); // Display recognized text result
+
+        StartCoroutine(WaitResetText());
     }
 
     public string AddRichTextTags(string text, Color color)
@@ -55,5 +58,20 @@ public class VoskResultText : MonoBehaviour
         string formattedString = openTag + text + closeTag;
 
         return formattedString;
+    }
+
+    public void ResetText()
+    {
+        ResultText.text = "";
+        finalResult = "";
+        partialResult = "";
+        previousResults = "";
+        ResultText.text = "";
+    }
+
+    private IEnumerator WaitResetText()
+    {
+        yield return new WaitForSeconds(1f);
+        ResetText();
     }
 }

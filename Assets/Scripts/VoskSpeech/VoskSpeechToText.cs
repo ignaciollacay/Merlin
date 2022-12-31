@@ -15,11 +15,11 @@ using Vosk;
 public class VoskSpeechToText : Singleton<VoskSpeechToText>
 {
 	[Tooltip("Location of the model, relative to the Streaming Assets folder.")]
-	[SerializeField] private string ModelPath = "vosk-model-small-es-0.42.zip";
+	public string ModelPath = "vosk-model-small-ru-0.22.zip";
 
 	[Tooltip("The source of the microphone input.")]
-	public VoiceProcessor VoiceProcessor;
 
+	public VoiceProcessor VoiceProcessor;
 	[Tooltip("The Max number of alternatives that will be processed.")]
 	public int MaxAlternatives = 1;
 
