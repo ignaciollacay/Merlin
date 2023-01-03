@@ -34,7 +34,6 @@ public class SpeechToTextUI : MonoBehaviour
     private string _displayedText;
 
     // Belongs to another class?
-    private int _partialWordCount; // Added so that counter increase doesn't result in formatting as final
     private int _finalWordCount;
     private string[] _wordsToRead;
 
@@ -84,7 +83,7 @@ public class SpeechToTextUI : MonoBehaviour
 
     private void ResetWordCount()
     {
-        _partialWordCount = 0;
+        //_partialWordCount = 0;
         _finalWordCount = 0;
     }
 
@@ -123,6 +122,8 @@ public class SpeechToTextUI : MonoBehaviour
         if (string.IsNullOrEmpty(recognizedWords[0]))
             return;
 
+        int _partialWordCount = _finalWordCount; // Added so that counter increase doesn't result in formatting as final
+
         for (int i = 0; i < recognizedWords.Length; i++) // Compares each recognized word to the expected word. Expected word = first word that wasn't read yet in the TextToRead
         {
             // Using Comparison instead of Equality to ignore accents.
@@ -130,7 +131,8 @@ public class SpeechToTextUI : MonoBehaviour
             {
                 // Update TextGUI to display Partial Result as Correct
                 _displayedText = HighlightWords(_partialWordCount, true, true);
-                _partialWordCount++; 
+                _partialWordCount++;
+                Debug.Log("Partial Word Count " + _partialWordCount);
             }
             else
             {
@@ -155,7 +157,7 @@ public class SpeechToTextUI : MonoBehaviour
             {
                 _displayedText = HighlightWords(_finalWordCount, true, false); // Update TextGUI to display Partial Result as Correct
                 _finalWordCount++;
-                _partialWordCount = _finalWordCount;
+                Debug.Log("Final Word Count " + _finalWordCount);
             }
             else
             {
@@ -176,7 +178,8 @@ public class SpeechToTextUI : MonoBehaviour
         string recognizedPhrase = recognitionResult.Phrases[0].Text;
         string[] recognizedWords = recognizedPhrase.Split();
 
-        Debug.Log("RecognizedSpeech=" + recognizedPhrase + " / Result=" + recognitionResult.Partial);
+        if (!string.IsNullOrEmpty(recognizedPhrase))
+            Debug.Log("RecognizedSpeech=" + recognizedPhrase + " / Result=" + recognitionResult.Partial);
 
         return recognizedWords;
     }
@@ -212,14 +215,18 @@ public class SpeechToTextUI : MonoBehaviour
         //Debug.Log("correctFinalWords=" + correctFinalWords + " / FinalWordCount="+_finalWordCount);
 
         // Highlight correct partial results
-        string correctPartialWords = "";
-        for (int i = 0; i < _wordsToRead.Length; i++){
-            if (i >= _finalWordCount && i < _partialWordCount) // FIXME: Problem with counter? First Word disappears.
-                correctPartialWords += _wordsToRead[i] + " ";
+        if (isPartial)
+        {
+            string correctPartialWords = "";
+            for (int i = 0; i < _wordsToRead.Length; i++)
+            {
+                if (i >= _finalWordCount && i < currentWordCount) // FIXME: Problem with counter? First Word disappears.
+                    correctPartialWords += _wordsToRead[i] + " ";
+            }
+            if (!string.IsNullOrEmpty(correctPartialWords))
+                formattedString += HtmlUtility.ToColor(correctPartialWords, partialCorrect);
+            //Debug.Log("correctPartialWords=" + correctPartialWords + " / PartialWordCount=" + _partialWordCount);
         }
-        if (!string.IsNullOrEmpty(correctPartialWords))
-            formattedString += HtmlUtility.ToColor(correctPartialWords, partialCorrect);
-        //Debug.Log("correctPartialWords=" + correctPartialWords + " / PartialWordCount=" + _partialWordCount);
 
         // Highlight current read word according to result
         string currentWord = _wordsToRead[currentWordCount];
