@@ -7,39 +7,36 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+// Sets the text to be read
+// Recieves Speech To Text Result
+// Compares the text to be read with Speech To Text result
+// Updates the color of the text with different color for correct or incorrect check
+
 public class SpeechToTextUI : MonoBehaviour
 {
-    [SerializeField]
-    private VoskSpeechToText voskSpeechToText;
-    [SerializeField, Tooltip("El componente de texto en el cual mostrar el texto a leer y los resultados del reconocimiento de voz")]
-    private TextMeshProUGUI textGUI;
-
+    [Header("References")]
+    [SerializeField] private VoskSpeechToText voskSpeechToText;
+    [SerializeField] private TextMeshProUGUI textGUI;
     [Header("Colors")]
-    [SerializeField, Tooltip("El color del texto que no fue leído aún")]
-    private Color unreadColor = Color.black;
-    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como CORRECTO en el resultado PARCIAL del reconocimiento de voz")]
-    private Color partialCorrect = new Color(0, 0.33f, 0);
-    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como CORRECTO en el resultado FINAL del reconocimiento de voz")]
-    private Color finalCorrect = new Color(0, 0.66f, 0);
-    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como INCORRECTO en el resultado PARCIAL del reconocimiento de voz")]
-    private Color partialIncorrect = new Color(0.33f, 0, 0);
-    [SerializeField, Tooltip("El color del texto que fue leido y evaluado como INCORRECTO en el resultado FINAL del reconocimiento de voz")]
-    private Color finalIncorrect = new Color(0.66f, 0, 0);
-
+    [SerializeField] private Color unreadColor = Color.black;
+    [SerializeField] private Color partialCorrect = new Color(0, 0.33f, 0);
+    [SerializeField] private Color finalCorrect = new Color(0, 0.66f, 0);
+    [SerializeField] private Color partialIncorrect = new Color(0.33f, 0, 0);
+    [SerializeField] private Color finalIncorrect = new Color(0.66f, 0, 0);
     [Header("Event")]
     public UnityEvent OnPhraseWellRead;
-
 
     private string _textToRead;
     private string _displayedText;
 
-    // Belongs to another class?
     private int _finalWordCount;
     private string[] _wordsToRead;
 
+    private void Update()
+    {
+        textGUI.text = _displayedText;
+    }
 
-    // Could extract as public method to subscribe/unsubscribe
-    // but it is already managed by toggle recording in VoskSpeechToText
     private void OnEnable()
     {
         voskSpeechToText.OnTranscriptionPartialResult += DisplayPartialResult;
@@ -51,66 +48,23 @@ public class SpeechToTextUI : MonoBehaviour
         voskSpeechToText.OnTranscriptionResult -= DisplayFinalResult;
     }
 
-    private void Update()
+    public void StartNewSpeechToTextAssessment(string textToRead)
     {
-        textGUI.text = _displayedText;
-    }
-
-
-    public void StartSpeechToTextAssessment(SpellSO spellSO)
-    {
-        SetTextToReadFromSpell(spellSO);
-        DisplayTextToRead();
-        SetWordsToRead();
-        ResetWordCount();
-        StartCoroutine(WaitForAllWordsToBeRead());
-    }
-
-    // Should recieve a string, but event uses SpellSO Parameter. Doesn't seem necessary to make a new event only for this.
-    private void SetTextToReadFromSpell(SpellSO spellSO)
-    {
-        _textToRead = spellSO.Spell;
-    }
-    private void DisplayTextToRead()
-    {
+        _textToRead = textToRead;
         _displayedText = HtmlUtility.ToColor(_textToRead, unreadColor);
-    }
-
-    private void SetWordsToRead()
-    {
-        _wordsToRead = _textToRead.Split();
-    }
-
-    private void ResetWordCount()
-    {
-        //_partialWordCount = 0;
+        _wordsToRead = GetWordsToRead();
         _finalWordCount = 0;
+        StartCoroutine(EndSpeechToTextAssessment());
     }
 
-    private IEnumerator WaitForAllWordsToBeRead()
+    private IEnumerator EndSpeechToTextAssessment()
     {
-        yield return new WaitUntil(IsRead);
-        EndSpeechToTextAssessment();
-    }
+        yield return new WaitUntil(AllWordsAreRead);
 
-    private bool IsRead()
-    {
-        return _finalWordCount == _wordsToRead.Length;
-    }
-
-    private void EndSpeechToTextAssessment()
-    {
-        StopCoroutine(WaitForAllWordsToBeRead());
-        OnPhraseWellRead?.Invoke(); // TODO: Toggle Recording Off
+        OnPhraseWellRead?.Invoke();
         voskSpeechToText.ToggleRecording();
         _displayedText = HtmlUtility.ToColor(_textToRead, finalCorrect);
-
-        // TODO: Delete after testing. Run from Toggle Recording in Vosk Speech To Text. 
-        //voskSpeechToText.OnTranscriptionPartialResult -= DisplayPartialResult;
-        //voskSpeechToText.OnTranscriptionResult -= DisplayFinalResult;
     }
-
-
 
     // TODO: Refactor both Displays into One. See block comment attempt below.
     // Display is actually within the if statement.
@@ -291,8 +245,15 @@ public class SpeechToTextUI : MonoBehaviour
         EndSpeechToTextAssessment();
     }
 
+    private string[] GetWordsToRead()
+    {
+        return _textToRead.Split();
+    }
 
-
+    private bool AllWordsAreRead()
+    {
+        return _finalWordCount == _wordsToRead.Length;
+    }
     //// TODO: Could run both events to CompareSpeech
     //// using Partial bool to define HighlightWords Parameters.
     //private bool CompareSpeechWithWord(string recognizedSpeech)
@@ -381,27 +342,4 @@ public class HighlightedWord
     public Color FinalCorrect;
     public Color FinalIncorrect;
     public Color Unread;
-}
-
-public static class HtmlUtility
-{
-    public static string ToColor(string text, Color color)
-    {
-        string openTag = "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">";
-        string closeTag = "</color>";
-
-        string formattedString = openTag + text + closeTag;
-
-        return formattedString;
-    }
-
-    public static string ToBold(string text)
-    {
-        string openTag = "<b>";
-        string closeTag = "</b>";
-
-        string formattedString = openTag + text + closeTag;
-
-        return formattedString;
-    }
 }
