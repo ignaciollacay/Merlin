@@ -116,7 +116,7 @@ public class SpeechToTextUI : MonoBehaviour
     // Display is actually within the if statement.
     private void DisplayPartialResult(string recognizedSpeech)
     {
-        string[] recognizedWords = SpeechToWords(recognizedSpeech);
+        string[] recognizedWords = GetFirstResultWords(recognizedSpeech);
 
         // Ignore empty results (why are they even sent?)
         if (string.IsNullOrEmpty(recognizedWords[0]))
@@ -144,7 +144,7 @@ public class SpeechToTextUI : MonoBehaviour
 
     private void DisplayFinalResult(string recognizedSpeech)
     {
-        string[] recognizedWords = SpeechToWords(recognizedSpeech);
+        string[] recognizedWords = GetFirstResultWords(recognizedSpeech);
 
 
         if (string.IsNullOrEmpty(recognizedWords[0]))
@@ -161,7 +161,24 @@ public class SpeechToTextUI : MonoBehaviour
             }
             else
             {
-                _displayedText = HighlightWords(_finalWordCount, false, false); // Update TextGUI to display Partial Result as Correct
+                // Check Next Alternative.
+                string[] recognizedWordsAlternative = GetSecondResultWords(recognizedSpeech);
+
+                Debug.Log("Expected Word=" + _wordsToRead[_finalWordCount] + " didnt match first alternative word=" + recognizedWords[i] +
+                    "Testing next alternative=" + recognizedWordsAlternative[i]);
+
+                if (string.Compare(_wordsToRead[_finalWordCount], recognizedWordsAlternative[i], CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
+                {
+                    Debug.Log("Matched alternative");
+                    _displayedText = HighlightWords(_finalWordCount, true, false); // Update TextGUI to display Partial Result as Correct
+                    _finalWordCount++;
+                    Debug.Log("Final Word Count " + _finalWordCount);
+                }
+                else
+                {
+                    Debug.Log("No Match");
+                    _displayedText = HighlightWords(_finalWordCount, false, false); // Update TextGUI to display Partial Result as Correct
+                }
             }
         }
     }
@@ -172,7 +189,7 @@ public class SpeechToTextUI : MonoBehaviour
     // Read (Final Results, Partial Results, Current), Unread
     // Current color will vary according to match result
 
-    private static string[] SpeechToWords(string recognizedSpeech)
+    private static string[] GetFirstResultWords(string recognizedSpeech)
     {
         var recognitionResult = new RecognitionResult(recognizedSpeech);
         string recognizedPhrase = recognitionResult.Phrases[0].Text;
@@ -180,6 +197,18 @@ public class SpeechToTextUI : MonoBehaviour
 
         if (!string.IsNullOrEmpty(recognizedPhrase))
             Debug.Log("RecognizedSpeech=" + recognizedPhrase + " / Result=" + recognitionResult.Partial);
+
+        return recognizedWords;
+    }
+
+    private static string[] GetSecondResultWords(string recognizedSpeech)
+    {
+        var recognitionResult = new RecognitionResult(recognizedSpeech);
+        string recognizedPhrase = recognitionResult.Phrases[1].Text;
+        string[] recognizedWords = recognizedPhrase.Split();
+
+        if (!string.IsNullOrEmpty(recognizedPhrase))
+            Debug.Log("ALTERNATIVE RecognizedSpeech=" + recognizedPhrase + " / Result=" + recognitionResult.Partial);
 
         return recognizedWords;
     }

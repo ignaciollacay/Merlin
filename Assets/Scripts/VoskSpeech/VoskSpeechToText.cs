@@ -21,7 +21,7 @@ public class VoskSpeechToText : Singleton<VoskSpeechToText>
 
 	public VoiceProcessor VoiceProcessor;
 	[Tooltip("The Max number of alternatives that will be processed.")]
-	public int MaxAlternatives = 1;
+	public int MaxAlternatives = 3;
 
 	[Tooltip("How long should we record before restarting?")]
 	public float MaxRecordLength = 5; // TODO: Define and set initialization value. 5 seconds is too short adhoc
@@ -149,7 +149,7 @@ public class VoskSpeechToText : Singleton<VoskSpeechToText>
 	/// <param name="modelPath">The path to the model folder relative to StreamingAssets. If the path has a .zip ending, it will be decompressed into the application data persistent folder.</param>
 	/// <param name="startMicrophone">"Should the microphone after vosk initializes?</param>
 	/// <param name="maxAlternatives">The maximum number of alternative phrases detected</param>
-	public void StartVoskStt(List<string> keyPhrases = null, string modelPath = default, bool startMicrophone = false, int maxAlternatives = 1)
+	public void StartVoskStt(List<string> keyPhrases = null, string modelPath = default, bool startMicrophone = false, int maxAlternatives = 2)
 	{
 		if (_isInitializing)
 		{
