@@ -3435,6 +3435,11 @@ PrefabInstance:
       objectReference: {fileID: 2019836994}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
+      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
+        type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -3447,7 +3452,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 2114984748}
+      objectReference: {fileID: 2019836994}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
@@ -3456,12 +3461,12 @@ PrefabInstance:
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: ToggleParticles
+      value: ToggleRecording
       objectReference: {fileID: 0}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: ParticlesToggle, Assembly-CSharp
+      value: VoskSpeechToText, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
