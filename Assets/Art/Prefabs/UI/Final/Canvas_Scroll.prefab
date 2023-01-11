@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8829701166217552365}
   - component: {fileID: 4204572910077113970}
   - component: {fileID: 3422376484919043421}
+  - component: {fileID: 3658500669759182893}
   m_Layer: 5
   m_Name: Canvas_Scroll
   m_TagString: Untagged
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3497f8d162be0420c8419bb14060f595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voskSpeechToText: {fileID: 0}
   textGUI: {fileID: 4992331562121372539}
   unreadColor: {r: 0, g: 0, b: 0, a: 1}
   partialCorrect: {r: 0, g: 0.33, b: 0, a: 1}
@@ -121,6 +123,18 @@ MonoBehaviour:
   OnPhraseWellRead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3658500669759182893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829701166217552363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800feb2e0285d4909af933c4173bde29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1927262715127062137
 PrefabInstance:
   m_ObjectHideFlags: 0
