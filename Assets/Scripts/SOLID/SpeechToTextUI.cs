@@ -47,7 +47,7 @@ public class SpeechToTextUI : MonoBehaviour
 
     private void OnEnable()
     {
-        //voskSpeechToText.OnTranscriptionPartialResult += DisplayPartialResult;
+        voskSpeechToText.OnTranscriptionPartialResult += AnalizeSpeechResult;
         voskSpeechToText.OnTranscriptionResult += AnalizeSpeechResult;
     }
     //private void OnDisable()
@@ -72,64 +72,104 @@ public class SpeechToTextUI : MonoBehaviour
 
     public void AnalizeSpeechResult(string recognizedSpeech)
     {
-        var recognitionResult = new RecognitionResult(recognizedSpeech); //RecognitionResultCreator.getIncorrectResult();
+        var recognitionResult = new RecognitionResult(recognizedSpeech);
 
         if (string.IsNullOrEmpty(recognitionResult.Phrases[0].Text))
             return;
 
-        FindInTextToRead(recognitionResult);
+        int foundWords = FindInTextToRead(recognitionResult);
+        if (!recognitionResult.Partial)
+        {
+            _finalWordCount = foundWords;
+        }
 
         if (AllWordsAreRead())
         {
             EndSpeechToTextAssessment();
         }
     }
-    
+
+    /* FIXME: Inaccurate results in long recognized phrases with repeated words
+     * Long Speech To Text results allow for errors in repeated words in Text to read.
+     * Can't use precise word count, since some words may be recognized with different amount of words.
+     * i.e. "del" may be recognized as "de el", breaking word count in different recognized phrases.
+     * Maybe should use some kind of range of words preceding and following instead of all words for more accurate results 
+     */
+    /* TODO: 1. Polish. Move return out of Phrase & Word For Loops
+     * Polish? use a condition with counter & recognized phrase length to return or mark incorrect. RecognizedWord for loop could use a word variable, and could check it here.
+     * Internal counter variable from 0
+     * recognizedWordCount variable in for loop
+     * Remove return from RecognizedWord loop
+     * Only have return values after the Word Search.
+     * Not sure if it would work
+     */
+    /* TODO: 2. Fix skip alternative when returning to first result after alternative
+     * For more efficiency, continue on last recognized word count (avoid restarting word counter when returning to first result from alternative
+     * Counter of found words, and set the recognized word loop manually?
+     * Set word counter from the phrase loop? 
+     * Instead of continue with returnedFromAlternative counter, use phrase counter to decide if it should set the word ienumerator of recognizedWords to foundWord Counter
+     */
     // Compare recognized words in recognized phrases to find a match, and updates text color according to result.
-    private void FindInTextToRead(RecognitionResult recognitionResult)
+    private int FindInTextToRead(RecognitionResult recognitionResult)
     {
-        for (int recognizedPhrase = 0; recognizedPhrase < recognitionResult.Phrases.Length; recognizedPhrase++) // for each recognized phrase (alternative)
+        ColorTag correctTag;
+        ColorTag incorrectTag;
+        if (recognitionResult.Partial)
         {
-            string[] recognizedWords = recognitionResult.Phrases[recognizedPhrase].Text.Split();
+            correctTag = ColorTag.PartialCorrect;
+            incorrectTag = ColorTag.PartialIncorrect;
+        }
+        else
+        {
+            correctTag = ColorTag.FinalCorrect;
+            incorrectTag = ColorTag.FinalIncorrect;
+        }
 
-            for (int recognizedWord = 0; recognizedWord < recognizedWords.Length; recognizedWord++) // for each recognized word
+        int wordCount = _finalWordCount; //Wanted to have an internal counter from 0, but can't update word count without final word count
+
+        for (int phrase = 0; phrase < recognitionResult.Phrases.Length; phrase++) // for each recognized phrase (alternative)
+        {
+            string recognizedPhrase = recognitionResult.Phrases[phrase].Text;
+            string[] recognizedWords = recognizedPhrase.Split();
+            for (int word = 0; word < recognizedWords.Length; word++) // for each recognized word
             {
-                // Always start search from word count. Comparing previous words is unnecessary and error prone (i.e repetition).
-                if (recognizedWord < _finalWordCount)
-                {
-                    continue;
-                }
+                string expectedWord = _richTextWords[wordCount].Word;
+                string recognizedWord = recognizedWords[word];
 
-                if (string.Compare(recognizedWords[recognizedWord], _richTextWords[_finalWordCount].Word, CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
+                if (string.Compare(recognizedWord, expectedWord, CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
                 {
-                    Debug.Log("Found match. " + recognizedWords[recognizedWord] + " - " + _richTextWords[_finalWordCount].Word + " in Phrase " + recognizedPhrase);
-                    SetWordColorTag(ColorTag.FinalCorrect);
-                    UpdatePhraseColor();
+                    Debug.Log("Found match. " + recognizedWord + " - " + expectedWord + " in Phrase " + phrase);
 
-                    _finalWordCount++;
+                    // innecesario updatea del displayedText en final results, pero si para partial.
+                    _richTextWords[wordCount].ColorTag = correctTag;
+                    _richTextWords[wordCount].TaggedWord = GetRichTextWord(_richTextWords[wordCount]);
+                    _displayedText = GetRichTextPhrase();
+
+                    wordCount++;
 
                     // Stop searching if all expected words have been found
-                    if (_finalWordCount >= _richTextWords.Length)
+                    if (wordCount >= _richTextWords.Length || // if all expected words were recognized
+                        word >= (recognizedWords.Length - 1)) // if all words in read phrase were correct. Want to return before ending automatically the loop, otherwise it will reach incorrect code lines.
                     {
-                        return;
+                        return wordCount;
                     }
                     // in first result continue search in next recognized word
-                    else if (recognizedPhrase == 0) 
+                    else if (phrase == 0) 
                     {
                         continue;
                     }
                     // in alternatives continue search in next recognized phrase
                     else
                     {
-                        recognizedPhrase = -1; // Loop iterator will add +1
+                        phrase = -1; // Loop iterator will add +1
                         break;
                     }
                 }
                 else
                 {
-                    Debug.Log("No match for " + _richTextWords[_finalWordCount].Word + " in Word " + recognizedWord + " of Phrase " + recognizedPhrase + ": " + recognitionResult.Phrases[recognizedPhrase].Text);
+                    Debug.Log("No match for " + expectedWord + " in Word " + word + " of Phrase " + phrase + ": " + recognizedPhrase);
                     // in first result continue search in next recognized phrase
-                    if (recognizedPhrase == 0)
+                    if (phrase == 0)
                     {
                         break;
                     }
@@ -141,196 +181,12 @@ public class SpeechToTextUI : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Couldn't find " + _richTextWords[_finalWordCount].Word + " in any of the " + recognitionResult.Phrases.Length + " recognized phrases");
-        SetWordColorTag(ColorTag.FinalIncorrect);
-        UpdatePhraseColor();
-    }
-
-    private void SetWordColorTag(ColorTag colorTag)
-    {
-        _richTextWords[_finalWordCount].ColorTag = colorTag;
-    }
-
-    private void UpdatePhraseColor()
-    {
-        _richTextWords[_finalWordCount].TaggedWord = GetRichTextWord(_richTextWords[_finalWordCount]);
+        Debug.Log("Couldn't find " + _richTextWords[wordCount].Word + " in any of the " + recognitionResult.Phrases.Length + " recognized phrases");
+        _richTextWords[wordCount].ColorTag = incorrectTag;
+        _richTextWords[wordCount].TaggedWord = GetRichTextWord(_richTextWords[wordCount]);
         _displayedText = GetRichTextPhrase();
+        return wordCount;
     }
-
-
-    //// TODO: Refactor both Displays into One. See block comment attempt below.
-    //// Display is actually within the if statement.
-    //private void DisplayPartialResult(string recognizedSpeech)
-    //{
-    //    string[] recognizedWords = GetFirstResultWords(recognizedSpeech);
-
-    //    // Ignore empty results (why are they even sent?)
-    //    if (string.IsNullOrEmpty(recognizedWords[0]))
-    //        return;
-
-    //    int _partialWordCount = _finalWordCount; // Added so that counter increase doesn't result in formatting as final
-
-    //    for (int i = 0; i < recognizedWords.Length; i++) // Compares each recognized word to the expected word. Expected word = first word that wasn't read yet in the TextToRead
-    //    {
-    //        // Using Comparison instead of Equality to ignore accents.
-    //        if (string.Compare(_wordsToRead[_partialWordCount], recognizedWords[i], CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
-    //        {
-    //            // Update TextGUI to display Partial Result as Correct
-    //            _displayedText = HighlightWords(_partialWordCount, true, true);
-    //            _partialWordCount++;
-    //            Debug.Log("Partial Word Count " + _partialWordCount);
-    //        }
-    //        else
-    //        {
-    //            // Update TextGUI to display Partial Result as Incorrect
-    //            _displayedText = HighlightWords(_partialWordCount, false, true);
-    //        }
-    //    }
-    //}
-
-    //private void DisplayFinalResult(string recognizedSpeech)
-    //{
-    //    string[] recognizedWords = GetFirstResultWords(recognizedSpeech);
-
-
-    //    if (string.IsNullOrEmpty(recognizedWords[0]))
-    //        return;
-
-    //    for (int i = 0; i < recognizedWords.Length; i++)
-    //    {
-    //        // Using Comparison instead of Equality to ignore accents.
-    //        if (string.Compare(_wordsToRead[_finalWordCount], recognizedWords[i], CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
-    //        {
-    //            _displayedText = HighlightWords(_finalWordCount, true, false); // Update TextGUI to display Partial Result as Correct
-    //            _finalWordCount++;
-    //            Debug.Log("Final Word Count " + _finalWordCount);
-    //        }
-    //        else
-    //        {
-    //            // Check Next Alternative.
-    //            string[] recognizedWordsAlternative = GetSecondResultWords(recognizedSpeech);
-
-    //            Debug.Log("Expected Word=" + _wordsToRead[_finalWordCount] + " didnt match first alternative word=" + recognizedWords[i] +
-    //                "Testing next alternative=" + recognizedWordsAlternative[i]);
-
-    //            if (string.Compare(_wordsToRead[_finalWordCount], recognizedWordsAlternative[i], CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
-    //            {
-    //                Debug.Log("Matched alternative");
-    //                _displayedText = HighlightWords(_finalWordCount, true, false); // Update TextGUI to display Partial Result as Correct
-    //                _finalWordCount++;
-    //                Debug.Log("Final Word Count " + _finalWordCount);
-    //            }
-    //            else
-    //            {
-    //                Debug.Log("No Match");
-    //                _displayedText = HighlightWords(_finalWordCount, false, false); // Update TextGUI to display Partial Result as Correct
-    //            }
-    //        }
-    //    }
-    //}
-
-    // for each recognized word in recognized speech
-    // Compare each recognized word in recognized speech with the expected word
-    // Split the phrase into groups of words assigning different colors:
-    // Read (Final Results, Partial Results, Current), Unread
-    // Current color will vary according to match result
-
-    private static string[] GetFirstResultWords(string recognizedSpeech)
-    {
-        var recognitionResult = new RecognitionResult(recognizedSpeech);
-        string recognizedPhrase = recognitionResult.Phrases[0].Text;
-        string[] recognizedWords = recognizedPhrase.Split();
-
-        if (!string.IsNullOrEmpty(recognizedPhrase))
-            Debug.Log("RecognizedSpeech=" + recognizedPhrase + " / Result=" + recognitionResult.Partial);
-
-        return recognizedWords;
-    }
-
-    private static string[] GetSecondResultWords(string recognizedSpeech)
-    {
-        var recognitionResult = new RecognitionResult(recognizedSpeech);
-        string recognizedPhrase = recognitionResult.Phrases[1].Text;
-        string[] recognizedWords = recognizedPhrase.Split();
-
-        if (!string.IsNullOrEmpty(recognizedPhrase))
-            Debug.Log("ALTERNATIVE RecognizedSpeech=" + recognizedPhrase + " / Result=" + recognitionResult.Partial);
-
-        return recognizedWords;
-    }
-
-    // Replaced with GetRichTextWords
-    //// TODO: Test. Attempted to separate between final and partial previously read words
-    //// TODO: Refactor. Extract into methods per highlight type (4).
-    //private string HighlightWords(int currentWordCount, bool isCorrect, bool isPartial)
-    //{
-    //    // TODO: new private color as variable. Define if using final or partial colors.
-    //    Color correct;
-    //    Color incorrect;
-    //    if (isPartial)
-    //    {
-    //        correct = partialCorrect;
-    //        incorrect = partialIncorrect;
-    //    }
-    //    else
-    //    {
-    //        correct = finalCorrect;
-    //        incorrect = finalIncorrect;
-    //    }
-        
-    //    string formattedString = "";
-
-    //    // Highlight correct final results
-    //    string correctFinalWords = "";
-    //    for (int i = 0; i < _wordsToRead.Length; i++){
-    //        if (i < _finalWordCount)
-    //            correctFinalWords += _wordsToRead[i] + " ";
-    //    }
-    //    if (!string.IsNullOrEmpty(correctFinalWords))
-    //        formattedString += HtmlUtility.ToColor(correctFinalWords, finalCorrect);
-    //    //Debug.Log("correctFinalWords=" + correctFinalWords + " / FinalWordCount="+_finalWordCount);
-
-    //    // Highlight correct partial results
-    //    if (isPartial)
-    //    {
-    //        string correctPartialWords = "";
-    //        for (int i = 0; i < _wordsToRead.Length; i++)
-    //        {
-    //            if (i >= _finalWordCount && i < currentWordCount) // FIXME: Problem with counter? First Word disappears.
-    //                correctPartialWords += _wordsToRead[i] + " ";
-    //        }
-    //        if (!string.IsNullOrEmpty(correctPartialWords))
-    //            formattedString += HtmlUtility.ToColor(correctPartialWords, partialCorrect);
-    //        //Debug.Log("correctPartialWords=" + correctPartialWords + " / PartialWordCount=" + _partialWordCount);
-    //    }
-
-    //    // Highlight current read word according to result
-    //    string currentWord = _wordsToRead[currentWordCount];
-    //    if (isCorrect)
-    //        currentWord = HtmlUtility.ToColor(currentWord, correct);
-    //    else
-    //        currentWord = HtmlUtility.ToColor(currentWord, incorrect);
-
-    //    if (!string.IsNullOrEmpty(currentWord))
-    //        //formattedString += HtmlUtility.ToBold(currentWord) + " "; //FIXME: Not working. Disabled.
-    //        formattedString += currentWord + " ";
-    //    //Debug.Log("currentWord=" + currentWord);
-
-    //    // Highlight unread word according to result
-    //    string unreadWords = "";
-    //    for (int i = 0; i < _wordsToRead.Length; i++){
-    //        if (i > currentWordCount && i < _wordsToRead.Length)
-    //            unreadWords += _wordsToRead[i] + " ";
-    //        else if (i > currentWordCount && i == _wordsToRead.Length)
-    //            unreadWords += _wordsToRead[i];
-    //    }
-    //    if (!string.IsNullOrEmpty(unreadWords))
-    //        formattedString += HtmlUtility.ToColor(unreadWords, unreadColor);
-    //    //Debug.Log("unreadWords=" + unreadWords);
-
-    //    return formattedString;
-    //}
-
 
     // Allow to skip using speech during tests (both in editor or development builds. Called on button click
     public void SkipSpeechToTextAssessment()
@@ -338,20 +194,6 @@ public class SpeechToTextUI : MonoBehaviour
         EndSpeechToTextAssessment();
     }
 
-    private string[] GetWordsToRead()
-    {
-        return _textToRead.Split();
-    }
-    // Replaced with GetRichTextWords
-    //private void SetRichTextWords()
-    //{
-    //    _richTextWords = new RichTextWord[_wordsToRead.Length];
-
-    //    for (int i = 0; i < _wordsToRead.Length; i++)
-    //    {
-    //        _richTextWords[i].Word = _wordsToRead[i];
-    //    }
-    //}
     private void GetRichTextWords()
     {
         string[] wordsToRead = _textToRead.Split();
@@ -372,47 +214,6 @@ public class SpeechToTextUI : MonoBehaviour
     {
         return _finalWordCount >= _richTextWords.Length;
     }
-    //// TODO: Could run both events to CompareSpeech
-    //// using Partial bool to define HighlightWords Parameters.
-    //private bool CompareSpeechWithWord(string recognizedSpeech)
-    //{
-    //    var recognitionResult = new RecognitionResult(recognizedSpeech);
-    //    string recognizedPhrase = recognitionResult.Phrases[0].Text;
-    //    string[] recognizedWords = recognizedPhrase.Split();
-
-    //    int counter;
-
-    //    if (recognitionResult.Partial)
-    //        counter = _partialWordCount;
-    //    else
-    //        counter = _finalWordCount;
-
-    //    // Compares each recognized word to the expected word.
-    //    // Expected word = first word that wasn't read yet in the TextToRead
-    //    for (int i = 0; i < recognizedWords.Length; i++)
-    //    {
-    //        // Using Comparison instead of Equality to ignore accents.
-    //        if (string.Compare(_wordsToRead[counter], recognizedWords[i], CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
-    //        {
-    //            _displayedText = HighlightWords(_finalWordCount, false);
-    //            _partialWordCount++;
-
-    //            return true;
-    //        }
-    //        // cant use else here since it would stop the loop search.
-    //    }
-
-    //    return false;
-    //}
-
-    //private void Display(string recognizedSpeech)
-    //{
-    //    if (CompareSpeechWithWord(recognizedSpeech))
-    //    {
-    //        _displayedText = HighlightWords(_finalWordCount, false);
-    //        _partialWordCount++;
-    //    }
-    //}
 
     public string GetRichTextWord(RichTextWord richTextWord)
     {
