@@ -14,7 +14,7 @@ public class CraftManager : MonoBehaviour
     [Header("References")]
     public ItemDatabaseSO itemDatabaseSO;
     public SpellCraft spellDisplay;
-    [SerializeField] private SpeechRecognition speechManager;
+    [SerializeField] private AzureSpeechRecognition speechManager;
     [SerializeField] private SpellBook spellBook;
 
     [Header("Spawn Height")]

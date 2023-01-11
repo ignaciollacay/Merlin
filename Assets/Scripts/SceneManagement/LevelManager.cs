@@ -11,6 +11,7 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private LevelSOList levels;
+    public int overrideLevel = 0;
 
     private SceneHandlerManager SceneManager => SceneHandlerManager.Instance;
     private AssessmentManager AssessmentManager => AssessmentManager.Instance;
@@ -21,6 +22,11 @@ public class LevelManager : Singleton<LevelManager>
     public override void Awake()
     {
         base.Awake(); // Singleton Instance
+
+        if (overrideLevel != 0)
+        {
+            levels.SetLevel(overrideLevel);
+        }
     }
     private void Start()
     {

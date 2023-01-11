@@ -57,12 +57,12 @@ public class AssessmentManager : Singleton<AssessmentManager>
 
         if (learnedSpells >= assigned.GetCount())
         {
-            Debug.Log("An assigned spell is not learned. Switching to Next Assignment");
+            Debug.Log("All assigned spell are learned. Ending Assignment");
             EndAssignment();
         }
         else
         {
-            Debug.Log("All assigned spell are learned. Ending Assignment");
+            Debug.Log("An assigned spell is not learned. Switching to Next Assignment");
             NextAssignment();
         }
     }

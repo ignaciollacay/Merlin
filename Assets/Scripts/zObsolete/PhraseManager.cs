@@ -17,7 +17,7 @@ public class PhraseManager : MonoBehaviour
     public static PhraseManager Instance { get; set; }
 
     public GameObject ingredients;
-    public SpeechRecognition speechManager;
+    public AzureSpeechRecognition speechManager;
     public List<PhraseRecognition> phraseRecs;
 
     private void Awake()
