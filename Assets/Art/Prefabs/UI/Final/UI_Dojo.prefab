@@ -1953,8 +1953,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
         type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      propertyPath: voskSpeechToText
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
         type: 3}
@@ -1985,15 +1985,20 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 6956430530702013757}
+      objectReference: {fileID: 0}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 8387135417359600707}
+      objectReference: {fileID: 6956430530702013757}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 8387135417359600707}
+    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
+        type: 3}
+      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 676652095890762783}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
@@ -2018,43 +2023,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
         type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayTimeline
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TriggerStartDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: ToggleParticles
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: ResetToggleState
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TimelineManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Dialogue, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: ParticlesToggle, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: SoundEffectToggle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3422376484919043421, guid: 6a677cc96bc941d4ca5864450cc52289,
         type: 3}

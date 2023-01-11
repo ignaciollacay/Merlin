@@ -3435,49 +3435,29 @@ PrefabInstance:
       objectReference: {fileID: 2019836994}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 617993208}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2019836994}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
-      value: 2
+      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayTimeline
       objectReference: {fileID: 0}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ToggleRecording
-      objectReference: {fileID: 0}
-    - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: VoskSpeechToText, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 653368168}
-    - target: {fileID: 6241737412503567745, guid: 25ad7f1dd4a19e14babe51b1e7767842,
-        type: 3}
-      propertyPath: OnPhraseWellRead.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6491107628054010215, guid: 25ad7f1dd4a19e14babe51b1e7767842,
         type: 3}
       propertyPath: inventory

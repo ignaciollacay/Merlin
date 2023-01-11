@@ -15,11 +15,17 @@ public class VoskResultText : MonoBehaviour
     [SerializeField] private Color partialColor;
     [SerializeField] private Color finalColor;
 
-    void Awake()
+    private void OnEnable()
     {
         ResultText.text = "";
         VoskSpeechToText.OnTranscriptionPartialResult += DisplayPartialText;
         VoskSpeechToText.OnTranscriptionResult += DisplayFinalText;
+    }
+
+    private void OnDisable()
+    {
+        VoskSpeechToText.OnTranscriptionPartialResult -= DisplayPartialText;
+        VoskSpeechToText.OnTranscriptionResult -= DisplayFinalText;
     }
 
     private void Update()
@@ -32,6 +38,9 @@ public class VoskResultText : MonoBehaviour
         var result = new RecognitionResult(SpeechToText);
         string newPartialResult = result.Phrases[0].Text; // Get only first alternative. No need to iterate through alternatives.
 
+        if (string.IsNullOrEmpty(newPartialResult))
+            return;
+
         Debug.Log("PartialResult=" + result.Phrases[0].Text + " / " + result.Partial);
 
         partialResult = AddRichTextTags(newPartialResult, partialColor);
@@ -41,6 +50,9 @@ public class VoskResultText : MonoBehaviour
     {
         var result = new RecognitionResult(SpeechToText);
         string resultString = result.Phrases[0].Text;  // Get only first alternative. No need to iterate through alternatives.
+
+        if (string.IsNullOrEmpty(resultString))
+            return;
 
         Debug.Log("FinalResult=" + result.Phrases[0].Text + " / " + result.Partial);
 

@@ -50,11 +50,11 @@ public class SpeechToTextUI : MonoBehaviour
         voskSpeechToText.OnTranscriptionPartialResult += AnalizeSpeechResult;
         voskSpeechToText.OnTranscriptionResult += AnalizeSpeechResult;
     }
-    //private void OnDisable()
-    //{
-    //    voskSpeechToText.OnTranscriptionPartialResult -= DisplayPartialResult;
-    //    voskSpeechToText.OnTranscriptionResult -= DisplayFinalResult;
-    //}
+    private void OnDisable()
+    {
+        voskSpeechToText.OnTranscriptionPartialResult -= AnalizeSpeechResult;
+        voskSpeechToText.OnTranscriptionResult -= AnalizeSpeechResult;
+    }
 
     public void StartNewSpeechToTextAssessment(string textToRead)
     {
