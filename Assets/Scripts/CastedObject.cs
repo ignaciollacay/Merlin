@@ -28,7 +28,7 @@ public class CastedObject : MonoBehaviour
     /// <returns>Spell SO, SO properties, GO components, UI button and count</returns>
     public static CastedObject Create(SpellSO spell, Transform spawnPos, Button button)
     {
-        GameObject obj = Instantiate(spell.result.prefab, spawnPos);
+        GameObject obj = Instantiate(spell.prefab, spawnPos);
 
         #region GetComponent (Obsolete)
         // Switching to AddComponent instead of GetComponent.

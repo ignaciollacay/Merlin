@@ -5,13 +5,13 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
-// Sets the text to be read
-// Recieves Speech To Text Result
-// Compares the text to be read with Speech To Text result
-// Updates the color of the text with different color for correct or incorrect check
-
+/// <summary>
+/// Sets the text to be read
+/// Recieves Speech To Text Result
+/// Compares the text to be read with Speech To Text result
+/// Updates the color of the text with different color for correct or incorrect check
+/// </summary>
 public class SpeechToTextUI : MonoBehaviour
 {
     [Header("References")]
@@ -30,7 +30,6 @@ public class SpeechToTextUI : MonoBehaviour
     private string _displayedText;
 
     private int _finalWordCount;
-    //private string[] _wordsToRead;
 
     private RichTextWord[] _richTextWords;
 
@@ -249,6 +248,7 @@ public class SpeechToTextUI : MonoBehaviour
         return phrase;
     }
 }
+
 public class RichTextPhrase
 {
     public string phrase;
