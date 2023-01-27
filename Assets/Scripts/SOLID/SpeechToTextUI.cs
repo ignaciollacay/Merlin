@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -17,31 +16,16 @@ public class SpeechToTextUI : MonoBehaviour
     [Header("References")]
     [SerializeField] private VoskSpeechToText voskSpeechToText;
     [SerializeField] private TextMeshProUGUI textGUI;
-    [Header("Colors")]
-    [SerializeField] private Color unreadColor = Color.black;
-    [SerializeField] private Color partialCorrect = new Color(0, 0.33f, 0);
-    [SerializeField] private Color finalCorrect = new Color(0, 0.66f, 0);
-    [SerializeField] private Color partialIncorrect = new Color(0.33f, 0, 0);
-    [SerializeField] private Color finalIncorrect = new Color(0.66f, 0, 0);
+
     [Header("Event")]
     public UnityEvent OnPhraseWellRead;
 
-    private string _textToRead;
-    private string _displayedText;
+    protected int readWords;
+    protected RichTextPhrase richTextPhrase = new RichTextPhrase("");
 
-    private int _finalWordCount;
-
-    private RichTextWord[] _richTextWords;
-
-
-    private void Update()
+    public virtual void Update()
     {
-        if (Input.GetKey(KeyCode.Return))
-        {
-            AnalizeSpeechResult("");
-        }
-
-        textGUI.text = _displayedText;
+        textGUI.text = richTextPhrase.taggedPhrase;
     }
 
     private void OnEnable()
@@ -55,21 +39,7 @@ public class SpeechToTextUI : MonoBehaviour
         voskSpeechToText.OnTranscriptionResult -= AnalizeSpeechResult;
     }
 
-    public void StartNewSpeechToTextAssessment(string textToRead)
-    {
-        _textToRead = textToRead;
-        GetRichTextWords();
-        _displayedText = GetRichTextPhrase();
-        _finalWordCount = 0;
-    }
-
-    private void EndSpeechToTextAssessment()
-    {
-        OnPhraseWellRead?.Invoke();
-        _displayedText = HtmlUtility.ToColor(_textToRead, finalCorrect);
-    }
-
-    public void AnalizeSpeechResult(string recognizedSpeech)
+    public virtual void AnalizeSpeechResult(string recognizedSpeech)
     {
         var recognitionResult = new RecognitionResult(recognizedSpeech);
 
@@ -79,10 +49,10 @@ public class SpeechToTextUI : MonoBehaviour
         int foundWords = FindInTextToRead(recognitionResult);
         if (!recognitionResult.Partial)
         {
-            _finalWordCount = foundWords;
+            readWords = foundWords;
         }
 
-        if (AllWordsAreRead())
+        if (readWords >= richTextPhrase.words.Count)
         {
             EndSpeechToTextAssessment();
         }
@@ -109,48 +79,35 @@ public class SpeechToTextUI : MonoBehaviour
      * Instead of continue with returnedFromAlternative counter, use phrase counter to decide if it should set the word ienumerator of recognizedWords to foundWord Counter
      */
     // Compare recognized words in recognized phrases to find a match, and updates text color according to result.
-    private int FindInTextToRead(RecognitionResult recognitionResult)
+    public virtual int FindInTextToRead(RecognitionResult recognitionResult)
     {
-        ColorTag correctTag;
-        ColorTag incorrectTag;
-        if (recognitionResult.Partial)
-        {
-            correctTag = ColorTag.PartialCorrect;
-            incorrectTag = ColorTag.PartialIncorrect;
-        }
-        else
-        {
-            correctTag = ColorTag.FinalCorrect;
-            incorrectTag = ColorTag.FinalIncorrect;
-        }
-
-        int wordCount = _finalWordCount; //Wanted to have an internal counter from 0, but can't update word count without final word count
+        int foundWords = readWords;
 
         for (int phrase = 0; phrase < recognitionResult.Phrases.Length; phrase++) // for each recognized phrase (alternative)
         {
             string recognizedPhrase = recognitionResult.Phrases[phrase].Text;
             string[] recognizedWords = recognizedPhrase.Split();
+
             for (int word = 0; word < recognizedWords.Length; word++) // for each recognized word
             {
-                string expectedWord = _richTextWords[wordCount].Word;
+                string expectedWord = richTextPhrase.words[foundWords].Word;
                 string recognizedWord = recognizedWords[word];
 
                 if (string.Compare(recognizedWord, expectedWord, CultureInfo.InvariantCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
                 {
                     Debug.Log("Found match. " + recognizedWord + " - " + expectedWord + " in Phrase " + phrase);
 
-                    // innecesario updatea del displayedText en final results, pero si para partial.
-                    _richTextWords[wordCount].ColorTag = correctTag;
-                    _richTextWords[wordCount].TaggedWord = GetRichTextWord(_richTextWords[wordCount]);
-                    _displayedText = GetRichTextPhrase();
+                    richTextPhrase.words[foundWords].isRead = true;
+                    richTextPhrase.words[foundWords].isCorrect = true;
+                    richTextPhrase.words[foundWords].isPartial = recognitionResult.Partial;
 
-                    wordCount++;
+                    foundWords++;
 
                     // Stop searching if all expected words have been found
-                    if (wordCount >= _richTextWords.Length || // if all expected words were recognized
+                    if (foundWords >= richTextPhrase.words.Count || // if all expected words were recognized
                         word >= (recognizedWords.Length - 1)) // if all words in read phrase were correct. Want to return before ending automatically the loop, otherwise it will reach incorrect code lines.
                     {
-                        return wordCount;
+                        return foundWords;
                     }
                     // in first result continue search in next recognized word
                     else if (phrase == 0) 
@@ -180,123 +137,29 @@ public class SpeechToTextUI : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Couldn't find " + _richTextWords[wordCount].Word + " in any of the " + recognitionResult.Phrases.Length + " recognized phrases");
-        _richTextWords[wordCount].ColorTag = incorrectTag;
-        _richTextWords[wordCount].TaggedWord = GetRichTextWord(_richTextWords[wordCount]);
-        _displayedText = GetRichTextPhrase();
-        return wordCount;
+        Debug.Log("Couldn't find " + richTextPhrase.words[foundWords].Word + " in any of the " + recognitionResult.Phrases.Length + " recognized phrases");
+        richTextPhrase.words[foundWords].isRead = true;
+        richTextPhrase.words[foundWords].isCorrect = false;
+        richTextPhrase.words[foundWords].isPartial = recognitionResult.Partial;
+
+        return foundWords;
     }
 
-    // Allow to skip using speech during tests (both in editor or development builds. Called on button click
+    private void EndSpeechToTextAssessment()
+    {
+        OnPhraseWellRead?.Invoke();
+        richTextPhrase.SetPhraseCorrect();
+    }
+
+    public void StartNewSpeechToTextAssessment(string textToRead)
+    {
+        richTextPhrase = new RichTextPhrase(textToRead);
+        readWords = 0;
+    }
+
+    // Allow to skip during tests (called on button click) - for development
     public void SkipSpeechToTextAssessment()
     {
         EndSpeechToTextAssessment();
     }
-
-    private void GetRichTextWords()
-    {
-        string[] wordsToRead = _textToRead.Split();
-        _richTextWords = new RichTextWord[wordsToRead.Length];
-
-        for (int i = 0; i < wordsToRead.Length; i++)
-        {
-            RichTextWord richTextWord = new RichTextWord();
-            _richTextWords[i] = richTextWord;
-            _richTextWords[i].Word = wordsToRead[i];
-            _richTextWords[i].ColorTag = ColorTag.Unread;
-            _richTextWords[i].TaggedWord = GetRichTextWord(_richTextWords[i]);
-            Debug.Log(_richTextWords[i].Word);
-        }
-    }
-
-    private bool AllWordsAreRead()
-    {
-        return _finalWordCount >= _richTextWords.Length;
-    }
-
-    public string GetRichTextWord(RichTextWord richTextWord)
-    {
-        switch (richTextWord.ColorTag)
-        {
-            case ColorTag.Unread:
-                return HtmlUtility.ToColor(richTextWord.Word, unreadColor);
-            case ColorTag.PartialCorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, partialCorrect);
-            case ColorTag.PartialIncorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, partialIncorrect);
-            case ColorTag.FinalCorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, finalCorrect);
-            case ColorTag.FinalIncorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, finalIncorrect);
-            default:
-                return null;
-        }
-    }
-
-    public string GetRichTextPhrase()
-    {
-        string phrase = "";
-
-        for (int i = 0; i < _richTextWords.Length; i++)
-        {
-            if (i < _richTextWords.Length)
-                phrase += _richTextWords[i].TaggedWord + " ";
-            else
-                phrase += _richTextWords[i].TaggedWord;
-        }
-
-        return phrase;
-    }
-}
-
-public class RichTextPhrase
-{
-    public string phrase;
-    public RichTextWord[] words;
-}
-
-public class RichTextWord
-{
-    public string Word;
-    public string TaggedWord; // TODO: Make property? Should make GetRichTextWord obsolete? No tanto, le necesito definir cual es el color del tag
-    public ColorTag ColorTag;
-}
-
-public class ColorCode : ScriptableObject
-{
-    public Color unreadColor = Color.black;
-    public Color partialCorrect = new Color(0, 0.33f, 0);
-    public Color finalCorrect = new Color(0, 0.66f, 0);
-    public Color partialIncorrect = new Color(0.33f, 0, 0);
-    public Color finalIncorrect = new Color(0.66f, 0, 0);
-
-    public RichTextPhrase phrase;
-
-    public string AddColorTag(RichTextWord richTextWord)
-    {
-        switch (richTextWord.ColorTag)
-        {
-            case ColorTag.Unread:
-                return HtmlUtility.ToColor(richTextWord.Word, unreadColor);
-            case ColorTag.PartialCorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, partialCorrect);
-            case ColorTag.PartialIncorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, partialIncorrect);
-            case ColorTag.FinalCorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, finalCorrect);
-            case ColorTag.FinalIncorrect:
-                return HtmlUtility.ToColor(richTextWord.Word, finalIncorrect);
-            default:
-                return null;
-        }
-    }
-}
-
-public enum ColorTag
-{
-    Unread,
-    PartialCorrect,
-    PartialIncorrect,
-    FinalCorrect,
-    FinalIncorrect
 }

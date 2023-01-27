@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3c3515d197d4fe6bfee2a15fc9e513, type: 3}
+  m_Name: Level_VoskDebug
+  m_EditorClassIdentifier: 
+  scene: {fileID: 11400000, guid: d150e59eba2df414ca454c1df378b0f0, type: 2}
+  startDialogue: {fileID: 11400000, guid: 72c5b39efb262406bb1c0c3f6c07c8dd, type: 2}
+  endDialogue: {fileID: 11400000, guid: 511da54bf8ea54b109782feeb736da7e, type: 2}
+  nextScene: {fileID: 11400000, guid: 805f6d0439da144c1941c45e40339a87, type: 2}
+  assignedSpells: {fileID: 11400000, guid: bec5a4df51a4941c7b92df9161641d0e, type: 2}
+  assignedEnemies: {fileID: 0}
+  commentary: 

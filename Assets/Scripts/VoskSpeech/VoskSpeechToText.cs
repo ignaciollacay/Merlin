@@ -176,7 +176,6 @@ public class VoskSpeechToText : Singleton<VoskSpeechToText>
 		StartCoroutine(DoStartVoskStt(startMicrophone));
 	}
 
-
 	//Decompress model, load settings, start Vosk and optionally start the microphone
 	private IEnumerator DoStartVoskStt(bool startMicrophone)
 	{
@@ -374,5 +373,23 @@ public class VoskSpeechToText : Singleton<VoskSpeechToText>
 		}
 
 		voskRecognizerReadMarker.End();
+	}
+
+	public void SetNewAlternativeCount(int count)
+	{
+		if (_running)
+        {
+			ToggleRecording();
+			if (TryGetComponent(out ParticlesToggle vfx))
+				vfx.ToggleParticles();
+			if (TryGetComponent(out SoundEffectToggle sfx))
+				sfx.ToggleSoundEffect();
+        }
+		MaxAlternatives = count;
+		_recognizerReady = false;
+
+		//StopCoroutine(DoStartVoskStt(false));
+		//StartVoskStt(null, null, false, count);
+		Debug.Log("New alternative count set to " + MaxAlternatives);
 	}
 }

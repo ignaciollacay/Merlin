@@ -48,6 +48,9 @@ public class SpellSO : ScriptableObject
     public string boolName;
 
 
-
+    public void SetSpell(string newSpell)
+    {
+        Spell = newSpell;
+    }
 
 }

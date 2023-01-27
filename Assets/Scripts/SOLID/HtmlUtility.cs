@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public static class HtmlUtility
 {
@@ -20,5 +21,10 @@ public static class HtmlUtility
         string formattedString = openTag + text + closeTag;
 
         return formattedString;
+    }
+
+    internal static string ToColor(string recognizedPhrase, object partialColor)
+    {
+        throw new NotImplementedException();
     }
 }

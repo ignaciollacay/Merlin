@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DojoLongTextTest.unity
     guid: 133abc0bdd4832c4a97bd56d8ef8b0ab
+  - enabled: 1
+    path: Assets/Scenes/VoskDebug.unity
+    guid: e47295e7ff90e40b9988bc467cdb9b81
   m_configObjects: {}
