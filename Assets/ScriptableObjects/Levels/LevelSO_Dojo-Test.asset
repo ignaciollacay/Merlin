@@ -15,7 +15,7 @@ MonoBehaviour:
   scene: {fileID: 11400000, guid: d150e59eba2df414ca454c1df378b0f0, type: 2}
   startDialogue: {fileID: 11400000, guid: 0ca0caa15cfe84fa18fb26e090554465, type: 2}
   endDialogue: {fileID: 11400000, guid: ca7ecdfc75e024b8c914923fe56f1c5a, type: 2}
-  nextScene: {fileID: 11400000, guid: f7e95c3345cb1e04a95bd692fb0abc69, type: 2}
+  nextScene: {fileID: 11400000, guid: 805f6d0439da144c1941c45e40339a87, type: 2}
   assignedSpells: {fileID: 11400000, guid: 8c80e5ce0984d724b88cf769ead918f9, type: 2}
   assignedEnemies: {fileID: 0}
   commentary: 'Escena borrador para probar textos largos
