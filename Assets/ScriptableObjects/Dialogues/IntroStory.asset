@@ -15,10 +15,8 @@ MonoBehaviour:
   character: Narrador
   id: 0
   sentences:
-  - "Hab\xEDa una vez,  en un mundo lejano..."
-  - "un peque\xF1o mago aprendiz llamado [nombre personaje]"
+  - "Hab\xEDa una vez, en un mundo lejano, un peque\xF1o mago aprendiz."
   - "Un d\xEDa se propuso cumplir su mayor deseo, superar a su maestro, el grandioso
     mago Merlin."
-  - Junto a su gato volador [nombre gato]...
-  - "...deciden aprender los hechizos prohibidos que solo los magos adultos pod\xEDan
-    utilizar."
+  - "Junto a su gato volador deciden aprender los hechizos prohibidos que solo los
+    magos adultos pod\xEDan utilizar."
